@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('backlog','BacklogController@show');
+Route::get('project/new','ProjectController@show');
+Route::get('project/add','ProjectController@add');

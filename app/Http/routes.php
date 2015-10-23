@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -31,3 +32,9 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 //Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+=======
+
+Route::get('backlog','BacklogController@show');
+Route::get('backlog/create','UsController@create');
+Route::get('backlog/modify/{idUs}','UsController@modify');
+>>>>>>> cdp/dev

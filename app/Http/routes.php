@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('backlog','BacklogController@show');
+Route::get('backlog/create','UsController@create');
+Route::get('backlog/modify/{idUs}','UsController@modify');

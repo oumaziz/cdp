@@ -1,15 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tijani
- * Date: 24/10/15
- * Time: 16:51
- */
+
+//This is a view for all the project
 
 ?>
 
 
-        <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 

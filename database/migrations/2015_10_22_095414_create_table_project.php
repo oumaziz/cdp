@@ -18,6 +18,7 @@ class CreateTableProject extends Migration
             $table->string('description');
             $table->timestamp('startDate');
             $table->integer('developer_id');
+            $table->timestamps();
         });
 
         DB::table('project')->insert(

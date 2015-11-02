@@ -21,6 +21,16 @@ class Developer extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+
+        DB::table('Developer')->insert(
+            array(
+                'FirstName' => 'Test',
+                'FamilyName' => 'Test',
+                'email' => 'test@test.com',
+                'password' => Hash::make("password")
+            )
+        );
     }
 
     /**

@@ -30,7 +30,11 @@ class PHPUnit_Runner_Version
         }
 
         if (self::$version === null) {
+<<<<<<< HEAD
             $version       = new SebastianBergmann\Version('4.7.7', dirname(dirname(__DIR__)));
+=======
+            $version       = new SebastianBergmann\Version('4.8.16', dirname(dirname(__DIR__)));
+>>>>>>> 3d7ca6854e28f6b4d779aaf13d8ded1ee8c2b01e
             self::$version = $version->getVersion();
         }
 

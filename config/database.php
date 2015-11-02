@@ -57,9 +57,15 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
+<<<<<<< HEAD
             'database'  => env('DB_DATABASE', 'cdp'),
             'username'  => env('DB_USERNAME', 'root'),
             'password'  => env('DB_PASSWORD', 'hamdoulilah'),
+=======
+            'database'  => env('DB_DATABASE', 'ProjectManagement'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', 'root'),
+>>>>>>> 3d7ca6854e28f6b4d779aaf13d8ded1ee8c2b01e
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

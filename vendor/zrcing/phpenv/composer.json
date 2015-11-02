@@ -1,0 +1,25 @@
+{
+    "name": "zrcing/phpenv",
+    "description": "Easy to load system enivronment configuration from $_ENV,$_SERVER,getenv.",
+    "keywords": ["phpenv", "ENV", "SERVER", "getenv"],
+    "license": "MIT",
+    "homepage": "https://github.com/zrcing/phpenv",
+    "support": {
+        "issues": "https://github.com/zrcing/phpenv/issues",
+        "source": "https://github.com/zrcing/phpenv"
+    },
+    "authors": [
+        {
+            "name": "Gary Liao",
+            "email": "liaogling@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phpenv\\": "src/Phpenv"
+        }
+    }
+}

@@ -52,6 +52,7 @@ return array(
     'Cron\\MonthField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/MonthField.php',
     'Cron\\YearField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/YearField.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+<<<<<<< HEAD
     'Diff' => $vendorDir . '/phpspec/php-diff/lib/Diff.php',
     'Diff_Renderer_Abstract' => $vendorDir . '/phpspec/php-diff/lib/Diff/Renderer/Abstract.php',
     'Diff_Renderer_Html_Array' => $vendorDir . '/phpspec/php-diff/lib/Diff/Renderer/Html/Array.php',
@@ -381,6 +382,12 @@ return array(
     'Faker\\Provider\\zh_TW\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/zh_TW/PhoneNumber.php',
     'Faker\\Provider\\zh_TW\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/zh_TW/Text.php',
     'Faker\\UniqueGenerator' => $vendorDir . '/fzaninotto/faker/src/Faker/UniqueGenerator.php',
+=======
+<<<<<<< HEAD
+    'Developer' => $baseDir . '/database/migrations/2015_10_22_184507_Developer.php',
+=======
+>>>>>>> cdp/dev
+>>>>>>> hardwork2015/dev
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',

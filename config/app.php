@@ -2,6 +2,8 @@
 
 return [
 
+    //app configuration
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

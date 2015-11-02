@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 
-
+//Controller gateway
 Route::resource('taches/taches','Taches\TachesController');

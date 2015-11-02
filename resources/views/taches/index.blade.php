@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tijani
- * Date: 25/10/15
- * Time: 01:02
- */
+
 
 ?>
 

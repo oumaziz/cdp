@@ -32,4 +32,22 @@ class AuthentificationTest extends TestCase
             ->type('password', 'password_confirmation')
             ->press('Register');
     }
+
+    /**
+     * Fonction permettant de tester la
+     * connexion avec un nouveau compte
+     *
+     * @return void
+     */
+    public function testLoginToNewAccount()
+    {
+        $this->visit('/auth/login')
+            ->type('test@test.com', 'email')
+            ->type('password', 'password')
+            ->press('Login')
+            ->seePageIs('/home');
+
+        $this->artisan('migrate:rollback');
+        $this->artisan('migrate');
+    }
 }

@@ -30,21 +30,15 @@ class PHPUnit_Runner_Version
         }
 
         if (self::$version === null) {
+<<<<<<< HEAD
+            $version       = new SebastianBergmann\Version('4.7.7', dirname(dirname(__DIR__)));
+=======
             $version       = new SebastianBergmann\Version('4.8.16', dirname(dirname(__DIR__)));
+>>>>>>> 3d7ca6854e28f6b4d779aaf13d8ded1ee8c2b01e
             self::$version = $version->getVersion();
         }
 
         return self::$version;
-    }
-
-    /**
-     * @return string
-     *
-     * @since Method available since Release 4.8.13
-     */
-    public static function series()
-    {
-        return implode('.', array_slice(explode('.', self::id()), 0, 2));
     }
 
     /**
@@ -57,7 +51,6 @@ class PHPUnit_Runner_Version
 
     /**
      * @return string
-     *
      * @since  Method available since Release 4.0.0
      */
     public static function getReleaseChannel()

@@ -3478,8 +3478,7 @@ EOF
     /**
      * Removes spaces in front of newlines
      *
-     * @param string $string
-     *
+     * @param  string $string
      * @return string
      */
     private function trimnl($string)

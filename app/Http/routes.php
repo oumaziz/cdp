@@ -11,6 +11,12 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::resource('taches/taches','Taches\TachesController');

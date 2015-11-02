@@ -37,7 +37,14 @@ class UsController extends Controller
     }
     public function modifyConfirm(Request $r){
 
+        $us = Userstory::where('id', $r->input("us"))->first();
 
+        $us->update([
+            "description" => $r->input('description'),
+            "priority" => $r->input('priority'),
+            "difficulty" => $r->input('difficulty'),
+            "status" => ($r->input("done"))?1:0
+        ]);
 
         return Redirect::action("BacklogController@show");
     }

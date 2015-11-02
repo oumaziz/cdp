@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -24,8 +25,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('backlog','BacklogController@show');
 Route::get('project/new','ProjectController@show');
 Route::get('project/add','ProjectController@add');
-Route::get('backlog/create','UsController@create');
-Route::get('backlog/modify/{idUs}','UsController@modify');
+Route::get('backlog/userstory/create','UsController@create');
+Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
+Route::post('backlog/userstory/create/confirm','UsController@createConfirm');
+Route::post('backlog/userstory/modify/confirm','UsController@modifyConfirm');
 
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');

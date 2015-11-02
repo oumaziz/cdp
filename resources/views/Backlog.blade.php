@@ -9,6 +9,10 @@
 </head>
 <body>
 
+<header>
+	<H1>Backlog</H1>
+</header>
+
 @if(count($userstories))
 	<TABLE BORDER="1">
 
@@ -22,9 +26,9 @@
 		@foreach($userstories as $us)
 			<TR>
 				<TH> {{$us->id}} </TH>
-				<TD> {{$us->Description}} </TD>
-				<TD> {{$us->Priority}} </TD>
-				<TD> {{$us->Difficulty}} </TD>
+				<TD> {{$us->description}} </TD>
+				<TD> {{$us->priority}} </TD>
+				<TD> {{$us->difficulty}} </TD>
 			</TR>
 
 		@endforeach

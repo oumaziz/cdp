@@ -48,4 +48,12 @@ class UsController extends Controller
 
         return Redirect::action("BacklogController@show");
     }
+
+    public function remove($id) {
+
+        $us = Userstory::where('id', $id)->first();
+        if($us != null) $us->delete();
+
+        return Redirect::action("BacklogController@show");
+    }
 }

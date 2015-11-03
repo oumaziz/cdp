@@ -3,5 +3,3 @@
 .env.php
 .env
 .idea/*
-
-tests/_output/*

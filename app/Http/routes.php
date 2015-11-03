@@ -11,17 +11,10 @@
 |
 */
 
-
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-
-//Controller gateway
-Route::resource('taches/taches','Taches\TachesController');
-=======
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -48,4 +41,3 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 //Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
->>>>>>> 3d7ca6854e28f6b4d779aaf13d8ded1ee8c2b01e

@@ -30,6 +30,9 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm','UsController@modifyConfirm');
 
+// Suppression d'une User Story
+Route::get('backlog/userstory/remove/{id}','UsController@remove');
+
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');

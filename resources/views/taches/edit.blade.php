@@ -39,6 +39,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('us_story_id','us_story_id')  !!}
+        {!! Form::text('us_story_id',$tache->us_story_id, ['class' => 'form-control' ]) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('predecessors','predecessors')  !!}
         {!! Form::text('predecessors',$tache->predecessors, ['class' => 'form-control' ]) !!}
     </div>

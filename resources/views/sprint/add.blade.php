@@ -9,14 +9,14 @@
 <div class="container">
     <br/>
     <div class="row">
-        <form action="{{  URL::action("SprintController@add", null) }}" method="POST" class="form-horizontal">
+        <form action="{{  URL::action("SprintController@add", [$project_id]) }}" method="POST" class="form-horizontal">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <div class="form-group form-group-label">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <label class="floating-label" for="startDate">Date de début :</label>
-                        <input type="date" name="startDate" class="form-control"/>
+                        <label class="floating-label" for="StartDate">Date de début :</label>
+                        <input type="date" name="StartDate" class="form-control"/>
                     </div>
                 </div>
             </div>

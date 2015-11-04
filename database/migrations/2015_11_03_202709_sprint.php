@@ -16,7 +16,8 @@ class Sprint extends Migration
             $table->increments('id');
             $table->string('StartDate');
             $table->string('EndDate');
-            $table->string('UserStory_id');
+            $table->string('project_id');
+            $table->timestamps();
         });
 
 
@@ -24,7 +25,7 @@ class Sprint extends Migration
             array(
                 'StartDate' => '01/10/2015',
                 'EndDate' => '15/10/2015',
-                'UserStory_id' => '1'
+                'project_id' => '1'
             )
         );
     }

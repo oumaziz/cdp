@@ -1,7 +1,35 @@
-<?php
+<?php namespace App\Http\Requests;
 /**
- * Created by PhpStorm.
  * User: oumaziz
  * Date: 04/11/15
  * Time: 11:18
  */
+
+use App\Http\Requests\Request;
+
+class NewSprintRequest extends Request {
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            "StartDate" => "required|date_format:Y-m-d",
+            "EndDate" => "required|date_format:Y-m-d"
+        ];
+    }
+
+}

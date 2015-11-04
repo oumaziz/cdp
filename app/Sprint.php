@@ -1,7 +1,14 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: oumaziz
- * Date: 04/11/15
- * Time: 11:28
- */
+<?php namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Sprint extends Model {
+
+    protected $table = 'sprint';
+
+    protected $fillable = [
+        'StartDate',
+        'EndDate',
+        'project_id'
+    ];
+}

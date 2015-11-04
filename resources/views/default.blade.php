@@ -1,10 +1,6 @@
 <?php
 
-//This is a view for all the project
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,7 +73,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="container">
-    <p>Université de Bordeaux 2015</p>
+        <p>Université de Bordeaux 2015</p>
     </div>
 </div>
 

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Taches;
 
-use App\Tache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Tache;
 
-use Illuminate\Support\Facades\DB;
 
 class TachesController extends Controller
 {
@@ -45,7 +46,8 @@ class TachesController extends Controller
             'description' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'predecessors' => 'required'
+            'us_story_id' => 'required'
+
 
         ]);
         $tache = Tache::create($request->all());
@@ -60,8 +62,8 @@ class TachesController extends Controller
      */
     public function show($id)
     {
-       // $tache = Tache::findOrNew($id);
-       // return view('taches.show',$tache);
+        // $tache = Tache::findOrNew($id);
+        // return view('taches.show',$tache);
     }
 
     /**
@@ -89,11 +91,11 @@ class TachesController extends Controller
     {
         $tache = Tache::findOrNew($id);
         $this->validate($request,[
-           'code' => 'required',
+            'code' => 'required',
             'description' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'predecessors' => 'required'
+            'us_story_id' => 'required'
 
 
         ]);

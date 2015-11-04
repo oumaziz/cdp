@@ -11,17 +11,13 @@
 |
 */
 
-
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
 
-//Controller gateway
 Route::resource('taches/taches','Taches\TachesController');
-=======
+
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -37,6 +33,16 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm','UsController@modifyConfirm');
 
+// Suppression d'une User Story
+Route::get('backlog/userstory/remove/{id}','UsController@remove');
+
+// Page d'ajout d'un Sprint
+Route::get('sprint/{project_id}/add/', 'SprintController@show');
+
+Route::post('sprint/{project_id}/add/confirm', 'SprintController@add');
+
+Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
+
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
@@ -48,4 +54,3 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 //Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
->>>>>>> 3d7ca6854e28f6b4d779aaf13d8ded1ee8c2b01e

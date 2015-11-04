@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::resource('taches/taches','Taches\TachesController');
+
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

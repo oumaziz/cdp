@@ -30,6 +30,11 @@ class SprintController extends Controller
     }
 
     public function edit($project_id, $sprint_id){
-        
+
+        $sprint = DB::table('sprint')->where('id', '=', $sprint_id)->first();
+        $StartDate = $sprint->StartDate;
+        $EndDate = $sprint->EndDate;
+
+        return view("sprint.edit", compact("project_id", "StartDate", "EndDate", "sprint_id"));
     }
 }

@@ -37,4 +37,16 @@ class SprintController extends Controller
 
         return view("sprint.edit", compact("project_id", "StartDate", "EndDate", "sprint_id"));
     }
+
+    public function editConfirm(NewSprintRequest $r, $project_id, $sprint_id){
+
+        $us = Sprint::where('id', $sprint_id)->first();
+
+        $us->update([
+            "StartDate" => $r->input("StartDate"),
+            "EndDate" => $r->input("EndDate"),
+        ]);
+
+        return "Sprint modifié";
+    }
 }

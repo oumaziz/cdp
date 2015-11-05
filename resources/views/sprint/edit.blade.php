@@ -9,7 +9,7 @@
 <div class="container">
     <br/>
     <div class="row">
-        <form action="{{  URL::action("SprintController@add", [$project_id, $sprint_id]) }}" method="POST" class="form-horizontal">
+        <form action="{{  URL::action("SprintController@editConfirm", [$project_id, $sprint_id]) }}" method="POST" class="form-horizontal">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <div class="form-group form-group-label">

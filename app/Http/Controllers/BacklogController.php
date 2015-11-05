@@ -14,4 +14,10 @@ class BacklogController extends Controller
 
         return view("Backlog")->with('userstories',$userstories);
     }
+
+    public function visitor($id){
+        $userstories = DB::table('userstory')->where('project_id', $id)->get();
+
+        return view("Backlog")->with('userstories',$userstories);
+    }
 }

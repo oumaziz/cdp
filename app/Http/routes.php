@@ -33,6 +33,9 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm','UsController@modifyConfirm');
 
+Route::get('visitor/backlog/{id}','BacklogController@visitor');
+
+
 // Suppression d'une User Story
 Route::get('backlog/userstory/remove/{id}','UsController@remove');
 
@@ -42,6 +45,8 @@ Route::get('sprint/{project_id}/add/', 'SprintController@show');
 Route::post('sprint/{project_id}/add/confirm', 'SprintController@add');
 
 Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
+
+Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');

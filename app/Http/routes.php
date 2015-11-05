@@ -33,6 +33,9 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm','UsController@modifyConfirm');
 
+Route::get('visitor/backlog/{id}','BacklogController@visitor');
+
+
 // Suppression d'une User Story
 Route::get('backlog/userstory/remove/{id}','UsController@remove');
 

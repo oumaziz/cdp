@@ -10,13 +10,21 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Only connected users can see those resources
 
 Route::resource('taches/taches','Taches\TachesController');
+
+
+//Open resources for all visitor
+Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
+
 
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...

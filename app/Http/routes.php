@@ -48,6 +48,11 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
+
+// Page d'ajout d'un Membre à un projet
+Route::get('project/{project_id}/add', 'MemberController@show');
+Route::post('project/{project_id}/add/confirm', 'MemberController@add');
+
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');

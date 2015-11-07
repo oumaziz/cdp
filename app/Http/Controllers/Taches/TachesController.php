@@ -4,24 +4,28 @@ namespace App\Http\Controllers\Taches;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tache;
-
-
+use App\Developer;
 class TachesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+    /*
+      Display a listing of the resource.
+      @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $taches = Tache::all();
         return view('taches.index', ['taches' => $taches]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -117,4 +121,8 @@ class TachesController extends Controller
         DB::table('tache')->delete($id);
         return redirect(route('taches.taches.index'));
     }
+
+
+
+
 }

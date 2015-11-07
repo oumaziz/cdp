@@ -10,13 +10,21 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Only connected users can see those resources
 
 Route::resource('taches/taches','Taches\TachesController');
+
+
+//Open resources for all visitor
+Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
+
 
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
@@ -47,6 +55,11 @@ Route::post('sprint/{project_id}/add/confirm', 'SprintController@add');
 Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
+
+
+// Page d'ajout d'un Membre à un projet
+Route::get('project/{project_id}/add', 'MemberController@show');
+Route::post('project/{project_id}/add/confirm', 'MemberController@add');
 
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');

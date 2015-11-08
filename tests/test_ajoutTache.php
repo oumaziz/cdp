@@ -24,6 +24,7 @@ class Example extends PHPUnit_Extensions_SeleniumTestCase
     $this->type("id=predecessors", "blamblaoui");
     $this->click("css=button.btn.btn-primary");
     $this->waitForPageToLoad("30000");
+    $this->verifyText("css=div.alert.alert-danger > ul > li", "The end date must be a date after start date.");
     $this->type("id=end_date", "2015-5-9");
     $this->click("css=button.btn.btn-primary");
     $this->waitForPageToLoad("30000");

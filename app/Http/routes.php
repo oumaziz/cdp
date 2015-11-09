@@ -21,10 +21,8 @@ Route::get('/', function () {
 
 Route::resource('taches/taches','Taches\TachesController');
 
-
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
-
 
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...

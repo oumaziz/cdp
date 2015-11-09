@@ -25,6 +25,20 @@ class MemberController extends Controller
     }
 
     public function add(NewMemberRequest $r, $project_id){
-        
+
+        try {
+            $Developer_id = Developer::where("email", $r->input("email"))->get()->first()->id;
+
+            if ($Developer_id != null) {
+                Member::create([
+                    "Developer_id" => $Developer_id,
+                    "project_id" => $project_id
+                ]);
+            }
+        }catch(\Illuminate\Database\QueryException $e){}
+
+        $members = DB::table('member')->where('project_id', $project_id)
+            ->join('Developer', 'member.Developer_id', '=', 'Developer.id')->get();
+        return view("member.show")->with('members',$members)->with('project_id', $project_id);
     }
 }

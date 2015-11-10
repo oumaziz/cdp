@@ -2,7 +2,7 @@
 
 use App\Tache;
 
-class TacheTest extends TestCase
+class TestTache extends TestCase
 {
     /**
      * Add test.

@@ -21,10 +21,8 @@ Route::get('/', function () {
 
 Route::resource('taches/taches','Taches\TachesController');
 
-
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
-
 
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
@@ -67,6 +65,9 @@ Route::get('usSprint/delete/{idUs}','UsSprintController@delete');
 // Page d'ajout d'un Membre à un projet
 Route::get('project/{project_id}/add', 'MemberController@show');
 Route::post('project/{project_id}/add/confirm', 'MemberController@add');
+
+Route::get('project/{project_id}/visitor', 'VisitorController@show');
+Route::get('project/{project_id}/visitor/add', 'VisitorController@add');
 
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');

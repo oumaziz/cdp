@@ -19,6 +19,7 @@ class CreateTableUserStory extends Migration
             $table->integer('difficulty');
             $table->integer('status');
             $table->integer('project_id');
+            $table->integer('sprint_id');
             $table->timestamps();
         });
 
@@ -28,7 +29,8 @@ class CreateTableUserStory extends Migration
                 'priority' => 1,
                 'difficulty' => 3,
                 'status' => 0,
-                'project_id' => 1
+                'project_id' => 1,
+                'sprint_id' => 0
             )
         );
 

@@ -16,7 +16,8 @@ class ProjectController extends Controller
 
     public function add(NewProjectRequest $request){
 
-        $developer_id = Auth::user()->id;
+        //$developer_id = Auth::user()->id;
+        $developer_id =1;
         $title = $request->input("title");
         $description = $request->input("description");
         $startDate = $request->input("startDate");

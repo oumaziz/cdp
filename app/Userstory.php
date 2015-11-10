@@ -13,6 +13,7 @@ class Userstory extends Model
         'priority',
         'difficulty',
         'status',
-        'project_id'
+        'project_id',
+        'sprint_id'
     ];
 }

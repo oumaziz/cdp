@@ -56,6 +56,13 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
+//us to sprint
+Route::get('AddUsToSprint/{idSprint}','UsSprintController@show');
+Route::get('usSprint/add/{idUs}','UsSprintController@add');
+
+Route::get('DeleteUsFromSprint/{idSprint}','UsSprintController@showSprint');
+Route::get('usSprint/delete/{idUs}','UsSprintController@delete');
+
 
 // Page d'ajout d'un Membre à un projet
 Route::get('project/{project_id}/add', 'MemberController@show');

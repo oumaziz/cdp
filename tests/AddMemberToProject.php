@@ -16,7 +16,7 @@ class AddMemberToProject extends TestCase
     	$this->visit("/project/1/add");
         $this->type('test@test.com', 'email')
         $this->press('Ajouter');
-        $this->>seePageIs('/project/1/add/confirm');
+        $this->seePageIs('/project/1/add/confirm');
     }
 
 }

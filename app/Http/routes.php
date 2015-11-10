@@ -59,6 +59,9 @@ Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@ed
 Route::get('project/{project_id}/add', 'MemberController@show');
 Route::post('project/{project_id}/add/confirm', 'MemberController@add');
 
+Route::get('project/{project_id}/visitor', 'VisitorController@show');
+Route::get('project/{project_id}/visitor/add', 'VisitorController@add');
+
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');

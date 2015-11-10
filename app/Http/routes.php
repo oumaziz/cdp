@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 //Only connected users can see those resources
-
 Route::resource('taches/taches','Taches\TachesController');
 
 //Open resources for all visitor

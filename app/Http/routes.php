@@ -55,6 +55,8 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
 
+Route::get('project/{project_id}/kanban/{sprint_id}', 'KanbanController@show');
+
 // Page d'ajout d'un Membre à un projet
 Route::get('project/{project_id}/add', 'MemberController@show');
 Route::post('project/{project_id}/add/confirm', 'MemberController@add');

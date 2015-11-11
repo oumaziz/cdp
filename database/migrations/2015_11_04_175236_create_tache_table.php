@@ -24,7 +24,8 @@ class CreateTacheTable extends Migration
             $table->string('predecessors')->nullable();
             $table->integer('us_story_id')->unsigned();
             $table->foreign('us_story_id')->references('id')->on('userstory');
-
+            $table->integer('Status')->unsigned()->default(0);
+            $table->integer('Developer_id')->nullable();
 
         });
     }

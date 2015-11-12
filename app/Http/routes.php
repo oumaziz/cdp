@@ -18,11 +18,13 @@ Route::get('/', function () {
 });
 
 //Only connected users can see those resources
+
 Route::get('taches/{idSprint}','Taches\TachesController@index');
 Route::get('taches/create/{idSprint}','Taches\TachesController@create');
 Route::post('taches/store/{idSprint}','Taches\TachesController@store');
 Route::get('taches/edit','Taches\TachesController@edit');
 Route::get('taches/destroy/{idTache}','Taches\TachesController@destroy');
+//Route::resource('taches/taches','Taches\TachesController');
 
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
@@ -71,6 +73,13 @@ Route::get('usSprint/add/{idUs}','UsSprintController@add');
 
 Route::get('DeleteUsFromSprint/{idSprint}','UsSprintController@showSprint');
 Route::get('usSprint/delete/{idUs}','UsSprintController@delete');
+
+
+Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@show');
+
+
+// Page d'affichage des commits
+Route::get('project/{project_id}/commits/{key?}', 'CommitsController@show');
 
 
 // Page d'ajout d'un Membre à un projet

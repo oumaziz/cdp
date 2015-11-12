@@ -33,7 +33,6 @@ class CreateTableUserStory extends Migration
                 'sprint_id' => 0
             )
         );
-
     }
 
     /**

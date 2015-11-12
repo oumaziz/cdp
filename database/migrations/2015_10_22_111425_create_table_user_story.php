@@ -30,10 +30,9 @@ class CreateTableUserStory extends Migration
                 'difficulty' => 3,
                 'status' => 0,
                 'project_id' => 1,
-                'sprint_id' => 1
+                'sprint_id' => 0
             )
         );
-
     }
 
     /**

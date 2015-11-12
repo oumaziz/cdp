@@ -8,12 +8,13 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
+use Session;
 use DB;
 
 class UsController extends Controller
 {
-    public function create(){
-        return view("UsForm")->with('us',[]);
+    public function create($idProject){
+        return view("UsForm")->with('us',[])->with('idProject',$idProject);
     }
     public function modify($idUs){
 
@@ -21,21 +22,22 @@ class UsController extends Controller
         return view("UsForm")->with('us',head($us));
     }
 
-    public function createConfirm(Request $r){
+    public function createConfirm(Request $r , $idProject){
 
-        $developer_id = 1;
-        $project_id = DB::table('project')->where('developer_id', $developer_id)->first()->id;
+       /* $developer_id = 1;
+        $project_id = DB::table('project')->where('developer_id', $developer_id)->first()->id;*/
 
         Userstory::create([
             "description" => $r->input('description'),
             "priority" => $r->input('priority'),
             "difficulty" => $r->input('difficulty'),
             "status" => 0,
-            "project_id" => $project_id]);
+            "project_id" => $idProject,
+            "sprint_id" => 0 ]);
 
-        return Redirect::action("BacklogController@show");
+        return Redirect::action("BacklogController@show", [$idProject]);
     }
-    public function modifyConfirm(Request $r){
+    public function modifyConfirm(Request $r, $idProject){
 
         $us = Userstory::where('id', $r->input("us"))->first();
 
@@ -46,14 +48,15 @@ class UsController extends Controller
             "status" => ($r->input("done"))?1:0
         ]);
 
-        return Redirect::action("BacklogController@show");
+        return Redirect::action("BacklogController@show", [$idProject]);
     }
 
     public function remove($id) {
 
         $us = Userstory::where('id', $id)->first();
+         
         if($us != null) $us->delete();
-
-        return Redirect::action("BacklogController@show");
+        Session::flash("success", "la us est bien supprimée.");
+        return Redirect::action("BacklogController@show" , [$us->project_id]);
     }
 }

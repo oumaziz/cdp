@@ -54,7 +54,12 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
 
-Route::get('project/{project_id}/kanban/{sprint_id}', 'KanbanController@show');
+Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@show');
+
+
+// Page d'affichage des commits
+Route::get('project/{project_id}/commits/{key?}', 'CommitsController@show');
+
 
 // Page d'ajout d'un Membre à un projet
 Route::get('project/{project_id}/add', 'MemberController@show');

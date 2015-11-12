@@ -1,9 +1,9 @@
 <?php
-class Example extends PHPUnit_Extensions_SeleniumTestCase
+class AddMemberV extends PHPUnit_Extensions_SeleniumTestCase
 {
   protected function setUp()
   {
-    $this->setBrowser("*chrome");
+    $this->setBrowser("*".$_SERVER['HTTP_USER_AGENT']."*");
     $this->setBrowserUrl("http://localhost/laravel/cdp/public/project/1/add");
   }
 

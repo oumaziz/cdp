@@ -1,9 +1,9 @@
 <?php
-class Example extends PHPUnit_Extensions_SeleniumTestCase
+class test_inscriptionConnection extends PHPUnit_Extensions_SeleniumTestCase
 {
   protected function setUp()
   {
-    $this->setBrowser("*chrome");
+    $this->setBrowser("*".$_SERVER['HTTP_USER_AGENT']."*");
     $this->setBrowserUrl("http://localhost:8000/cdp/public/project/new");
   }
 

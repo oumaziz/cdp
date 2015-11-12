@@ -14,12 +14,15 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('default');
 });
 
 //Only connected users can see those resources
-
-Route::resource('taches/taches','Taches\TachesController');
+Route::get('taches/{idSprint}','Taches\TachesController@index');
+Route::get('taches/create/{idSprint}','Taches\TachesController@create');
+Route::post('taches/store/{idSprint}','Taches\TachesController@store');
+Route::get('taches/edit','Taches\TachesController@edit');
+Route::get('taches/destroy/{idTache}','Taches\TachesController@destroy');
 
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
@@ -31,13 +34,19 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 
-Route::get('backlog','BacklogController@show');
+Route::get('backlog/{idProject}','BacklogController@show');
+
 Route::get('project/new','ProjectController@show');
 Route::get('project/add','ProjectController@add');
-Route::get('backlog/userstory/create','UsController@create');
+
+Route::get('project/list','ProjectController@projectList');
+
+Route::get('project/disply/{idProject}','ProjectController@disply');
+
+Route::get('backlog/userstory/create/{idProject}','UsController@create');
 Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
-Route::post('backlog/userstory/create/confirm','UsController@createConfirm');
-Route::post('backlog/userstory/modify/confirm','UsController@modifyConfirm');
+Route::post('backlog/userstory/create/confirm/{idProject}','UsController@createConfirm');
+Route::post('backlog/userstory/modify/confirm/{idProject}','UsController@modifyConfirm');
 
 Route::get('visitor/backlog/{id}','BacklogController@visitor');
 
@@ -46,6 +55,8 @@ Route::get('visitor/backlog/{id}','BacklogController@visitor');
 Route::get('backlog/userstory/remove/{id}','UsController@remove');
 
 // Page d'ajout d'un Sprint
+Route::get('sprint/list/{idProject}', 'SprintController@listSprint');
+
 Route::get('sprint/{project_id}/add/', 'SprintController@show');
 
 Route::post('sprint/{project_id}/add/confirm', 'SprintController@add');

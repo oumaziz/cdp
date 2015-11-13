@@ -110,10 +110,6 @@ class TachesController extends Controller
     }
 
 
-    public function take(){
-        $taches = Tache::all();
-        return view('taches.take', ['taches' => $taches]);
-    }
 
     /**
      * Remove the specified resource from storage.

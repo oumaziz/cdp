@@ -13,7 +13,7 @@
 <div class="container">
     <br/>
     <div class="row">
-    	<h2> La liste des User Stories</h2>
+    	<h2> La liste des User Stories </h2>
     	
  
 @if(count($userstories))

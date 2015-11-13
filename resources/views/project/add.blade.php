@@ -1,13 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ajout d'un Projet</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-</head>
-<body>
+@extends('default')
+@section('content')
 <div class="container">
-    <br/>
+    <h2> Ajout d'un projet</h2>
+</br>
 <div class="row">
     <div class="col-md-10 col-md-push-1">
         @if (session('success'))
@@ -24,7 +19,7 @@
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
-    </div>
+    
     @endif
 
         <form action="{{  URL::action("ProjectController@add", null) }}" class="form-horizontal">
@@ -33,7 +28,7 @@
             <div class="form-group form-group-label">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <label class="floating-label" for="title">Nom du projet :</label>
+                        <label class="floating-label" for="title">Nom du projet </label>
                         <input type="text" class="form-control" name="title" placeholder="Nom du projet" data-hint="Ce champ est obligatoire"/>
                     </div>
                 </div>
@@ -43,7 +38,7 @@
             <div class="form-group form-group-label">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <label class="floating-label" for="description">Description du projet :</label>
+                        <label class="floating-label" for="description">Description du projet </label>
                         <textarea name="description" class="form-control" placeholder="Description"></textarea>
                     </div>
                 </div>
@@ -52,7 +47,7 @@
             <div class="form-group form-group-label">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <label class="floating-label" for="startDate">Date de début :</label>
+                        <label class="floating-label" for="startDate">Date de début </label>
                         <input type="date" name="startDate" class="form-control"/>
                     </div>
                 </div>
@@ -62,7 +57,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <button class="btn">Ajouter</button>
+                        <button class="btn btn-primary">Ajouter</button>
                     </div>
                 </div>
             </div>
@@ -71,6 +66,4 @@
     </div>
 </div>
 </div>
-
-</body>
-</html>
+@stop

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tache;
+use Redirect;
 use App\Developer;
 class TachesController extends Controller
 {
@@ -20,10 +21,14 @@ class TachesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $taches = Tache::all();
-        return view('taches.index', ['taches' => $taches]);
+    public function index($idSprint)
+    {   $taches=DB::table('tache')
+            ->join('userstory', 'tache.us_story_id', '=', 'userstory.id')
+            ->where('userstory.sprint_id', '=',$idSprint)
+            ->get();
+        //$userstories= DB::table('userstory')->where('sprint_id','=',$idSprint)->join(->get();
+        //$taches = Tache::all();
+        return view('taches.index')->with('taches', $taches)->with('idSprint', $idSprint    );
     }
 
 
@@ -32,9 +37,9 @@ class TachesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idSprint)
     {
-        return view('taches.create');
+        return view('taches.create')->with('idSprint',$idSprint);
     }
 
     /**
@@ -43,7 +48,7 @@ class TachesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $idSprint)
     {
         $this->validate($request,[
             'code' => 'required',
@@ -54,8 +59,7 @@ class TachesController extends Controller
 
 
         ]);
-        $tache = Tache::create($request->all());
-        return redirect(route('taches.taches.index',$tache));
+        return Redirect::action("TachesController@show", [$idSprint]);
     }
 
     /**

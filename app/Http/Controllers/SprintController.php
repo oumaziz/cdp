@@ -1,14 +1,10 @@
 <?php
-/**
- * User: oumaziz
- * Date: 03/11/15
- * Time: 19:11
- */
 
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewSprintRequest;
 use App\Sprint;
+use Redirect;
 use DB;
 
 class SprintController extends Controller
@@ -18,6 +14,11 @@ class SprintController extends Controller
         return view("sprint.add", compact("project_id"));
     }
 
+    public function listSprint($idProject){
+
+        $sprint = DB::table('sprint')->where('project_id', '=', $idProject)->get();
+        return view("sprint.SprintList")->with('sprint', $sprint)->with('idProject',$idProject);
+    }
     public function add(NewSprintRequest $r, $project_id){
 
         Sprint::create([
@@ -26,7 +27,7 @@ class SprintController extends Controller
             "project_id" => $project_id
         ]);
 
-        return "Bien Ajouté";
+        return Redirect::action("SprintController@listSprint", [$project_id]);
     }
 
     public function edit($project_id, $sprint_id){
@@ -47,6 +48,6 @@ class SprintController extends Controller
             "EndDate" => $r->input("EndDate"),
         ]);
 
-        return "Sprint modifié";
+        return Redirect::action("SprintController@listSprint", [$project_id]);
     }
 }

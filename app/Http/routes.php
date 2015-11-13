@@ -12,10 +12,19 @@
 */
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
+use App\Tache;
+
+
 
 Route::get('/', function () {
     return view('default');
 });
+
+//Resources opened also to Visitors
+Route::resource('kanban/taches','Kanban\KanbanController');
+
+//Only connected users can see those resources
+Route::resource('taketache/taches','TakeTache\TakeTacheController');
 
 //Only connected users can see those resources
 
@@ -28,6 +37,7 @@ Route::get('taches/destroy/{idTache}','Taches\TachesController@destroy');
 
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
+
 
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...

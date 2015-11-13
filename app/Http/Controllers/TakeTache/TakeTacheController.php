@@ -60,6 +60,26 @@ class TakeTacheController extends Controller
      */
     public function show($id)
     {
+        $ntaches = Tache::all();
+        $descriptions = Tache::lists('description','id');
+        $user = Auth::user();
+        $taches = array();
+        $i = 0;
+        foreach($ntaches as $tache){
+            if($tache->sprint_id == $id)
+            {
+                $taches[$i] = $tache;
+
+            }
+            $i++;
+
+            //dd($whoDoWhat);
+        }
+     //   return view('kanban.index', ['taches' => $taches, 'results'=> $whoDoWhat, 'id'=> $id]);
+
+
+
+        return view('taketache.index',compact('taches','descriptions','user','id'));
 
     }
 
@@ -76,7 +96,7 @@ class TakeTacheController extends Controller
         $tachet['state'] = 1;
         $tache->update($tachet);
         Session::flash('success',"It's yours now");
-        return redirect(route('taketache.taches.index'));
+        return redirect(route('taketache.taches.show',$tache->sprint_id));
 
     }
 
@@ -89,8 +109,7 @@ class TakeTacheController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $developer = Developer::findOrfail(Auth::user()->attributesToArray()['id']);
-        dd($developer);
+
 
     }
 

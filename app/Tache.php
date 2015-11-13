@@ -18,6 +18,12 @@ class Tache extends Model
         return $this->belongsTo('App\Developer');
     }
 
+
+    public function sprint(){
+        return $this->belongsTo('App\Sprint');
+    }
+
+
     public function setState($state){
             $this->attributes['state'] = $state;
     }
@@ -26,6 +32,13 @@ class Tache extends Model
         return $this->attributes['state'];
     }
 
+
+    public function right($string,$chars)
+    {
+        $vright = substr($string, strlen($string)-$chars,$chars);
+        return $vright;
+
+    }
 
 
 

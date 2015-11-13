@@ -27,13 +27,7 @@ Route::resource('kanban/taches','Kanban\KanbanController');
 Route::resource('taketache/taches','TakeTache\TakeTacheController');
 
 //Only connected users can see those resources
-
-Route::get('taches/{idSprint}','Taches\TachesController@index');
-Route::get('taches/create/{idSprint}','Taches\TachesController@create');
-Route::post('taches/store/{idSprint}','Taches\TachesController@store');
-Route::get('taches/edit','Taches\TachesController@edit');
-Route::get('taches/destroy/{idTache}','Taches\TachesController@destroy');
-//Route::resource('taches/taches','Taches\TachesController');
+Route::resource('taches/taches','Taches\TachesController');
 
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');

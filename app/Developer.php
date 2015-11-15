@@ -23,6 +23,7 @@ class Developer extends Model implements AuthenticatableContract,
      */
     protected $table = 'Developer';
 
+    public $hasCurrentTask = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -36,4 +37,13 @@ class Developer extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+    public function tache(){
+        return $this->hasMany('App\Tache');
+    }
+
+
+
+
 }

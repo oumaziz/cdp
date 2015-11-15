@@ -12,22 +12,26 @@
 */
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
+use App\Tache;
+
+
 
 Route::get('/', function () {
     return view('default');
 });
 
-//Only connected users can see those resources
+//Resources opened also to Visitors
+Route::resource('kanban/taches','Kanban\KanbanController');
 
-Route::get('taches/{idSprint}','Taches\TachesController@index');
-Route::get('taches/create/{idSprint}','Taches\TachesController@create');
-Route::post('taches/store/{idSprint}','Taches\TachesController@store');
-Route::get('taches/edit','Taches\TachesController@edit');
-Route::get('taches/destroy/{idTache}','Taches\TachesController@destroy');
-//Route::resource('taches/taches','Taches\TachesController');
+//Only connected users can see those resources
+Route::resource('taketache/taches','TakeTache\TakeTacheController');
+
+//Only connected users can see those resources
+Route::resource('taches/taches','Taches\TachesController');
 
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
+
 
 Route::get('home', '\App\Http\Controllers\HomeController@index');
 //Authentication routes...
@@ -80,6 +84,9 @@ Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@s
 
 // Page d'affichage des commits
 Route::get('project/{project_id}/commits/{key?}', 'CommitsController@show');
+
+// Page d'affichage du BurnDownChart
+Route::get('project/{project_id}/burndownchart/{key?}', 'BurnDownChartController@show');
 
 
 // Page d'ajout d'un Membre à un projet

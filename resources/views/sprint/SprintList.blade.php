@@ -17,6 +17,7 @@
 									<th> Update</th>
 									<th> Delete</th>
 									<th> Display</th>
+									<th> Kanban </th>
 								</TR>
 								<?php $i=1; ?>
 								@foreach($sprint as $us)
@@ -26,7 +27,9 @@
 										<TD> {{$us->EndDate}} </TD>
 										<td> <a href= {{ URL::action("SprintController@edit", [$us->project_id , $us->id]) }} class= 'btn btn-primary btn-xs'> Update</a> </td>
 										<td> <a href= {{ URL::action("SprintController@edit", [$us->id]) }} class= 'btn btn-primary btn-xs'> Delete</a> </td>
-										<td> <a href= {{ URL::action("Taches\TachesController@index",[$us->id]) }} class= 'btn btn-primary btn-xs'> Display</a> </td>
+										<td> <a href= {{ route('taches.taches.show',$us->id) }} class= 'btn btn-primary btn-xs'> Display</a> </td>
+										<td> <a href= {{ route('kanban.taches.show',$us->id) }} class= 'btn btn-primary btn-xs'>Kanban</a> </td>
+										</td>
 	
 									</TR>
                           

@@ -11,4 +11,11 @@ class Sprint extends Model {
         'EndDate',
         'project_id'
     ];
+
+    public function tache(){
+        return $this->hasMany('App\Tache');
+    }
+
+
+
 }

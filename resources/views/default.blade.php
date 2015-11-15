@@ -42,7 +42,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Your Environment GL</a>
+            <a class="navbar-brand" href="/cdp/public">Your Environment GL</a>
         </div>
         <div>
             <ul class="nav navbar-nav">

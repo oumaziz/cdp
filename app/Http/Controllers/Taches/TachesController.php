@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Taches;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tache;
-use Redirect;
 use App\Developer;
 class TachesController extends Controller
 {
@@ -17,18 +15,15 @@ class TachesController extends Controller
       @return \Illuminate\Http\Response
      */
 
+
     public function __construct(){
         $this->middleware('auth');
     }
 
-    public function index($idSprint)
-    {   $taches=DB::table('tache')
-            ->join('userstory', 'tache.us_story_id', '=', 'userstory.id')
-            ->where('userstory.sprint_id', '=',$idSprint)
-            ->get();
-        //$userstories= DB::table('userstory')->where('sprint_id','=',$idSprint)->join(->get();
-        //$taches = Tache::all();
-        return view('taches.index')->with('taches', $taches)->with('idSprint', $idSprint    );
+    public function index()
+    {
+        $taches = Tache::all();
+        return view('taches.index', ['taches' => $taches]);
     }
 
 
@@ -37,9 +32,11 @@ class TachesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idSprint)
+    public function create()
     {
-        return view('taches.create')->with('idSprint',$idSprint);
+        $tache = new Tache();
+        $id = $tache->right($this->getRedirectUrl(),1);
+        return view('taches.create',['id' => $id]);
     }
 
     /**
@@ -48,18 +45,18 @@ class TachesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $idSprint)
+    public function store(Request $request)
     {
         $this->validate($request,[
             'code' => 'required',
             'description' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
-            'us_story_id' => 'required'
-
+            'end_date' => 'required|date|after:start_date'
 
         ]);
-        return Redirect::action("TachesController@show", [$idSprint]);
+        $tache = Tache::create($request->all());
+        $tache->sprint()->associate($id);
+        return redirect(route('taches.taches.show',$tache));
     }
 
     /**
@@ -70,8 +67,19 @@ class TachesController extends Controller
      */
     public function show($id)
     {
-        // $tache = Tache::findOrNew($id);
-        // return view('taches.show',$tache);
+        $ntaches = Tache::all();
+        $taches = array();
+        $i = 0;
+        foreach($ntaches as $tache){
+            if($tache->sprint_id == $id)
+            {
+                $taches[$i] = $tache;
+            }
+            $i++;
+
+            //dd($whoDoWhat);
+        }
+        return view('taches.index', ['taches' => $taches, 'id'=> $id]);
     }
 
     /**
@@ -82,7 +90,6 @@ class TachesController extends Controller
      */
     public function edit($id)
     {
-
         $tache = Tache::findOrNew($id);
         return view('taches.edit',['tache' => $tache]);
 
@@ -103,9 +110,6 @@ class TachesController extends Controller
             'description' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'us_story_id' => 'required'
-
-
         ]);
 
         $tache->update($request->all());
@@ -114,10 +118,6 @@ class TachesController extends Controller
     }
 
 
-    public function take(){
-        $taches = Tache::all();
-        return view('taches.take', ['taches' => $taches]);
-    }
 
     /**
      * Remove the specified resource from storage.

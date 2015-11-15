@@ -46,7 +46,7 @@
             <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('start_date','Start Date')  !!}
-        {!! Form::text('start_date',$tache->start_date, ['class' => 'form-control' ]) !!}
+        {!! Form::input('date','start_date',$tache->start_date, ['class' => 'form-control' ]) !!}
     </div>
     </div>
 </div>
@@ -56,7 +56,7 @@
             <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('end_date','end_date')  !!}
-        {!! Form::text('end_date',$tache->end_date, ['class' => 'form-control' ]) !!}
+        {!! Form::input('date','end_date',$tache->end_date, ['class' => 'form-control' ]) !!}
     </div>
     </div>
 </div>

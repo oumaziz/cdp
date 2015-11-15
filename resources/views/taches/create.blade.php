@@ -32,31 +32,31 @@
         <div class="row">
             <div class="col-md-6 col-md-push-1">
         {!! Form::label('description','Description')  !!}
-        {!! Form::textarea('description', null , ['class' => 'form-control' ]) !!}
+        <textarea class = "form-control" type ="text" name="description" id="description"></textarea>
     </div>
     </div>
 </div>
 
     <div class="form-group">
         <div class="row">
-            <div class="col-md-6 col-md-push-1">
-        {!! Form::label('start_date','Start Date')  !!}
-        {!! Form::text('start_date', null , ['class' => 'form-control' ]) !!}
+            <div class="col-md-2 col-md-push-1">
+        {!! Form::label('Start_date','Start Date')  !!}
+        <input type="date" name="start_date" class="form-control"/>
     </div>
     </div>
 </div>
     <div class="form-group">
         <div class="row">
-            <div class="col-md-6 col-md-push-1">
-        {!! Form::label('end_date','end_date')  !!}
-        {!! Form::text('end_date', null , ['class' => 'form-control' ]) !!}
+            <div class="col-md-2 col-md-push-1">
+        {!! Form::label('end_date','End Date')  !!}
+         <input type="date" name="end_date" class="form-control"/>
     </div>
 </div>
 </div>
 
     <div class="form-group">
         <div class="row">
-            <div class="col-md-6 col-md-push-1">
+            <div class="col-md-2 col-md-push-1">
         {!! Form::label('us_story_id','us_story_id')  !!}
         {!! Form::text('us_story_id', null , ['class' => 'form-control' ]) !!}
             </div>
@@ -66,7 +66,7 @@
 
     <div class="form-group">
         <div class="row">
-            <div class="col-md-6 col-md-push-1">
+            <div class="col-md-2 col-md-push-1">
         {!! Form::label('predecessors','predecessors')  !!}
         {!! Form::text('predecessors', null , ['class' => 'form-control' ]) !!}
     </div>

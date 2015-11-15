@@ -56,10 +56,9 @@ class TachesController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
             'us_story_id' => 'required'
-
-
         ]);
-        return Redirect::action("TachesController@show", [$idSprint]);
+        return "bien ajouté";
+        //return Redirect::action("Taches/TachesController", [$idSprint]);
     }
 
     /**

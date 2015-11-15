@@ -9,10 +9,11 @@ use DB;
 
 class BacklogController extends Controller
 {
-    public function show(){
-        $userstories= DB::table('userstory')->get();
+    public function show($idProject){
 
-        return view("Backlog")->with('userstories',$userstories);
+        $userstories= DB::table('userstory')->where('project_id', $idProject)->get();
+
+        return view("Backlog")->with('userstories',$userstories)->with('idProject', $idProject);
     }
 
     public function visitor($id){

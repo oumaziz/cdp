@@ -1,39 +1,92 @@
 ﻿
-    @extends('app')
+    @extends('default')
 
     @section('content')
-        <div class="container">
+<div class="container-fluid">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Ajouter/Modifier une UserStory</div>
-
                         <div class="panel-body">
+                       <h2> Ajouter une User Story</h2>
+
                             @if($us)
-                                <form action="{{  URL::action("UsController@modifyConfirm", null) }}" class="form-horizontal" method="POST">
+                                <form action="{{  URL::action("UsController@modifyConfirm", $us->project_id) }}" class="form-horizontal" method="POST">
+
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="us" value="{{ $us->id }}">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <label class="floating-label" for="description">Description  :  </label> 
+                                                 <textarea id="description" name="description" class="form-control" placeholder="Description" > <?php echo $us->description; ?> </textarea>
+                                                <!-- <input type ="text" name="description" id="description" size="100" maxlength="500" class="form-control" value ="<?php echo $us->description; ?>"/>  -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <label class="floating-label" for="priority">Priorité  :  </label>
+                                                <input type ="number" name="priority" id="priority" min="0" class="form-control" value="<?php echo $us->priority; ?>" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <label class="floating-label" for="difficulty">Difficulté  :  </label>
+                                                <input type ="number" name="difficulty" id="difficulty" min="0" class="form-control" value="<?php echo $us->difficulty; ?>" /> 
+                                            </div>
+                                       </div>
+                                    </div>
 
-                                    <label for="description">Description</label> : <input type ="text" name="description" id="description" size="100" maxlength="500" value ="<?php echo $us->description; ?>"/> <br />
-                                    <label for="priority">Priorité</label> : <input type ="number" name="priority" id="priority" min="0" value="<?php echo $us->priority; ?>" /> <br />
-                                    <label for="difficulty">Difficulté</label> : <input type ="number" name="difficulty" id="difficulty" min="0" value="<?php echo $us->difficulty; ?>" /> <br />
-                                    <input type ="checkbox" name="done" id="done" value="done" <?php if($us->status == 1) echo 'checked="checked"' ?> /><label for="done">Terminée</label> <br />
-                                    <button type="submit" class="btn">Ajouter</button>
+                                    <div class="form-group">
+                                        
+                                            <div class="col-md-6 col-md-offset-4">
+                                               
+                                                <label for="done">Terminée  : 
+                                                 <input type ="checkbox" name="done" id="done" value="done" class="form-control" <?php if($us->status == 1) echo 'checked="checked"' ?> />
+                                                 </label> 
+                                            </div>
+                                        </div>
+                                    
+                                    <button type="submit" class="btn  btn-primary"> Update</button>
                                 </form>
                             @else
-                                <form action="{{  URL::action("UsController@createConfirm", null) }}" class="form-horizontal" method="POST">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                    <label for="description">Description</label> : <input type ="text" name="description" id="description" size="100" maxlength="500" /> <br />
-                                    <label for="priority">Priorité</label> : <input type ="number" name="priority" id="priority" min="0"  /> <br />
-                                    <label for="difficulty">Difficulté</label> : <input type ="number" name="difficulty" id="difficulty" min="0"  /> <br />
-                                    <button type="submit" class="btn">Ajouter</button>
+                                <form action="{{  URL::action("UsController@createConfirm", $idProject) }}" class="form-horizontal" method="POST">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-push-1">
+                                                <label class="floating-label" for="description">Description  :  </label>
+                                                <textarea type ="text" name="description" id="description" class="form-control"> </textarea>
+                                                </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-1 col-md-push-1">
+                                                <label class="floating-label" for="priority">Priorité  :  </label>
+                                                <input type ="number" name="priority" id="priority" min="0" class="form-control"  />
+                                            </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-1 col-md-push-1">
+                                                <label class="floating-label"for="difficulty">Difficulté  :  </label>
+                                                <input type ="number" name="difficulty" id="difficulty" min="0" class="form-control" /> 
+                                            </div>
+                                       </div>
+                                    </div>
+
+                                    <br />
+                                    <button type="submit" class="btn btn-primary ">Ajouter</button>
                                 </form>
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     @endsection
 

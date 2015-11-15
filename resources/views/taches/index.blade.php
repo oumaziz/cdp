@@ -1,21 +1,12 @@
-<?php
-
-?>
-
-
 
 @extends('default')
 @section('content')
 
-    <h1>Welcome</h1>
-
-    <p><a class="btn btn-info btn-lg" style="width:1000px" href="{{ route('taches.taches.create') }}">Add Task</a></p>
-
-
-
+ 
 
     <div class="container">
         <h2>List of tasks</h2>
+    @if(count($taches))
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -37,15 +28,17 @@
                     <td>{{$tache->end_date  }}</td>
                     <td>{{$tache->predecessors  }}</td>
                     <td>
-                        <p><a class="btn btn-primary" style="width:130px" href="{{ route('taches.taches.edit',$tache->id) }}">Edit</a></p>
-                        {!! Form::open(['method'=>'delete', 'url'=>route('taches.taches.destroy',$tache->id)]) !!}
-                        <button style="width:130px" class="btn btn-primary">Destroy</button>
-                        {!! Form::close() !!}
+                        <p><a class="btn btn-primary btn-xs" href={{ URL::action("Taches\TachesController@edit") }}>Edit</a>  
+                        <a class="btn btn-primary btn-xs" href={{ URL::action("Taches\TachesController@destroy") }}>Destroy</a></p>               
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+    @else 
+        <p> Aucune Taches n'était ajoutée !!</p>
+    @endif
+      <a href= {{ URL::action("Taches\TachesController@create",[$idSprint]) }} class= 'btn btn-primary'> Add Task</a>
     </div>
 
 

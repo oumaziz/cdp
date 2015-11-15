@@ -32,12 +32,10 @@
                 </tr>
             @endif
 
-            <p style="display:none;" >{{ $name = array_search($tache, $results) }}</p>
-
             @if($tache->state == 1)
                 <tr>
                     <td> </td>
-                    <td>{{ $tache->description." [".$name."]" }} </td>
+                    <td>{{ $tache->description." [".$whoDoWhat[$tache->id]."]" }} </td>
                     <td> </td>
                 </tr>
             @endif
@@ -46,7 +44,7 @@
                 <tr>
                     <td> </td>
                     <td> </td>
-                    <td>{{ $tache->description." [".$name."]" }} </td>
+                    <td>{{ $tache->description." [".$whoDoWhat[$tache->id]."]" }} </td>
                 </tr>
             @endif
 

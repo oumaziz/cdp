@@ -92,6 +92,7 @@ Route::get('project/{project_id}/burndownchart/{key?}', 'BurnDownChartController
 // Page d'ajout d'un Membre à un projet
 Route::get('project/{project_id}/add', 'MemberController@show');
 Route::post('project/{project_id}/add/confirm', 'MemberController@add');
+Route::get('project/{project_id}/remove/{dev_id}', 'MemberController@remove');
 
 Route::get('project/{project_id}/visitor', 'VisitorController@show');
 Route::get('project/{project_id}/visitor/add', 'VisitorController@add');

@@ -14,9 +14,12 @@
 									<TH> N° </TH>
 									<TH> Start Date  </TH>
 									<TH> End Date </TH>
+									
+									@if(!auth()->guest())
+									<th> Display</th>
 									<th> Update</th>
 									<th> Delete</th>
-									<th> Display</th>
+									@endif
 									<th> Kanban </th>
 								</TR>
 								<?php $i=1; ?>
@@ -25,10 +28,17 @@
 										<TH> <?php echo "Sprint   "; echo $i++; ?> </TH>
 										<TD> {{$us->StartDate}} </TD>
 										<TD> {{$us->EndDate}} </TD>
-										<td> <a href= {{ URL::action("SprintController@edit", [$us->project_id , $us->id]) }} class= 'btn btn-primary btn-xs'> Update</a> </td>
-										<td> <a href= {{ URL::action("SprintController@edit", [$us->id]) }} class= 'btn btn-primary btn-xs'> Delete</a> </td>
-										<td> <a href= {{ route('taches.taches.show',$us->id) }} class= 'btn btn-primary btn-xs'> Display</a> </td>
-										<td> <a href= {{ route('kanban.taches.show',$us->id) }} class= 'btn btn-primary btn-xs'>Kanban</a> </td>
+										
+										@if(!auth()->guest())
+										<td>
+										 <a href= {{ URL::action("SprintController@display", [$us->project_id, $us->id]) }} class= 'btn btn-info btn-xs'> Us List </a>  
+										 <a href= {{ route('taches.taches.show',$us->id) }} class= 'btn btn-info btn-xs'> Task List</a> 
+										</td>
+
+										<td> <a href= {{ URL::action("SprintController@edit", [$us->project_id , $us->id]) }} class= 'btn btn-warning btn-xs'> Update</a> </td>
+										<td> <a href= {{ URL::action("SprintController@edit", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>		
+										@endif
+										<td> <a href= {{ route('kanban.taches.show',$us->id) }} class= 'btn btn-default btn-xs'>Kanban</a> </td>
 										</td>
 	
 									</TR>

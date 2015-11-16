@@ -44,7 +44,8 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 
-Route::get('backlog/{idProject}','BacklogController@show');
+//Route::get('backlog/{idProject}','BacklogController@show');
+Route::get('backlog/{idProject}/{key?}','BacklogController@show');
 
 Route::get('project/new','ProjectController@show');
 Route::get('project/add','ProjectController@add');
@@ -75,9 +76,11 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
+Route::get('sprint/{idProject}/userstory/{idSprint}', 'SprintController@display');
+
 //us to sprint
 Route::get('AddUsToSprint/{idSprint}','UsSprintController@show');
-Route::get('usSprint/add/{idUs}','UsSprintController@add');
+Route::get('usSprint/add/{idUs}/{idSprint}','UsSprintController@add');
 
 Route::get('DeleteUsFromSprint/{idSprint}','UsSprintController@showSprint');
 Route::get('usSprint/delete/{idUs}','UsSprintController@delete');

@@ -17,11 +17,22 @@ use App\Http\Requests\NewMemberRequest;
 
 class MemberController extends Controller
 {
-    public function show($project_id){
+    public function show($project_id, $key=null){
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $project_id)->get() != null){
+
+                $members = DB::table('member')->where('project_id', $project_id)
+                            ->join('Developer', 'member.Developer_id', '=', 'Developer.id')->get();
+                return view("member.show")->with('members',$members)->with('project_id', $project_id);
+            }
+               
+        }
+        else {
+
         $members = DB::table('member')->where('project_id', $project_id)
             ->join('Developer', 'member.Developer_id', '=', 'Developer.id')->get();
-
         return view("member.show")->with('members',$members)->with('project_id', $project_id);
+        }
     }
 
     public function add(NewMemberRequest $r, $project_id){

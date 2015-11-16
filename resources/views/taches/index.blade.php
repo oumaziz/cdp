@@ -5,7 +5,7 @@
 @extends('default')
 @section('content')
 
-    <p><a class="btn btn-info btn-lg center-block" style="width:1000px" href="{{ route('taches.taches.create') }}">Add Task</a></p>
+   <!--  <p><a class="btn btn-info btn-lg center-block" style="width:1000px" href="{{ route('taches.taches.create') }}">Add Task</a></p>  -->
 
 
 
@@ -38,9 +38,9 @@
                     <td>{{$tache->end_date  }}</td>
                     <td>{{$tache->predecessors  }}</td>
                     <td>
-                        <p><a class="btn btn-primary" style="width:130px" href="{{ route('taches.taches.edit',$tache->id) }}">Edit</a></p>
+                        <p><a class="btn btn-warning" style="width:130px" href="{{ route('taches.taches.edit',$tache->id) }}">Edit</a></p>
                         {!! Form::open(['method'=>'delete', 'url'=>route('taches.taches.destroy',$tache->id)]) !!}
-                        <button style="width:130px" class="btn btn-primary">Destroy</button>
+                        <button style="width:130px" class="btn btn-danger">Destroy</button>
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -48,6 +48,8 @@
 
             </tbody>
         </table>
+        <p><a class="btn btn-info btn-lg center-block" href="{{ route('taches.taches.create') }}">Add Task</a></p>
+        <a href= {{ route('kanban.taches.show',$id) }} class= 'btn btn-default'> show Kanban</a>
     </div>
 
 

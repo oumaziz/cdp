@@ -58,7 +58,7 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm/{idProject}','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm/{idProject}','UsController@modifyConfirm');
 
-Route::get('visitor/backlog/{id}','BacklogController@visitor');
+Route::get('visitor/backlog/{id}/{key}','BacklogController@visitor');
 
 
 // Suppression d'une User Story

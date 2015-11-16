@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Taches;
+use App\Sprint;
+use App\Userstory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +36,11 @@ class TachesController extends Controller
      */
     public function create()
     {
+        $sprints = Sprint::lists('id','id');
+        $us_stories = Userstory::lists('description','id');
         $tache = new Tache();
         $id = $tache->right($this->getRedirectUrl(),1);
-        return view('taches.create',['id' => $id]);
+        return view('taches.create',compact('sprints','us_stories','id'));
     }
 
     /**
@@ -55,8 +59,8 @@ class TachesController extends Controller
 
         ]);
         $tache = Tache::create($request->all());
-        $tache->sprint()->associate($id);
-        return redirect(route('taches.taches.show',$tache));
+
+        return redirect(route('taches.taches.show',$tache->sprint_id));
     }
 
     /**
@@ -79,7 +83,7 @@ class TachesController extends Controller
 
             //dd($whoDoWhat);
         }
-        return view('taches.index', ['taches' => $taches, 'id'=> $id]);
+        return view('taches.index', compact('taches','id'));
     }
 
     /**
@@ -90,8 +94,10 @@ class TachesController extends Controller
      */
     public function edit($id)
     {
+        $sprints = Sprint::lists('id','id');
+        $us_stories = Userstory::lists('description','id');
         $tache = Tache::findOrNew($id);
-        return view('taches.edit',['tache' => $tache]);
+        return view('taches.edit', compact('tache','sprints','us_stories'));
 
     }
 
@@ -113,7 +119,7 @@ class TachesController extends Controller
         ]);
 
         $tache->update($request->all());
-        return redirect(route('taches.taches.index'));
+        return redirect(route('taches.taches.show',$tache->sprint_id));
 
     }
 

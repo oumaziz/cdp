@@ -11,7 +11,7 @@ class Tache extends Model
 {
 
     protected $table = 'tache';
-    protected $fillable = array('description','code','start_date','end_date','us_story_id','predecessors','state');
+    protected $fillable = array('description','code','start_date','end_date','us_story_id','predecessors','state','sprint_id');
 
 
     public function developer(){
@@ -21,6 +21,10 @@ class Tache extends Model
 
     public function sprint(){
         return $this->belongsTo('App\Sprint');
+    }
+
+    public function userStory(){
+        return $this->belongsTo('App\Userstory');
     }
 
 

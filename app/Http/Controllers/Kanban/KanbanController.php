@@ -27,7 +27,10 @@ class KanbanController extends Controller
             {
                 if($tache->developer_id != null){
                     //array_push($whoDoWhat, Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName'], $tache);
-                    $whoDoWhat[Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName']] = $tache;
+                   // $whoDoWhat[Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName']] = $tache;
+
+                    //$whoDoWhat[$tache->id] = Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName'];
+
                 }
             }
 
@@ -75,14 +78,16 @@ class KanbanController extends Controller
             {
                 $taches[$i] = $tache;
                 if($tache->developer_id != null){
-                    $whoDoWhat[Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName']] = $tache;
+                   // $whoDoWhat[Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName']] = $tache;
+                    $whoDoWhat[$tache->id] = Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName'];
+
                 }
             }
         $i++;
 
             //dd($whoDoWhat);
         }
-        return view('kanban.index', ['taches' => $taches, 'results'=> $whoDoWhat, 'id'=> $id]);
+        return view('kanban.index', compact('taches','id','whoDoWhat'));
     }
 
     /**

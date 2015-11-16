@@ -16,8 +16,7 @@
         </tr>
         </thead>
         <tbody>
-        <div class="center-block"><a class="btn btn-info btn-lg center-block" style="width:1000px" href="{{ route('taketache.taches.show',$id) }}">Take a Task</a></div><br>
-
+        
         @endif
         @if(empty($taches))
             <h3>There is no task in your sprint {{$id}}  </h3>
@@ -56,5 +55,6 @@
 
         </tbody>
     </table>
+<div class="center-block"><a class="btn btn-info btn-lg center-block"  href="{{ route('taketache.taches.show',$id) }}">Take a Task</a></div><br>
 
 @stop

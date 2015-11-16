@@ -82,7 +82,7 @@
 </div>
 </div>
 
-    <button class="btn btn-primary">Send</button>
+    <button class="btn btn-warning">Send</button>
 
     {!! Form::close() !!}
 </div>

@@ -7,6 +7,7 @@
     <h2>Kanban</h2>
 
     <table class="table table-bordered">
+        @if(!empty($taches))
         <thead >
         <tr class="success">
             <th>ToDo</th>
@@ -15,8 +16,12 @@
         </tr>
         </thead>
         <tbody>
+        <div class="center-block"><a class="btn btn-info btn-lg center-block" style="width:1000px" href="{{ route('taketache.taches.show',$id) }}">Take a Task</a></div><br>
 
-
+        @endif
+        @if(empty($taches))
+            <h3>There is no task in your sprint {{$id}}  </h3>
+        @endif
         @foreach($taches as $tache)
 
             @if($tache->state == 0)
@@ -27,12 +32,10 @@
                 </tr>
             @endif
 
-            <p style="display:none;" >{{ $name = array_search($tache, $results) }}</p>
-
             @if($tache->state == 1)
                 <tr>
                     <td> </td>
-                    <td>{{ $tache->description." [".$name."]" }} </td>
+                    <td>{{ $tache->description." [".$whoDoWhat[$tache->id]."]" }} </td>
                     <td> </td>
                 </tr>
             @endif
@@ -41,7 +44,7 @@
                 <tr>
                     <td> </td>
                     <td> </td>
-                    <td>{{ $tache->description." [".$name."]" }} </td>
+                    <td>{{ $tache->description." [".$whoDoWhat[$tache->id]."]" }} </td>
                 </tr>
             @endif
 

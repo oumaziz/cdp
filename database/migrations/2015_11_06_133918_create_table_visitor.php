@@ -15,7 +15,7 @@ class CreateTableVisitor extends Migration
 
         Schema::create('visitor', function (Blueprint $table) {
             $table->integer('project_id');
-            $table->integer('Key');
+            $table->string('Key');
             $table->primary(array('project_id', 'Key'));
             $table->timestamps();
         });
@@ -23,7 +23,7 @@ class CreateTableVisitor extends Migration
         DB::table('visitor')->insert(
             array(
                 'project_id' => 1,
-                'Key' => 42
+                'Key' => "heythere"
             )
         );
     }

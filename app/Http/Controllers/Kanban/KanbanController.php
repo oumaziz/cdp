@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Kanban;
 use App\Developer;
 use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Database\Eloquent;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tache;
@@ -19,15 +19,21 @@ class KanbanController extends Controller
      */
     public function index()
     {
+
         $taches = Tache::all();
         $whoDoWhat = array();
         foreach($taches as $tache){
-            if($tache->developer_id != null){
+            if($tache->sprint_id == $id)
+            {
+                if($tache->developer_id != null){
+                    //array_push($whoDoWhat, Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName'], $tache);
+                   // $whoDoWhat[Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName']] = $tache;
 
-                //array_push($whoDoWhat, Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName'], $tache);
-                $whoDoWhat[Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName']] = $tache;
+                    //$whoDoWhat[$tache->id] = Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName'];
 
+                }
             }
+
 
             //dd($whoDoWhat);
         }
@@ -63,7 +69,25 @@ class KanbanController extends Controller
      */
     public function show($id)
     {
-        //
+        $ntaches = Tache::all();
+        $whoDoWhat = array();
+        $taches = array();
+        $i = 0;
+        foreach($ntaches as $tache){
+            if($tache->sprint_id == $id)
+            {
+                $taches[$i] = $tache;
+                if($tache->developer_id != null){
+                   // $whoDoWhat[Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName']] = $tache;
+                    $whoDoWhat[$tache->id] = Developer::findOrFail($tache->developer_id)->attributesToArray()['FirstName'];
+
+                }
+            }
+        $i++;
+
+            //dd($whoDoWhat);
+        }
+        return view('kanban.index', compact('taches','id','whoDoWhat'));
     }
 
     /**

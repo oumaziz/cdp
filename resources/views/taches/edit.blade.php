@@ -46,7 +46,7 @@
             <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('start_date','Start Date')  !!}
-        {!! Form::text('start_date',$tache->start_date, ['class' => 'form-control' ]) !!}
+        {!! Form::input('date','start_date',$tache->start_date, ['class' => 'form-control' ]) !!}
     </div>
     </div>
 </div>
@@ -56,21 +56,35 @@
             <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('end_date','end_date')  !!}
-        {!! Form::text('end_date',$tache->end_date, ['class' => 'form-control' ]) !!}
+        {!! Form::input('date','end_date',$tache->end_date, ['class' => 'form-control' ]) !!}
     </div>
     </div>
 </div>
 </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6 col-md-push-1">
+                                        <div class="form-group">
+                                            {!! Form::label('us_story_id','User Story')  !!}
+                                            {!! Form::select('us_story_id',$us_stories,$tache->us_story_id ,['class' => 'form-control' ]) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 <div class="form-group">
-        <div class="row">
-            <div class="col-md-6 col-md-push-1">
-    <div class="form-group">
-        {!! Form::label('us_story_id','us_story_id')  !!}
-        {!! Form::text('us_story_id',$tache->us_story_id, ['class' => 'form-control' ]) !!}
-    </div>
-    </div>
+<div class="row">
+<div class="col-md-6 col-md-push-1">
+<div class="form-group">
+{!! Form::label('sprint_id','Sprint')  !!}
+{!! Form::select('sprint_id',$sprints, $tache->sprint_id,['class' => 'form-control' ]) !!}
 </div>
 </div>
+</div>
+</div>
+
+
 <div class="form-group">
         <div class="row">
             <div class="col-md-6 col-md-push-1">

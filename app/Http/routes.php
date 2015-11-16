@@ -27,13 +27,7 @@ Route::resource('kanban/taches','Kanban\KanbanController');
 Route::resource('taketache/taches','TakeTache\TakeTacheController');
 
 //Only connected users can see those resources
-
-Route::get('taches/{idSprint}','Taches\TachesController@index');
-Route::get('taches/create/{idSprint}','Taches\TachesController@create');
-Route::post('taches/store/{idSprint}','Taches\TachesController@store');
-Route::get('taches/edit','Taches\TachesController@edit');
-Route::get('taches/destroy/{idTache}','Taches\TachesController@destroy');
-//Route::resource('taches/taches','Taches\TachesController');
+Route::resource('taches/taches','Taches\TachesController');
 
 //Open resources for all visitor
 Route::resource('tachesv/taches','TachesVisitor\TachesVisitorController');
@@ -98,9 +92,11 @@ Route::get('project/{project_id}/burndownchart/{key?}', 'BurnDownChartController
 // Page d'ajout d'un Membre à un projet
 Route::get('project/{project_id}/add', 'MemberController@show');
 Route::post('project/{project_id}/add/confirm', 'MemberController@add');
+Route::get('project/{project_id}/remove/{dev_id}', 'MemberController@remove');
 
-Route::get('project/{project_id}/visitor', 'VisitorController@show');
-Route::get('project/{project_id}/visitor/add', 'VisitorController@add');
+Route::get('project/{project_id}/visitor/', 'VisitorController@show');
+Route::get('project/{project_id}/visitor/allow', 'VisitorController@allow');
+Route::get('project/{project_id}/visitor/forbid', 'VisitorController@forbid');
 
 //Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');

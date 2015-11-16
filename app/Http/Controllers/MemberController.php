@@ -41,4 +41,14 @@ class MemberController extends Controller
             ->join('Developer', 'member.Developer_id', '=', 'Developer.id')->get();
         return view("member.show")->with('members',$members)->with('project_id', $project_id);
     }
+
+    public function remove($dev_id, $project_id)
+    {
+
+        $member = DB::table('member')->where('Developer_id' , $dev_id)->delete();
+
+        $members = DB::table('member')->where('project_id', $project_id)
+            ->join('Developer', 'member.Developer_id', '=', 'Developer.id')->get();
+        return view("member.show")->with('members',$members)->with('project_id', $project_id);
+    }
 }

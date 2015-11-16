@@ -14,7 +14,7 @@ class AddMemberToProject extends TestCase
     public function testMyTestCase()
     {   $this->artisan('migrate');
     	$this->visit("/project/1/add");
-        $this->type('test@test.com', 'email')
+        $this->type('test@test.com', 'email');
         $this->press('Ajouter');
         $this->seePageIs('/project/1/add/confirm');
     }

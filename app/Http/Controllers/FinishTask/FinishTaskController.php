@@ -1,34 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\TakeTache;
+namespace App\Http\Controllers\FinishTask;
 
-use App\Developer;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Tache;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Tache;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
-class TakeTacheController extends Controller
+class FinishTaskController extends Controller
 {
-    /***
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     **/
-
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
+     */
     public function index()
     {
-        $taches = Tache::all();
-        $descriptions = Tache::lists('description','id');
-        $user = Auth::user();
-        return view('taketache.index',compact('taches','descriptions','user'));
+        //
     }
 
     /**
@@ -38,8 +27,7 @@ class TakeTacheController extends Controller
      */
     public function create()
     {
-
-
+        //
     }
 
     /**
@@ -50,7 +38,7 @@ class TakeTacheController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -61,26 +49,17 @@ class TakeTacheController extends Controller
      */
     public function show($id)
     {
-        $ntaches = Tache::all();
-        $descriptions = Tache::lists('description','id');
-        $user = Auth::user();
-        $taches = array();
-        $i = 0;
-        foreach($ntaches as $tache){
-            if($tache->sprint_id == $id) {
-                        $taches[$i] = $tache;
-
-                    }
-
-                $i++;
+        $developer = Auth::id();
+        $taches = Tache::all();
+        foreach($taches as $tache){
+            if($tache->developer_id = $developer && $tache->state = 1 && $tache->sprint_id == $id){
+                $tache->state = 2;
+                $tache->save();
             }
-            //dd($whoDoWhat);
 
-     //   return view('kanban.index', ['taches' => $taches, 'results'=> $whoDoWhat, 'id'=> $id]);
+        }
 
-
-
-        return view('taketache.index',compact('taches','descriptions','user','id'));
+        return redirect(route('kanban.taches.index',$id));
 
     }
 
@@ -92,13 +71,7 @@ class TakeTacheController extends Controller
      */
     public function edit($id)
     {
-        $tache = Tache::findOrNew($id)->developer()->associate(Auth::user());
-        $tachet = $tache->attributesToArray();
-        $tachet['state'] = 1;
-        $tache->update($tachet);
-        Session::flash('success',"It's yours now");
-        return redirect(route('taketache.taches.show',$tache->sprint_id));
-
+        //
     }
 
     /**
@@ -110,7 +83,7 @@ class TakeTacheController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        //
     }
 
     /**

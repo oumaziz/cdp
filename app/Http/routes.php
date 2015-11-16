@@ -23,6 +23,10 @@ Route::get('/', function () {
 //Resources opened also to Visitors
 Route::resource('kanban/taches','Kanban\KanbanController');
 
+//for connected developers to make task in done state
+Route::resource('finishtask/taches','FinishTask\FinishTaskController');
+
+
 //Only connected users can see those resources
 Route::resource('taketache/taches','TakeTache\TakeTacheController');
 
@@ -55,7 +59,7 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm/{idProject}','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm/{idProject}','UsController@modifyConfirm');
 
-Route::get('visitor/backlog/{id}','BacklogController@visitor');
+Route::get('visitor/backlog/{id}/{key}','BacklogController@visitor');
 
 
 // Suppression d'une User Story

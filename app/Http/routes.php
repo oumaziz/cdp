@@ -40,7 +40,8 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 
-Route::get('backlog/{idProject}','BacklogController@show');
+//Route::get('backlog/{idProject}','BacklogController@show');
+Route::get('backlog/{idProject}/{key?}','BacklogController@show');
 
 Route::get('project/new','ProjectController@show');
 Route::get('project/add','ProjectController@add');

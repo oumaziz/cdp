@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests;
+use App\Visitor;
 
 class VisitorController extends Controller
 {
@@ -23,6 +24,40 @@ class VisitorController extends Controller
 
     public function show($project_id){
         $key = null;
+        return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
+    }
+
+    public function random($car) {
+        $string = "";
+        $chaine = "abcdefghijklmnpqrstuvwxy123456789";
+        srand((double)microtime()*1000000);
+        for($i=0; $i<$car; $i++) {
+            $string .= $chaine[rand()%strlen($chaine)];
+        }
+        return $string;
+    }
+
+    function allow($project_id){
+        $key = Visitor::where("project_id", $project_id)->get()->first();
+        try {
+        if ($key == null) {
+            $key =static::random(15);
+            Visitor::create([
+                "project_id" => $project_id,
+                "Key" => $key
+            ]);
+        }
+        }catch(\Illuminate\Database\QueryException $e){}
+        return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
+    }
+
+    public function forbid($project_id){
+        $key = null;
+        try {
+            if ($key != null) {
+                Visitor::where("project_id", $project_id)->get()->delete();
+            }
+        }catch(\Illuminate\Database\QueryException $e){}
         return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
     }
 }

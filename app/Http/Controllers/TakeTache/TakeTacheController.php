@@ -109,7 +109,15 @@ class TakeTacheController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $tache = null;
+        $taches = Tache::all();
+        foreach($taches as $task){
+            if($id == $task->developer_id){
+                $tache = $task;
+            }
+        }
 
+        return redirect(route('taketache.taches.edit',$tache));
 
     }
 

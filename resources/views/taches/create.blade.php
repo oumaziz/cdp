@@ -16,38 +16,92 @@
     @endif
     <h2>Add Your Task</h2>
 
-    {!! Form::open(['url'=>route('taches.taches.store',$id)]) !!}
+    {!! Form::open(['url'=>route('taches.taches.store')]) !!}
 
+
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('code','Code')  !!}
         {!! Form::text('code',null, ['class' => 'form-control' ]) !!}
     </div>
+            </div>
+        </div>
+    </div>
 
+
+
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('description','Description')  !!}
         <textarea class = "form-control" type ="text" name="description" id="description"></textarea>
     </div>
+            </div>
+        </div>
+    </div>
 
+
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('start_date','Start Date')  !!}
         {!! Form::input('date','start_date', null , ['class' => 'form-control' ]) !!}
     </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('end_date','end_date')  !!}
         {!! Form::input('date','end_date', null , ['class' => 'form-control' ]) !!}
 
     </div>
-
-    <div class="form-group">
-        {!! Form::label('us_story_id','us_story_id')  !!}
-        {!! Form::text('us_story_id', null , ['class' => 'form-control' ]) !!}
+            </div>
+        </div>
     </div>
 
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6 col-md-push-1">
+                <div class="form-group">
+                    {!! Form::label('us_story_id','User Story')  !!}
+                    {!! Form::select('us_story_id',$us_stories ,null,['class' => 'form-control' ]) !!}
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6 col-md-push-1">
+                <div class="form-group">
+                    {!! Form::label('sprint_id','Sprint')  !!}
+                    {!! Form::select('sprint_id',$sprints,null,['class' => 'form-control' ]) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('predecessors','predecessors')  !!}
         {!! Form::text('predecessors', null , ['class' => 'form-control' ]) !!}
     </div>
+                        </div>
+                    </div>
+                </div>
 
     <button class="btn btn-primary">Send</button>
 

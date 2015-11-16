@@ -29,7 +29,7 @@
                                     <tr>
                                         <th> {{ $i++ }}</th>
                                         <th> {{$member->email}} </th>
-                                        <th><a href="#">Supprimer</a></th>
+                                        <td> <a href= {{ URL::action( "MemberController@remove",[$project_id,$member->Developer_id]) }} class= 'btn btn-primary btn-xs'> Delete</a> </td>
                                     </tr>
 
                                 @endforeach

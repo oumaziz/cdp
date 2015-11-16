@@ -16,4 +16,11 @@ class Userstory extends Model
         'project_id',
         'sprint_id'
     ];
+
+
+
+    public function tache(){
+        return $this->hasMany('App\Tache');
+    }
+
 }

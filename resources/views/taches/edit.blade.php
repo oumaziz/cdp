@@ -4,10 +4,7 @@
 @extends('default')
 @section('content')
 
-<div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 col-md-offset-1">
-                        <div class="panel-body">
+
     <h2>Edit</h2>
 
     @if (count($errors) > 0)
@@ -99,10 +96,7 @@
     <button class="btn btn-warning">Send</button>
 
     {!! Form::close() !!}
-</div>
-</div>
-</div>
-</div>
+
 
 
 

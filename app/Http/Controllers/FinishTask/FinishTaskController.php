@@ -49,17 +49,21 @@ class FinishTaskController extends Controller
      */
     public function show($id)
     {
-        $developer = Auth::id();
         $taches = Tache::all();
         foreach($taches as $tache){
-            if($tache->developer_id = $developer && $tache->state = 1 && $tache->sprint_id == $id){
-                $tache->state = 2;
-                $tache->save();
+            if($tache->sprint_id == $id){
+                if($tache->developer_id == Auth::id() && $tache->state == 1){
+                    $tache->update(['state'=> 2]);
+                }
             }
 
-        }
 
-        return redirect(route('kanban.taches.index',$id));
+        }
+        return redirect(route('kanban.taches.show',$id));
+       // return view('kanban.taches.show',compact('id'));
+
+
+   //     return redirect(route('kanban.taches.index',$id));
 
     }
 

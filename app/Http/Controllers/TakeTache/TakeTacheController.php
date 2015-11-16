@@ -66,16 +66,26 @@ class TakeTacheController extends Controller
         $user = Auth::user();
         $taches = array();
         $i = 0;
+        $cpt = 0;
         foreach($ntaches as $tache){
             if($tache->sprint_id == $id) {
-                        $taches[$i] = $tache;
 
+                    if($tache->developer_id == Auth::id() && $tache->state == 1){
+                        Session::flash('fail',"You have already a task, please finish your task !");
+                        $taches= array();
+                        break;
                     }
+                    else if($tache->state != 1){
+                        $taches[$i] = $tache ;
+                    }
+
+
+            }
 
                 $i++;
             }
             //dd($whoDoWhat);
-
+            //dd($taches);
      //   return view('kanban.index', ['taches' => $taches, 'results'=> $whoDoWhat, 'id'=> $id]);
 
 

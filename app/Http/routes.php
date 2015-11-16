@@ -23,6 +23,10 @@ Route::get('/', function () {
 //Resources opened also to Visitors
 Route::resource('kanban/taches','Kanban\KanbanController');
 
+//for connected developers to make task in done state
+Route::resource('finishtask/taches','FinishTask\FinishTaskController');
+
+
 //Only connected users can see those resources
 Route::resource('taketache/taches','TakeTache\TakeTacheController');
 

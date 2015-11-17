@@ -96,8 +96,9 @@
                     <div class="row">
                         <div class="col-md-6 col-md-push-1">
     <div class="form-group">
-        {!! Form::label('predecessors','predecessors')  !!}
-        {!! Form::text('predecessors', null , ['class' => 'form-control' ]) !!}
+        {!! Form::label('predecessors[]','Predecessors')  !!}
+        {!! Form::select('predecessors[]',$predecessors,null,['class' => 'form-control', 'multiple' => true ]) !!}
+
     </div>
                         </div>
                     </div>

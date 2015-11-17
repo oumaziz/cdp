@@ -6,6 +6,8 @@ use App\Userstory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tache;
@@ -59,6 +61,7 @@ class TachesController extends Controller
 
         ]);
         $tache = Tache::create($request->all());
+        Session::flash('success1',"You Task was added with success !");
 
         return redirect(route('taches.taches.show',$tache->sprint_id));
     }
@@ -119,6 +122,8 @@ class TachesController extends Controller
         ]);
 
         $tache->update($request->all());
+        Session::flash('update',"Your task was updated with success !");
+
         return redirect(route('taches.taches.show',$tache->sprint_id));
 
     }

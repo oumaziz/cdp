@@ -4,10 +4,7 @@
 @extends('default')
 @section('content')
 
-<div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 col-md-offset-1">
-                        <div class="panel-body">
+
     <h2>Edit</h2>
 
     @if (count($errors) > 0)
@@ -89,8 +86,9 @@
         <div class="row">
             <div class="col-md-6 col-md-push-1">
     <div class="form-group">
-        {!! Form::label('predecessors','predecessors')  !!}
-        {!! Form::text('predecessors',$tache->predecessors, ['class' => 'form-control' ]) !!}
+        {!! Form::label('predecessors[]','Predecessors')  !!}
+        {!! Form::select('predecessors[]',$predecessors,explode(",",$tache->predecessors),['class' => 'form-control', 'multiple' => true ]) !!}
+
     </div>
 </div>
 </div>
@@ -99,10 +97,7 @@
     <button class="btn btn-warning">Send</button>
 
     {!! Form::close() !!}
-</div>
-</div>
-</div>
-</div>
+
 
 
 

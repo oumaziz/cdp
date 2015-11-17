@@ -6,6 +6,8 @@ use App\Userstory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tache;
@@ -38,9 +40,10 @@ class TachesController extends Controller
     {
         $sprints = Sprint::lists('id','id');
         $us_stories = Userstory::lists('description','id');
+        $predecessors = Tache::lists('code','code');
         $tache = new Tache();
         $id = $tache->right($this->getRedirectUrl(),1);
-        return view('taches.create',compact('sprints','us_stories','id'));
+        return view('taches.create',compact('sprints','us_stories','id','predecessors'));
     }
 
     /**
@@ -58,7 +61,11 @@ class TachesController extends Controller
             'end_date' => 'required|date|after:start_date'
 
         ]);
+
+        $preds = implode(",",$request->get('predecessors'));
+        $request['predecessors'] = $preds;
         $tache = Tache::create($request->all());
+        Session::flash('success1',"You Task was added with success !");
 
         return redirect(route('taches.taches.show',$tache->sprint_id));
     }
@@ -97,7 +104,8 @@ class TachesController extends Controller
         $sprints = Sprint::lists('id','id');
         $us_stories = Userstory::lists('description','id');
         $tache = Tache::findOrNew($id);
-        return view('taches.edit', compact('tache','sprints','us_stories'));
+        $predecessors = Tache::lists('code','code');
+        return view('taches.edit', compact('tache','sprints','us_stories','predecessors'));
 
     }
 
@@ -118,7 +126,11 @@ class TachesController extends Controller
             'end_date' => 'required|date|after:start_date',
         ]);
 
+        $preds = implode(",",$request->get('predecessors'));
+        $request['predecessors'] = $preds;
         $tache->update($request->all());
+        Session::flash('update',"Your task was updated with success !");
+
         return redirect(route('taches.taches.show',$tache->sprint_id));
 
     }
@@ -134,8 +146,10 @@ class TachesController extends Controller
     public function destroy($id)
     {
 
+        $tache = Tache::findOrFail($id);
+        $sprint_id = $tache->sprint_id ;
         DB::table('tache')->delete($id);
-        return redirect(route('taches.taches.index'));
+        return redirect(route('taches.taches.show',$sprint_id));
     }
 
 

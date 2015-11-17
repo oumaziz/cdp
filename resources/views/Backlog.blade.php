@@ -15,8 +15,10 @@
 									<TH> Description </TH>
 									<TH> Priorité </TH>
 									<TH> Difficulté </TH>
+									@if(!auth()->guest())
 									<th> Update</th>
 									<th> Delete</th>
+									@endif
 								</TR>
 								<?php $i=1; ?>
 								@foreach($userstories as $us)
@@ -25,8 +27,10 @@
 										<TD> {{$us->description}} </TD>
 										<TD> {{$us->priority}} </TD>
 										<TD> {{$us->difficulty}} </TD>
-										<td> <a href= {{ URL::action("UsController@modify", [$us->id]) }} class= 'btn btn-primary btn-xs'> Update</a> </td>
-										<td> <a href= {{ URL::action("UsController@remove", [$us->id]) }} class= 'btn btn-primary btn-xs'> Delete</a> </td>
+										@if(!auth()->guest())
+										<td> <a href= {{ URL::action("UsController@modify", [$us->id]) }} class= 'btn btn-warning btn-xs'> Update</a> </td>
+										<td> <a href= {{ URL::action("UsController@remove", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>
+										@endif
 									</TR>
                           
 								@endforeach
@@ -38,11 +42,11 @@
 						@if(!auth()->guest())
 							<!-- <a href="{{ url('backlog/userstory/create') }}" class= 'btn btn-primary '> Add User Story</a>  -->
 							<a href= {{ URL::action("UsController@create", [$idProject]) }} class= 'btn btn-primary btn-xs'> Add User Story</a>
-
+						@endif
 						</br>
 					</br>
-							<a href= {{ URL::action("SprintController@listSprint", [$idProject]) }} class= 'btn btn-primary '> show Sprint List</a>
-						@endif
+							<a href= {{ URL::action("SprintController@listSprint", [$idProject]) }} class= 'btn btn-info '> show Sprint List</a>
+						
 
 				</div>				
 			</div>

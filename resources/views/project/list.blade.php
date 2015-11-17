@@ -15,10 +15,8 @@
 			<TH> Title </TH>
 			<TH> Description </TH>
 			<TH> Start Date </TH>
-			<th> Project Owner</th>
-			@if(!auth()->guest())
+			<th> Project Owner</th>			
 			<th> Disply</th>
-			@endif
 		</TR>
 
 		@foreach($project as $proj)
@@ -34,11 +32,10 @@
 					@endforeach
 				@endif
 
-				@if(!auth()->guest())
+				
 				<td> 
-					<a href= {{ URL::action("BacklogController@show", [$proj->id]) }} class= 'btn btn-primary btn-xs'> Disply </a>
+					<a href= {{ URL::action("BacklogController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Disply </a>
 				</td>
-				@endif
 			</TR>
 
 		@endforeach

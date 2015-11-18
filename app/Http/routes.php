@@ -23,6 +23,10 @@ Route::get('/', function () {
 //Resources opened also to Visitors
 Route::resource('kanban/taches','Kanban\KanbanController');
 
+//for connected developers to make task in done state
+Route::resource('finishtask/taches','FinishTask\FinishTaskController');
+
+
 //Only connected users can see those resources
 Route::resource('taketache/taches','TakeTache\TakeTacheController');
 
@@ -40,7 +44,8 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 
-Route::get('backlog/{idProject}','BacklogController@show');
+//Route::get('backlog/{idProject}','BacklogController@show');
+Route::get('backlog/{idProject}/{key?}','BacklogController@show');
 
 Route::get('project/new','ProjectController@show');
 Route::get('project/add','ProjectController@add');
@@ -54,7 +59,7 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm/{idProject}','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm/{idProject}','UsController@modifyConfirm');
 
-Route::get('visitor/backlog/{id}','BacklogController@visitor');
+Route::get('visitor/backlog/{id}/{key}','BacklogController@visitor');
 
 
 // Suppression d'une User Story
@@ -71,9 +76,11 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
+Route::get('sprint/{idProject}/userstory/{idSprint}', 'SprintController@display');
+
 //us to sprint
 Route::get('AddUsToSprint/{idSprint}','UsSprintController@show');
-Route::get('usSprint/add/{idUs}','UsSprintController@add');
+Route::get('usSprint/add/{idUs}/{idSprint}','UsSprintController@add');
 
 Route::get('DeleteUsFromSprint/{idSprint}','UsSprintController@showSprint');
 Route::get('usSprint/delete/{idUs}','UsSprintController@delete');

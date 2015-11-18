@@ -39,6 +39,7 @@ class TakeTacheController extends Controller
     public function create()
     {
 
+
     }
 
     /**
@@ -65,16 +66,26 @@ class TakeTacheController extends Controller
         $user = Auth::user();
         $taches = array();
         $i = 0;
+        $cpt = 0;
         foreach($ntaches as $tache){
-            if($tache->sprint_id == $id)
-            {
-                $taches[$i] = $tache;
+            if($tache->sprint_id == $id) {
+
+                    if($tache->developer_id == Auth::id() && $tache->state == 1){
+                        Session::flash('fail',"You have already a task, please finish your task !");
+                        $taches= array();
+                        break;
+                    }
+                    else if($tache->state != 1){
+                        $taches[$i] = $tache ;
+                    }
+
 
             }
-            $i++;
 
+                $i++;
+            }
             //dd($whoDoWhat);
-        }
+            //dd($taches);
      //   return view('kanban.index', ['taches' => $taches, 'results'=> $whoDoWhat, 'id'=> $id]);
 
 
@@ -109,15 +120,6 @@ class TakeTacheController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tache = null;
-        $taches = Tache::all();
-        foreach($taches as $task){
-            if($id == $task->developer_id){
-                $tache = $task;
-            }
-        }
-
-        return redirect(route('taketache.taches.edit',$tache));
 
     }
 

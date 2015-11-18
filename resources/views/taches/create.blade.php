@@ -39,7 +39,7 @@
             <div class="col-md-6 col-md-push-1">
     <div class="form-group">
         {!! Form::label('description','Description')  !!}
-        {!! Form::textarea('description', null , ['class' => 'form-control' ]) !!}
+        <textarea class = "form-control" type ="text" name="description" id="description"></textarea>
     </div>
             </div>
         </div>
@@ -64,6 +64,7 @@
     <div class="form-group">
         {!! Form::label('end_date','end_date')  !!}
         {!! Form::input('date','end_date', null , ['class' => 'form-control' ]) !!}
+
     </div>
             </div>
         </div>
@@ -95,8 +96,9 @@
                     <div class="row">
                         <div class="col-md-6 col-md-push-1">
     <div class="form-group">
-        {!! Form::label('predecessors','predecessors')  !!}
-        {!! Form::text('predecessors', null , ['class' => 'form-control' ]) !!}
+        {!! Form::label('predecessors[]','Predecessors')  !!}
+        {!! Form::select('predecessors[]',$predecessors,null,['class' => 'form-control', 'multiple' => true ]) !!}
+
     </div>
                         </div>
                     </div>

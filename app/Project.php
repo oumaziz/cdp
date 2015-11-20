@@ -10,6 +10,8 @@ class Project extends Model {
         'title',
         'description',
         'startDate',
-        'developer_id'
+        'developer_id',
+        'repo',
+        'branch'
     ];
 }

@@ -1,21 +1,12 @@
+@extends('default')
 
-<!DOCTYPE html>
-<html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Supprimer une user story de sprint</title>
-		    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<style> textarea { resize: none; } </style>
-	</head>
-	<body>
+@section('content')
 
 <div class="container">
     <br/>
     <div class="row">
     	<h2> La liste des User Stories</h2>
-    	<p> Supprimerles User Stories que vous ne voulez  pas mettre dans le sprint N° {{$idSprint}} </p>
+    	<p> Supprimerles User Stories que vous ne voulez  pas mettre dans le sprint  </p>
   
 @if(count($userstories))
 
@@ -38,7 +29,7 @@
 				<TD> {{$us->difficulty}} </TD>
 				<td>   		
 						
-					<a href= {{ URL::action("UsSprintController@delete", [$us->id]) }} class= 'btn btn-danger btn-xs'>Supprimer</a>
+					<a href= {{ URL::action("UsSprintController@delete", [$us->project_id, $us->id]) }} class= 'btn btn-danger btn-xs'>Supprimer</a>
 
 				</td>
 
@@ -51,6 +42,4 @@
 <p> le sprint est vide!!! </p>
 @endif 
 
-</div>
-</body>
-</html>
+@stop

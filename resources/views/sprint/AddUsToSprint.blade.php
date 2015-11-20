@@ -28,7 +28,7 @@
 				<TD> {{$us->difficulty}} </TD>
 				<td>   		
 						
-					<a href= {{ URL::action("UsSprintController@add", [$us->id  , $idSprint]) }} class= 'btn btn-primary btn-xs'>Ajouter</a>
+					<a href= {{ URL::action("UsSprintController@add", [$us->project_id , $us->id  , $idSprint]) }} class= 'btn btn-primary btn-xs'>Ajouter</a>
 				</td>
 
 			</TR>

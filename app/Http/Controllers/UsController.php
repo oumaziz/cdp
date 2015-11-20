@@ -59,4 +59,11 @@ class UsController extends Controller
         Session::flash("success", "la us est bien supprimée.");
         return Redirect::action("BacklogController@show" , [$us->project_id]);
     }
+
+    public function finish ($idProject, $idSprint) {
+
+        $userstories = Userstory::where('project_id', '=' , $idProject)->where('sprint_id', '=', $idSprint)->get();
+        if($userstories != null)
+            return view("UsFinish")->with('userstories', $userstories)->with('idProject', $idProject);
+    }
 }

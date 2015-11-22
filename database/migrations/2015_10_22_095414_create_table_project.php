@@ -17,6 +17,8 @@ class CreateTableProject extends Migration
             $table->string('title');
             $table->string('description');
             $table->timestamp('startDate');
+            $table->string('repo')->nullable();
+            $table->string('branch')->default("master");
             $table->integer('developer_id');
             $table->timestamps();
         });
@@ -26,6 +28,8 @@ class CreateTableProject extends Migration
                 'title' => 'Mon projet',
                 'description' => 'Mon premier projet',
                 'startDate' => time(),
+                'repo' => "hardwork2015/cdp",
+                'branch' => 'dev',
                 'developer_id' => 1
             )
         );

@@ -7,7 +7,20 @@
 
    <!--  <p><a class="btn btn-info btn-lg center-block" style="width:1000px" href="{{ route('taches.taches.create') }}">Add Task</a></p>  -->
 
+@if(Session::has('success1'))
+    <div class="alert alert-success">
 
+        {{ Session::get('success1') }}
+
+    </div>
+@endif
+@if(Session::has('update'))
+    <div class="alert alert-success">
+
+        {{ Session::get('update') }}
+
+    </div>
+@endif
 
 
     <div class="container">

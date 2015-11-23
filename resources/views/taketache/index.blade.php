@@ -5,7 +5,7 @@
 @extends('default')
 @section('content')
 
-    <div class="center-block"><a class="btn btn-info btn-lg " style="width:500px" href="{{ route('taketache.taches.update',Auth::id()) }}">Finish your task</a>    <a class="btn btn-info btn-lg" style="width:500px" href="{{ route('kanban.taches.show',$id) }}">Current Kanban</a></div>
+    <div class="center-block"><a class="btn btn-info btn-lg " style="width:500px" href="{{route('finishtask.taches.show',$id)}}">Finish your task</a>    <a class="btn btn-info btn-lg" style="width:500px" href="{{ route('kanban.taches.show',$id) }}">Current Kanban</a></div>
 
 
     <h2>Take a Task</h2>
@@ -14,6 +14,14 @@
         <div class="alert alert-success">
 
           {{ Session::get('success') }}
+
+        </div>
+    @endif
+
+    @if(Session::has('fail'))
+        <div class="alert alert-danger">
+
+            {{ Session::get('fail') }}
 
         </div>
     @endif

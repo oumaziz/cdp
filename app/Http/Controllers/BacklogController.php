@@ -17,11 +17,10 @@ class BacklogController extends Controller
                 $userstories= DB::table('userstory')->where('project_id', $idProject)->get();
         		return view("Backlog")->with('userstories',$userstories)->with('idProject', $idProject);
     		}
+        } else {
+            $userstories = DB::table('userstory')->where('project_id', $idProject)->get();
+            return view("Backlog")->with('userstories', $userstories)->with('idProject', $idProject);
         }
-        else {
-        $userstories= DB::table('userstory')->where('project_id', $idProject)->get();
-        return view("Backlog")->with('userstories',$userstories)->with('idProject', $idProject);
-    	}
 
     }
 

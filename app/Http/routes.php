@@ -20,6 +20,12 @@ Route::get('/', function () {
     return view('default');
 });
 
+
+
+//Resources opened for all visitors
+Route::resource('pert/taches','Pert\PertController');
+
+
 //Resources opened also to Visitors
 Route::resource('kanban/taches','Kanban\KanbanController');
 
@@ -90,7 +96,7 @@ Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@s
 
 
 // Page d'affichage des commits
-Route::get('project/{project_id}/commits/{key?}', 'CommitsController@show');
+Route::get('project/{project_id}/commits/{task_id}/{key?}', 'CommitsController@show');
 
 // Page d'affichage du BurnDownChart
 Route::get('project/{project_id}/burndownchart/{key?}', 'BurnDownChartController@show');

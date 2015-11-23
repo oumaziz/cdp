@@ -36,11 +36,16 @@ class ProjectController extends Controller
         $title = $request->input("title");
         $description = $request->input("description");
         $startDate = $request->input("startDate");
+        $repo = $request->input("repo");
+        $branch = $request->input("branch");
 
         Project::create(["title" => $title,
                          "description" => $description,
                          "startDate" => $startDate,
-                         "developer_id" => $developer_id]);
+                         "developer_id" => $developer_id,
+                         "repo" => $repo,
+                         "branch" => $branch
+        ]);
 
         Session::flash("success", "Votre projet a bien été crée.");
 

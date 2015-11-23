@@ -79,7 +79,7 @@ return [
     */
 
     'key' => env('APP_KEY', 'SomeRandomString'),
-    'cipher' => 'AES-256-CBC',
+    'cipher' => 'AES-128-CBC',
 
     /*
     |--------------------------------------------------------------------------
@@ -145,6 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        'GrahamCampbell\GitHub\GitHubServiceProvider'
+
     ],
 
     /*
@@ -195,6 +197,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
 
+        'GitHub' => 'GrahamCampbell\GitHub\Facades\GitHub'
     ],
 
 ];

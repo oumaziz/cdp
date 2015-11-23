@@ -47,6 +47,24 @@
             <div class="form-group form-group-label">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
+                        <label class="floating-label" for="repo">Dépot  </label>
+                        <input type="text" class="form-control" name="repo" placeholder="comptedemo/mondepot"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-group-label">
+                <div class="row">
+                    <div class="col-md-10 col-md-push-1">
+                        <label class="floating-label" for="branch">Branche  </label>
+                        <input type="text" class="form-control" name="branch" placeholder="master"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-group-label">
+                <div class="row">
+                    <div class="col-md-10 col-md-push-1">
                         <label class="floating-label" for="startDate">Date de début </label>
                         <input type="date" name="startDate" class="form-control"/>
                     </div>

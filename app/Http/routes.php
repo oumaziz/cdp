@@ -20,6 +20,12 @@ Route::get('/', function () {
     return view('default');
 });
 
+
+
+//Resources opened for all visitors
+Route::resource('pert/taches','Pert\PertController');
+
+
 //Resources opened also to Visitors
 Route::resource('kanban/taches','Kanban\KanbanController');
 

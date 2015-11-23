@@ -57,6 +57,7 @@ class VisitorController extends Controller
             if ($key != null) {
 			   DB::table('visitor')->where('project_id' , $project_id)->delete();
             }
-        return view("visitor.show")->with('project_id', $project_id)->with('key', null);
+		$key = Visitor::where("project_id", $project_id)->get()->first();	
+        return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
     }
 }

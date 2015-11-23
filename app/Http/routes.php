@@ -66,7 +66,7 @@ Route::post('backlog/userstory/create/confirm/{idProject}','UsController@createC
 Route::post('backlog/userstory/modify/confirm/{idProject}','UsController@modifyConfirm');
 
 Route::get('userstory/finish/{idProject}/{idUs}','UsController@finish');
-Route::get('userstory/isfinish/{idProject}/{idUs}','UsController@isFinish');
+Route::get('userstory/isfinish/{idProject}','UsController@isFinish');
 
 Route::get('visitor/backlog/{id}/{key}','BacklogController@visitor');
 

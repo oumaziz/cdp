@@ -44,6 +44,10 @@ class Tache extends Model
 
     }
 
+    public function calculateGraph($taches, $pred, $succ){
 
+
+
+    }
 
 }

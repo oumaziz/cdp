@@ -61,9 +61,11 @@ class TachesController extends Controller
             'end_date' => 'required|date|after:start_date'
 
         ]);
+        if(!empty($request->get('predecessors'))){
+            $preds = implode(",",$request->get('predecessors'));
+            $request['predecessors'] = $preds;
+        }
 
-        $preds = implode(",",$request->get('predecessors'));
-        $request['predecessors'] = $preds;
         $tache = Tache::create($request->all());
         Session::flash('success1',"You Task was added with success !");
 

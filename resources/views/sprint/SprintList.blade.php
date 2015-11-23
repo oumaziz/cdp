@@ -27,6 +27,7 @@
 									<th> Delete</th>
 									@endif
 									<th> Kanban </th>
+									<th> PERT </th>
 								</TR>
 								<?php $i=1; ?>
 								@foreach($sprint as $us)
@@ -45,6 +46,8 @@
 										<td> <a href= {{ URL::action("SprintController@edit", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>		
 										@endif
 										<td> <a href= {{ route('kanban.taches.show',$us->id) }} class= 'btn btn-default btn-xs'>Kanban</a> </td>
+										<td> <a href= {{ route('pert.taches.show',$us->id) }} class= 'btn btn-default btn-xs'>PERT</a> </td>
+
 										</td>
 	
 									</TR>

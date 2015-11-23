@@ -26,11 +26,9 @@ class BacklogController extends Controller
 
     public function visitor($id, $key)
     {
-        if ($key == Visitor::where("project_id", $id)->get()->first()) {
-
+        if ($key == Visitor::where("project_id", $id)->get()->first()->Key) {
             $userstories = DB::table('userstory')->where('project_id', $id)->get();
-            return view("Backlog")->with('userstories', $userstories);
-
+            return view("Backlog")->with('userstories', $userstories)->with('idProject', $id);
         }
     }
 }

@@ -17,6 +17,7 @@
 			<TH> Start Date </TH>
 			<th> Project Owner</th>			
 			<th> Disply</th>
+
 		</TR>
 
 		@foreach($project as $proj)
@@ -35,12 +36,18 @@
 				
 				<td> 
 					<a href= {{ URL::action("BacklogController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Disply </a>
+					<a href= {{ URL::action("MemberController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Members </a>
+
+
 				</td>
+		
+
 			</TR>
 
 		@endforeach
 
 	</TABLE>
+	
 @else 
 <p> aucun projet est été crée </p>
 @endif 

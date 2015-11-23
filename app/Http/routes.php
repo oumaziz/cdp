@@ -65,6 +65,9 @@ Route::get('backlog/userstory/modify/{idUs}','UsController@modify');
 Route::post('backlog/userstory/create/confirm/{idProject}','UsController@createConfirm');
 Route::post('backlog/userstory/modify/confirm/{idProject}','UsController@modifyConfirm');
 
+Route::get('userstory/finish/{idProject}/{idUs}','UsController@finish');
+Route::get('userstory/isfinish/{idProject}/{idUs}','UsController@isFinish');
+
 Route::get('visitor/backlog/{id}/{key}','BacklogController@visitor');
 
 
@@ -85,11 +88,11 @@ Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@ed
 Route::get('sprint/{idProject}/userstory/{idSprint}', 'SprintController@display');
 
 //us to sprint
-Route::get('AddUsToSprint/{idSprint}','UsSprintController@show');
-Route::get('usSprint/add/{idUs}/{idSprint}','UsSprintController@add');
+Route::get('AddUsToSprint/{idProject}','UsSprintController@show');
+Route::get('usSprint/add/{idProject}/{idUs}/{idSprint}','UsSprintController@add');
 
-Route::get('DeleteUsFromSprint/{idSprint}','UsSprintController@showSprint');
-Route::get('usSprint/delete/{idUs}','UsSprintController@delete');
+Route::get('usSprint/{idSprint}','UsSprintController@showSprint');
+Route::get('usSprint/delete/{idProject}/{idUs}','UsSprintController@delete');
 
 
 Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@show');

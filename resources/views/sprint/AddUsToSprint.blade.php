@@ -28,7 +28,7 @@
 				<TD> {{$us->difficulty}} </TD>
 				<td>   		
 						
-					<a href= {{ URL::action("UsSprintController@add", [$us->id  , $idSprint]) }} class= 'btn btn-primary btn-xs'>Ajouter</a>
+					<a href= {{ URL::action("UsSprintController@add", [$us->project_id , $us->id  , $idSprint]) }} class= 'btn btn-primary btn-xs'>Ajouter</a>
 				</td>
 
 			</TR>
@@ -36,6 +36,7 @@
 		@endforeach
 
 	</TABLE>
+	<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
 @else 
 <p> toutes les user stories sont attribuées </p>
 @endif 

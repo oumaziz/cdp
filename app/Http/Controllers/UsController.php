@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
+use App\Tache;
 use Session;
 use DB;
 
@@ -58,5 +59,29 @@ class UsController extends Controller
         if($us != null) $us->delete();
         Session::flash("success", "la us est bien supprimée.");
         return Redirect::action("BacklogController@show" , [$us->project_id]);
+    }
+
+    public function finish ($idProject, $idUs) {
+        $ntaches = Tache::where('us_story_id', '=', $idUs)->get();
+        $nbrtaches = Tache::where('us_story_id', '=', $idUs)->count();
+       // $taches = array();
+        $i = 0;
+        foreach($ntaches as $tache){
+            if($tache->state == 2 ){  //$taches[$i] = $tache;
+                $i=$i+1;
+            }          
+        }
+        if($i == $nbrtaches){
+          $userstories = Userstory::where('id', '=', $idUs)->update(["status"=> 1]);
+            return Redirect::action("UsController@isFinish" , [$idProject, $idUs]);
+        }
+        else return  "not finish";
+    }
+
+    public function isFinish ($idProject, $idUs){
+         $userstories = Userstory::where('id','=', $idUs)->where('status', '=', 1)->get();
+        if($userstories != null)
+            return view("UsFinish")->with('userstories', $userstories)->with('idProject', $idProject);
+        else return "not finish";
     }
 }

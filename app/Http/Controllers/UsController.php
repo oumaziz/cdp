@@ -73,15 +73,14 @@ class UsController extends Controller
         }
         if($i == $nbrtaches){
           $userstories = Userstory::where('id', '=', $idUs)->update(["status"=> 1]);
-            return Redirect::action("UsController@isFinish" , [$idProject, $idUs]);
+            return Redirect::action("UsController@isFinish" , [$idProject]);
         }
         else return  "not finish";
     }
 
-    public function isFinish ($idProject, $idUs){
-         $userstories = Userstory::where('id','=', $idUs)->where('status', '=', 1)->get();
-        if($userstories != null)
+    public function isFinish ($idProject){
+         $userstories = Userstory::where('status', '=', 1)->get();
+        
             return view("UsFinish")->with('userstories', $userstories)->with('idProject', $idProject);
-        else return "not finish";
     }
 }

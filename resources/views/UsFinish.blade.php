@@ -9,7 +9,7 @@
 				<div class="panel-body">
 					user story is finish!!!
 				</div>
-				
+				<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
 			</div>
 		</div>
 	</div>

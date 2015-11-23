@@ -62,7 +62,6 @@ class UsController extends Controller
     }
 
     public function finish ($idProject, $idUs) {
-
         $ntaches = Tache::where('us_story_id', '=', $idUs)->get();
         $nbrtaches = Tache::where('us_story_id', '=', $idUs)->count();
        // $taches = array();
@@ -80,7 +79,6 @@ class UsController extends Controller
     }
 
     public function isFinish ($idProject, $idUs){
-
          $userstories = Userstory::where('id','=', $idUs)->where('status', '=', 1)->get();
         if($userstories != null)
             return view("UsFinish")->with('userstories', $userstories)->with('idProject', $idProject);

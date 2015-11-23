@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use DB;
 class HomeController extends Controller
 {
 	/**
@@ -19,7 +19,10 @@ class HomeController extends Controller
 	 * @return Response
 	 */
 	public function index()
-	{
-		return view('home');
+	{	 $project= DB::table('project')->get();
+         $developer= DB::table('Developer')->get();
+
+        return view("project.list")->with('project',$project)->with('developer',$developer);
+		//return view('home');
 	}
 }

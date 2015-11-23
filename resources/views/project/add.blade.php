@@ -76,6 +76,7 @@
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
                         <button class="btn btn-primary">Ajouter</button>
+                        <a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
                     </div>
                 </div>
             </div>

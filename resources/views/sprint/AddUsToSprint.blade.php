@@ -36,6 +36,7 @@
 		@endforeach
 
 	</TABLE>
+	<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
 @else 
 <p> toutes les user stories sont attribuées </p>
 @endif 

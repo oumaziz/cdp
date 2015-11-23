@@ -38,8 +38,12 @@
 		@endforeach
 
 	</TABLE>
+	<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
+
 @else 
 <p> le sprint est vide!!! </p>
 @endif 
 
+</div>
+</div>
 @stop

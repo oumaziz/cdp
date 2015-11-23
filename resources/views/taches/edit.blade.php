@@ -95,7 +95,7 @@
 </div>
 
     <button class="btn btn-warning">Send</button>
-
+    <a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
     {!! Form::close() !!}
 
 

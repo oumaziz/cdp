@@ -3,7 +3,7 @@
 @section('content')
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-				
+				<!-- <div class="panel-heading">Backlog</div>  -->
 					<h2>Backlog</h2>
 
 					<div class="panel-body">
@@ -46,6 +46,7 @@
 						</br>
 					</br>
 							<a href= {{ URL::action("SprintController@listSprint", [$idProject]) }} class= 'btn btn-info '> show Sprint List</a>
+							<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
 						
 
 				</div>				

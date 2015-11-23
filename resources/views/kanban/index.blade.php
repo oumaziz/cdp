@@ -10,9 +10,9 @@
         @if(!empty($taches))
         <thead >
         <tr class="success">
-            <th>ToDo</th>
-            <th>Doing</th>
-            <th>Done</th>
+            <th style="width:30%;">To Do</th>
+            <th style="width:30%;">Doing</th>
+            <th style="width:30%;">Done</th>
         </tr>
         </thead>
         <tbody>
@@ -53,6 +53,9 @@
 
         </tbody>
     </table>
-<div class="center-block"><a class="btn btn-info btn-lg center-block"  href="{{ route('taketache.taches.show',$id) }}">Take a Task</a></div><br>
+<div class="center-block">
+    <a class="btn btn-info center-block"  href="{{ route('taketache.taches.show',$id) }}">Take a Task</a> </br>
+    <a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
+</div>
 
 @stop

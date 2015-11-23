@@ -49,7 +49,8 @@
                                             </div>
                                         </div>
                                     
-                                    <button type="submit" class="btn  btn-primary"> Update</button>
+                                    <button type="submit" class="btn  btn-warning"> Update</button>
+                                    <a href="{{ URL::previous()}}" class="btn btn-default" >Annuler </a>
                                 </form>
                             @else
 
@@ -82,6 +83,7 @@
 
                                     <br />
                                     <button type="submit" class="btn btn-primary ">Ajouter</button>
+                                    <a href="{{ URL::previous()}}" class="btn btn-default" >Annuler </a>
                                 </form>
                             @endif
                         </div>

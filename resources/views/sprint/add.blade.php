@@ -29,7 +29,8 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <button class="btn btn-primary">Ajouter</button>
+                        <button class="btn btn-primary">Ajouter</button> 
+                         <a href="{{ URL::previous()}}" class="btn btn-default" >Annuler</a>
                     </div>
                 </div>
             </div>

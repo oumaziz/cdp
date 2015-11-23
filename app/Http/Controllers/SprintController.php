@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewSprintRequest;
+use App\Http\Requests;
 use App\Sprint;
 use Redirect;
 use DB;

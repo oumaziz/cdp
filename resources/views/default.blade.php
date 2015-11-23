@@ -51,6 +51,7 @@
             @else
                 <li><a href="{{ url('project/list') }}">Project List</a></li>
                 <li><a href="{{ url('project/new') }}">Create a Project</a></li>
+                
             @endif 
             </ul> 
             <ul class="nav navbar-nav navbar-right">           

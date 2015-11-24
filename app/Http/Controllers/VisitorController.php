@@ -8,6 +8,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Visitor;
+use DB;
 
 class VisitorController extends Controller
 {
@@ -37,7 +38,7 @@ class VisitorController extends Controller
         return $string;
     }
 
-    function allow($project_id){
+    public function allow($project_id){
         $key = Visitor::where("project_id", $project_id)->get()->first();
         try {
         if ($key == null) {
@@ -52,12 +53,11 @@ class VisitorController extends Controller
     }
 
     public function forbid($project_id){
-        $key = null;
-        try {
+        $key = Visitor::where("project_id", $project_id)->get()->first();
             if ($key != null) {
-                Visitor::where("project_id", $project_id)->get()->delete();
+			   DB::table('visitor')->where('project_id' , $project_id)->delete();
             }
-        }catch(\Illuminate\Database\QueryException $e){}
+		$key = Visitor::where("project_id", $project_id)->get()->first();	
         return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
     }
 }

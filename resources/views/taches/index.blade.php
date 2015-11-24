@@ -51,25 +51,21 @@
                     <td>{{$tache->end_date  }}</td>
                     <td>{{$tache->predecessors  }}</td>
                     <td>
-                        <p><a class="btn btn-warning" style="width:130px" href="{{ route('taches.taches.edit',$tache->id) }}">Edit</a></p>
+                        <p><a class="btn btn-warning btn-xs"  href="{{ route('taches.taches.edit',$tache->id) }}">Edit</a>
                         {!! Form::open(['method'=>'delete', 'url'=>route('taches.taches.destroy',$tache->id)]) !!}
-                        <button style="width:130px" class="btn btn-danger">Destroy</button>
+                        <button  class="btn btn-danger btn-xs">Destroy</button>
                         {!! Form::close() !!}
+                        </p>
                     </td>
                 </tr>
             @endforeach
 
             </tbody>
         </table>
-        <p><a class="btn btn-info btn-lg center-block" href="{{ route('taches.taches.create') }}">Add Task</a></p>
-        <a href= {{ route('kanban.taches.show',$id) }} class= 'btn btn-default'> show Kanban</a>
+        <p><a class="btn btn-info center-block" href="{{ route('taches.taches.create') }}">Add Task</a></p>
+        <a href= {{ route('kanban.taches.show',$id) }} class= 'btn btn-default'> show Kanban</a></br>
+        <a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
     </div>
-
-
-
-
-
-
 
 @stop
 

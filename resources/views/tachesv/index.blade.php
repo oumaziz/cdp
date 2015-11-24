@@ -36,12 +36,7 @@
             @endforeach
             </tbody>
         </table>
+        <a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
     </div>
-
-
-
-
-
-
 
 @stop

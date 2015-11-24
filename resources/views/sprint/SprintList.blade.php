@@ -3,7 +3,13 @@
 @section('content')
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-				
+<!--				
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+-->
 					<h2> Sprint List</h2>
 
 					<div class="panel-body">
@@ -54,12 +60,10 @@
 
 						@if(!auth()->guest())
 							<!-- <a href="{{ url('backlog/userstory/create') }}" class= 'btn btn-primary '> Add User Story</a>  -->
-							<a href= {{ URL::action("SprintController@show", [$idProject]) }} class= 'btn btn-primary btn-xs'> Add Sprint</a>
+							<a href= {{ URL::action("SprintController@show", [$idProject]) }} class= 'btn btn-primary '> Add Sprint</a>
+
+							<a href= {{ URL::action("BacklogController@show", [$idProject]) }} class= 'btn btn-info '> show Backlog</a>
 						@endif
-
-
-							
-
 
 					</div>
 				

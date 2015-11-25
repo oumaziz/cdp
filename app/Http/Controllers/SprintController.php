@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewSprintRequest;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use App\Sprint;
 use Redirect;
@@ -26,8 +27,12 @@ class SprintController extends Controller
         $sprint = DB::table('sprint')->where('project_id', '=', $idProject)->get();
         return view("sprint.SprintList")->with('sprint', $sprint)->with('idProject',$idProject) ;
     }
-    public function add(NewSprintRequest $r, $project_id){
 
+    public function add(NewSprintRequest $r, $project_id){
+        $this->validate($r,[
+            'StartDate' => 'required|date',
+            'EndDate' => 'required|date|after:StartDate'
+        ]);
         Sprint::create([
             "StartDate" => $r->input("StartDate"),
             "EndDate" => $r->input("EndDate"),

@@ -1,6 +1,15 @@
 @extends('default')
 @section('content')
 <div class="container">
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h2> Sprint Update </h2>
     <div class="row">
         <form action="{{  URL::action("SprintController@editConfirm", [$project_id, $sprint_id]) }}" method="POST" class="form-horizontal">

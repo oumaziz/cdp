@@ -20,8 +20,6 @@ class PertController extends Controller
      */
     public function index()
     {
-
-
         $handle = fopen(public_path('D3/app/pert.js'), "r+");
         ftruncate($handle,0);
 
@@ -29,20 +27,13 @@ class PertController extends Controller
         $file_half  = "\t\t ],\n\t\t links:[\n";
         $file_end   = "\t\t ]\n\t}\n);";
 
-
         $pred = array();
         $succ = array();
         $gaph = array();
 
         file_put_contents(public_path('D3/app/pert.js'), $file_start, FILE_APPEND | LOCK_EX);
 
-
-
         $taches = Tache::all();
-
-
-
-
 
         //Calculate duration of tasks
         foreach($taches as $tache){
@@ -54,7 +45,6 @@ class PertController extends Controller
             $pred[$tache->code] = explode(",",$tache->predecessors);
         }
 
-
         //successors from predecessors
         $m = 0;
         foreach($taches as $tache){
@@ -64,10 +54,8 @@ class PertController extends Controller
                     $m++;
                 }
 
-
             }
         }
-
 
         $listEtat = array();
         $listArc = array();
@@ -255,10 +243,10 @@ class PertController extends Controller
         //dd($graph);
 
 
-        /*$pert = new Pert($listEtat,null,$listArc,$etatInit,$etatFin);
+        $pert = new Pert($listEtat,null,$listArc,$etatInit,$etatFin);
         $pert->calculAuPlusTot();
         $pert->calculatePlusTard();
-        dd($pert);*/
+        dd($pert);
 
         for($i = 1 ; $i <= count($listEtat); $i++){
             file_put_contents(public_path('D3/app/pert.js'),"\t\t\t{ id: 'node".$i."', value: { label: '".$i." | ".$listEtat[$i]->getAuPlusTot()." | ".$listEtat[$i]->getAuPlusTard()."' } },\n", FILE_APPEND | LOCK_EX);
@@ -279,7 +267,7 @@ class PertController extends Controller
         file_put_contents(public_path('D3/app/pert.js'), $file_end, FILE_APPEND | LOCK_EX);
 
 
-        return redirect()->to('D3/app/index.html?pert.js');
+        return redirect()->to('project/pert?../D3/app/pert.js');
 
 
     }

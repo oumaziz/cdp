@@ -55,7 +55,6 @@
     </table>
 <div class="center-block">
     <a class="btn btn-info center-block"  href="{{ route('taketache.taches.show',$id) }}">Take a Task</a> </br>
-    <a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
 </div>
 
 @stop

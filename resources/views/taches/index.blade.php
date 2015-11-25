@@ -45,7 +45,7 @@
 
             @foreach($taches as $tache)
                 <tr>
-                    <td>{{ $tache->code }}</td>
+                    <td><a href="{{ URL::action("CommitsController@show", [$tache->code]) }}">{{ $tache->code }}</a></td>
                     <td>{{ $tache->description }}</td>
                     <td>{{$tache->start_date }}</td>
                     <td>{{$tache->end_date  }}</td>

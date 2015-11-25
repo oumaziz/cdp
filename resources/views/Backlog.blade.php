@@ -15,12 +15,12 @@
 									<TH> Description </TH>
 									<TH> Priority </TH>
 									<TH> Difficulty </TH>
-									<th> State</th>
+
 									@if(!auth()->guest())
 									<th> Update</th>
 									<th> Delete</th>
-									{{--<th> Is Finish </th>--}}
 									@endif
+									<th> Is Finish </th>
 								</TR>
 								<?php $i=1; ?>
 								@foreach($userstories as $us)
@@ -29,11 +29,6 @@
 										<TD> {{$us->description}} </TD>
 										<TD> {{$us->priority}} </TD>
 										<TD> {{$us->difficulty}} </TD>
-										@if($us->status == 0)
-										<td> <button type="button" class="btn-xs btn-info" disabled>Not Finish</button> </td>
-										@else
-										<td> <button type="button" class="btn-xs btn-info" disabled>Finish</button> </td>
-										@endif
 										@if(!auth()->guest())
 										<td> <a href= {{ URL::action("UsController@modify", [$us->id]) }} class= 'btn btn-warning btn-xs'> Update</a> </td>
 										<td> <a href= {{ URL::action("UsController@remove", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>

@@ -75,7 +75,7 @@ class UsController extends Controller
           $userstories = Userstory::where('id', '=', $idUs)->update(["status"=> 1]);
             return Redirect::action("UsController@isFinish" , [$idProject]);
         }
-        else return  "not finish";
+        else return Redirect::action("BacklogController@show", [$idProject]);
     }
 
     public function isFinish ($idProject){
@@ -83,4 +83,5 @@ class UsController extends Controller
         
             return view("UsFinish")->with('userstories', $userstories)->with('idProject', $idProject);
     }
+    //a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class= 'btn btn-primary btn-xs'> is finish</a> </td>
 }

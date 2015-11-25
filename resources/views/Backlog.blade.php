@@ -31,7 +31,11 @@
 										@if(!auth()->guest())
 										<td> <a href= {{ URL::action("UsController@modify", [$us->id]) }} class= 'btn btn-warning btn-xs'> Update</a> </td>
 										<td> <a href= {{ URL::action("UsController@remove", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>
-										<td> <a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class= 'btn btn-primary btn-xs'> is finish</a> </td>
+										<td> 
+										@if($us->status == 1)
+											<a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok"></span></a>
+										@endif
+										</td>
 										@endif
 									</TR>
                           

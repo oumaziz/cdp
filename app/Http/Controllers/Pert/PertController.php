@@ -20,8 +20,6 @@ class PertController extends Controller
      */
     public function index()
     {
-
-
         $handle = fopen(public_path('D3/app/pert.js'), "r+");
         ftruncate($handle,0);
 
@@ -29,20 +27,13 @@ class PertController extends Controller
         $file_half  = "\t\t ],\n\t\t links:[\n";
         $file_end   = "\t\t ]\n\t}\n);";
 
-
         $pred = array();
         $succ = array();
         $gaph = array();
 
         file_put_contents(public_path('D3/app/pert.js'), $file_start, FILE_APPEND | LOCK_EX);
 
-
-
         $taches = Tache::all();
-
-
-
-
 
         //Calculate duration of tasks
         foreach($taches as $tache){
@@ -54,7 +45,6 @@ class PertController extends Controller
             $pred[$tache->code] = explode(",",$tache->predecessors);
         }
 
-
         //successors from predecessors
         $m = 0;
         foreach($taches as $tache){
@@ -64,10 +54,8 @@ class PertController extends Controller
                     $m++;
                 }
 
-
             }
         }
-
 
         $listEtat = array();
         $listArc = array();

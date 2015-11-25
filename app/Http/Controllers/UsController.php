@@ -76,19 +76,8 @@ class UsController extends Controller
           $userstories = Userstory::where('id', '=', $idUs)->update(["status"=> 1]);
             return Redirect::action("UsController@isFinish" , [$idProject]);
         }
-        else return  "not finish";
 
-
-
-
-
-
-
-
-
-
-
-
+        else return Redirect::action("BacklogController@show", [$idProject]);
     }
 
     public function isFinish ($idProject){

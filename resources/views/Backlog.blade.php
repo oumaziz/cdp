@@ -20,7 +20,7 @@
 									<th> Update</th>
 									<th> Delete</th>
 									@endif
-									<th> Is Finish </th>
+									<th> Finished </th>
 								</TR>
 								<?php $i=1; ?>
 								@foreach($userstories as $us)
@@ -32,12 +32,13 @@
 										@if(!auth()->guest())
 										<td> <a href= {{ URL::action("UsController@modify", [$us->id]) }} class= 'btn btn-warning btn-xs'> Update</a> </td>
 										<td> <a href= {{ URL::action("UsController@remove", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>
+										@endif
 										<td> 
 										@if($us->status == 1)
 											<a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok"></span></a>
 										@endif
 										</td>
-										@endif
+										
 									</TR>
                           
 								@endforeach

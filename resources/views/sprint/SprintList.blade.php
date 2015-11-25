@@ -24,7 +24,6 @@
 									@if(!auth()->guest())
 									<th> Display</th>
 									<th> Update</th>
-									<th> Delete</th>
 									@endif
 									<th> Kanban </th>
 									<th> PERT </th>
@@ -43,7 +42,6 @@
 										</td>
 
 										<td> <a href= {{ URL::action("SprintController@edit", [$us->project_id , $us->id]) }} class= 'btn btn-warning btn-xs'> Update</a> </td>
-										<td> <a href= {{ URL::action("SprintController@edit", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>		
 										@endif
 										<td> <a href= {{ route('kanban.taches.show',$us->id) }} class= 'btn btn-default btn-xs'>Kanban</a> </td>
 										<td> <a href= {{ route('pert.taches.show',$us->id) }} class= 'btn btn-default btn-xs'>PERT</a> </td>

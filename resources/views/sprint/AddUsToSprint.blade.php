@@ -8,38 +8,68 @@
     	
  
 @if(count($userstories))
-<p> Selectionnez les User Stories que vous voulez ajouter au sprint </p>
+
 	<TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
-
-
 		<TR>
 			<TH> N° </TH>
 			<TH> Description </TH>
 			<TH> Priorité </TH>
 			<TH> Difficulté </TH>
-			<th> Ajouter</th>
+			<th> Delete </th>
 		</TR>
 
 		@foreach($userstories as $us)
+			@if($us->sprint_id == $idSprint)
 			<TR>
 				<TH> {{$us->id}} </TH>
 				<TD> {{$us->description}} </TD>
 				<TD> {{$us->priority}} </TD>
 				<TD> {{$us->difficulty}} </TD>
-				<td>   		
-						
-					<a href= {{ URL::action("UsSprintController@add", [$us->project_id , $us->id  , $idSprint]) }} class= 'btn btn-primary btn-xs'>Ajouter</a>
+				<td>   						
+					<a href= {{ URL::action("UsSprintController@delete", [$us->project_id, $idSprint, $us->id]) }} class= 'btn btn-danger btn-circle'>
+						<span class="glyphicon glyphicon-remove"></span>
+					</a>
 				</td>
-
+				  	
 			</TR>
-
+			@endif
 		@endforeach
 
 	</TABLE>
-	<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
+	
+
+<p> Selectionnez les User Stories que vous voulez ajouter au sprint </p>
+
+<TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
+		<TR>
+			<TH> N° </TH>
+			<TH> Description </TH>
+			<TH> Priorité </TH>
+			<TH> Difficulté </TH>
+			<th> Add</th>
+		</TR>
+
+		@foreach($userstories as $us)
+		  @if($us->sprint_id == 0)
+			<TR>
+				<TH> {{$us->id}} </TH>
+				<TD> {{$us->description}} </TD>
+				<TD> {{$us->priority}} </TD>
+				<TD> {{$us->difficulty}} </TD>
+				<td> 
+					<a href="{{ URL::action("UsSprintController@add", [$us->project_id, $us->id, $idSprint] ) }}" class="btn btn-primary btn-xs" > Add </a>
+				</td>
+				  	
+			</TR>
+		  @endif
+		@endforeach
+
+	</TABLE>
 @else 
 <p> toutes les user stories sont attribuées </p>
 @endif 
+	<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
 
+</div>
 </div>
 @stop

@@ -13,12 +13,13 @@
 								<TR>
 									<TH> N° </TH>
 									<TH> Description </TH>
-									<TH> Priorité </TH>
-									<TH> Difficulté </TH>
+									<TH> Priority </TH>
+									<TH> Difficulty </TH>
+									<th> State</th>
 									@if(!auth()->guest())
 									<th> Update</th>
 									<th> Delete</th>
-									<th> Is Finish </th>
+									{{--<th> Is Finish </th>--}}
 									@endif
 								</TR>
 								<?php $i=1; ?>
@@ -28,10 +29,15 @@
 										<TD> {{$us->description}} </TD>
 										<TD> {{$us->priority}} </TD>
 										<TD> {{$us->difficulty}} </TD>
+										@if($us->status == 0)
+										<td> <button type="button" class="btn-xs btn-info" disabled>Not Finish</button> </td>
+										@else
+										<td> <button type="button" class="btn-xs btn-info" disabled>Finish</button> </td>
+										@endif
 										@if(!auth()->guest())
 										<td> <a href= {{ URL::action("UsController@modify", [$us->id]) }} class= 'btn btn-warning btn-xs'> Update</a> </td>
 										<td> <a href= {{ URL::action("UsController@remove", [$us->id]) }} class= 'btn btn-danger btn-xs'> Delete</a> </td>
-										<td> <a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class= 'btn btn-primary btn-xs'> is finish</a> </td>
+										{{--<td> <a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class= 'btn btn-primary btn-xs'> is finish</a> </td>--}}
 										@endif
 									</TR>
                           

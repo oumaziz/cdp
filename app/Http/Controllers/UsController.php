@@ -62,6 +62,7 @@ class UsController extends Controller
     }
 
     public function finish ($idProject, $idUs) {
+
         $ntaches = Tache::where('us_story_id', '=', $idUs)->get();
         $nbrtaches = Tache::where('us_story_id', '=', $idUs)->count();
        // $taches = array();
@@ -76,6 +77,18 @@ class UsController extends Controller
             return Redirect::action("UsController@isFinish" , [$idProject]);
         }
         else return  "not finish";
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public function isFinish ($idProject){

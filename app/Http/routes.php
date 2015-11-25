@@ -92,7 +92,7 @@ Route::get('AddUsToSprint/{idProject}','UsSprintController@show');
 Route::get('usSprint/add/{idProject}/{idUs}/{idSprint}','UsSprintController@add');
 
 Route::get('usSprint/{idSprint}','UsSprintController@showSprint');
-Route::get('usSprint/delete/{idProject}/{idUs}','UsSprintController@delete');
+Route::get('usSprint/delete/{idProject}/{idSprint}/{idUs}','UsSprintController@delete');
 
 
 Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@show');

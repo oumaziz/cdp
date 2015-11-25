@@ -16,9 +16,9 @@ class SprintController extends Controller
     }
 
      public function display($idProject, $idSprint){
-        $userstories= DB::table('userstory')->where('project_id','=', $idProject)->where('sprint_id' , '=', $idSprint)->get();
+        $userstories= DB::table('userstory')->where('project_id','=', $idProject)->get();
 
-        return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idSprint', $idSprint);
+        return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject',$idProject)->with('idSprint', $idSprint);
     }
 
     public function listSprint($idProject){

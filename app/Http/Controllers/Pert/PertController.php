@@ -267,7 +267,7 @@ class PertController extends Controller
         file_put_contents(public_path('D3/app/pert.js'), $file_end, FILE_APPEND | LOCK_EX);
 
 
-        return redirect()->to('D3/app/index.html?pert.js');
+        return redirect()->to('project/pert?../D3/app/pert.js');
 
 
     }

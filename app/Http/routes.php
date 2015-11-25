@@ -99,10 +99,12 @@ Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@s
 
 
 // Page d'affichage des commits
-Route::get('project/{project_id}/commits/{task_id}/{key?}', 'CommitsController@show');
+Route::get('project/commits/{task_id}/{key?}', 'CommitsController@show');
 
 // Page d'affichage du BurnDownChart
 Route::get('project/{project_id}/burndownchart/{key?}', 'BurnDownChartController@show');
+
+Route::get("project/pert", 'PERTViewerController@show');
 
 
 // Page d'ajout d'un Membre à un projet

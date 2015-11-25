@@ -16,7 +16,7 @@
 			<TH> Description </TH>
 			<TH> Start Date </TH>
 			<th> Project Owner</th>			
-			<th> Disply</th>
+			<th> Display</th>
 
 		</TR>
 
@@ -24,7 +24,7 @@
 			<TR>
 				<TH> {{$proj->title}} </TH>
 				<TD> {{$proj->description}} </TD>
-				<TD> {{$proj->startDate}} </TD>
+				<TD> {{date("d/m/Y", strtotime($proj->startDate))}} </TD>
 				@if(count($developer))
 					@foreach($developer as $dev)
 						@if($dev->id == $proj->developer_id)
@@ -35,10 +35,9 @@
 
 				
 				<td> 
-					<a href= {{ URL::action("BacklogController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Disply </a>
+					<a href= {{ URL::action("BacklogController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Display </a>
 					<a href= {{ URL::action("MemberController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Members </a>
-
-
+                    <a href= {{ URL::action("VisitorController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Visitor </a>
 				</td>
 		
 

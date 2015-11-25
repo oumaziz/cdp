@@ -2,8 +2,8 @@
 @extends('default')
 @section('content')
 <div class="row">
-			<div class="col-md-10 col-md-offset-1">
-<h2> La liste des Projets </h2>
+<div class="col-md-10 col-md-offset-1">
+<h2>List of projects</h2>
     	
  
 @if(count($project))

@@ -1,4 +1,4 @@
-## Conduite de Projet
+# Conduite de Projet
 
 [![Build Status](https://travis-ci.org/hardwork2015/cdp.svg?branch=dev)](https://travis-ci.org/hardwork2015/cdp)
 [![Code Climate](https://codeclimate.com/github/hardwork2015/cdp/badges/gpa.svg)](https://codeclimate.com/github/hardwork2015/cdp)
@@ -6,7 +6,7 @@
 
 Cet outil permet la gestion d'une équipe grace à la méthode SCRUM.
 
-#Configuration du serveur
+##Configuration du serveur
 
 Afin que ce projet puisse fonctionner sur votre serveur, vous aurez besoin de  :
 
@@ -16,7 +16,7 @@ Afin que ce projet puisse fonctionner sur votre serveur, vous aurez besoin de  :
 - Mbstring PHP Extension
 - Tokenizer PHP Extension
 
-#Installation
+##Installation
 
 Après téléchargement du projet, se rendre dans le dossier grâce à votre terminal, puis lancer la commande suivante à fin de mettre à jour le projet via Composer :
 

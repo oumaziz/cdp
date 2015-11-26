@@ -85,7 +85,7 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
-Route::get('sprint/{idProject}/userstory/{idSprint}', 'SprintController@display');
+Route::get('sprint/{idProject}/userstory/{idSprint}/{i}', 'SprintController@display');
 
 //us to sprint
 Route::get('AddUsToSprint/{idProject}','UsSprintController@show');

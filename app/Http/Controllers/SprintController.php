@@ -16,10 +16,10 @@ class SprintController extends Controller
         return view("sprint.add", compact("project_id"));
     }
 
-     public function display($idProject, $idSprint){
+     public function display($idProject, $idSprint, $i){
         $userstories= DB::table('userstory')->where('project_id','=', $idProject)->get();
 
-        return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject',$idProject)->with('idSprint', $idSprint);
+        return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject',$idProject)->with('idSprint', $idSprint)->with('i', $i);
     }
 
     public function listSprint($idProject){

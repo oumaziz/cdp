@@ -21,21 +21,25 @@ class BacklogController extends Controller
     		}
         } 
         else {
+            //pour verifier les us  terminé
             $userstories = Userstory::where('project_id','=', $idProject)->get();
-            $userstories1=$userstories;
-            foreach($userstories1 as $us){
+            foreach($userstories as $us){
                 $ntaches = Tache::where('us_story_id', '=', $us->id)->get();            
                 $nbrtaches = Tache::where('us_story_id', '=', $us->id)->count();
-                $i = 0;
-                foreach($ntaches as $tache){
-                    if($tache->state == 2 ){ 
-                            $i=$i+1;
-                    }          
+
+                if($nbrtaches != 0){
+                    $i = 0;
+                    foreach($ntaches as $tache){
+                        if($tache->state == 2 ){ 
+                                $i=$i+1;
+                        }          
+                    }
+                    if(($i == $nbrtaches) && ($us->status==0)) {
+                      $userstories = Userstory::where('id', '=', $us->id)->update(["status"=> 1]);
+                    }
                 }
-                if($i == $nbrtaches){
-                  $userstories = Userstory::where('id', '=', $us->id)->update(["status"=> 1]);
-                }
-            }      
+            }   
+            //pour récuperer les USs   
             $userstories = Userstory::where('project_id','=', $idProject)->get();
             return view("Backlog")->with('userstories', $userstories)->with('idProject', $idProject);
         }

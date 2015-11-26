@@ -3,11 +3,12 @@
 @section('content')
 <div class="container">
 
-    	<h2> La liste des User Stories </h2>
+    	<h2> La liste des User Stories de Sprint {{ $i }} </h2>
 
 
 @if(count($userstories))
         <?php $first = true; ?>
+        <?php $i=1; ?>
 		@foreach($userstories as $us)
 			@if($us->sprint_id == $idSprint)
                 @if($first)
@@ -22,7 +23,7 @@
                     <?php $first = false; ?>
                 @endif
 			<TR>
-				<TH> {{$us->id}} </TH>
+				<TH> <?php echo $i++; ?> </TH>
 				<TD> {{$us->description}} </TD>
 				<TD> {{$us->priority}} </TD>
 				<TD> {{$us->difficulty}} </TD>
@@ -48,11 +49,11 @@
 			<TH> Difficulté </TH>
 			<th> Add</th>
 		</TR>
-
+		 <?php $i=1; ?>
 		@foreach($userstories as $us)
 		  @if($us->sprint_id == 0)
 			<TR>
-				<TH> {{$us->id}} </TH>
+				<TH> <?php echo $i++; ?> </TH>
 				<TD> {{$us->description}} </TD>
 				<TD> {{$us->priority}} </TD>
 				<TD> {{$us->difficulty}} </TD>

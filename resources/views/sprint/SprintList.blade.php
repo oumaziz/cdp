@@ -37,7 +37,7 @@
 										
 										@if(!auth()->guest())
 										<td>
-										 <a href= {{ URL::action("SprintController@display", [$us->project_id, $us->id]) }} class= 'btn btn-info btn-xs'> Us List </a>  
+										 <a href= {{ URL::action("SprintController@display", [$us->project_id, $us->id, $i-1]) }} class= 'btn btn-info btn-xs'> Us List </a>  
 										 <a href= {{ route('taches.taches.show',$us->id) }} class= 'btn btn-info btn-xs'> Task List</a> 
 										</td>
 

@@ -39,6 +39,8 @@
 					<a href= {{ URL::action("BacklogController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Display </a>
 					<a href= {{ URL::action("MemberController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Members </a>
                     <a href= {{ URL::action("VisitorController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Visitor </a>
+					<a href= {{ route('bdchart.show',$proj->id) }} class = 'btn btn-xs btn-success'>Burn Down Chart</a>
+
 				</td>
 				
 

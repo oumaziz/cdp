@@ -66,14 +66,12 @@ class FinishTaskController extends Controller
                     }
                     $userstory = Userstory::findOrFail($tache->us_story_id);
 
-                    if($test == true){
+                  /*  if($test == true){
                         $userstory->update(['status'=> 1]);
-                        //dd($userstory);
                     }
                     else{
                         $userstory->update(['status'=> 0]);
-                        //dd($userstory);
-                    }
+                    }*/
 
                 }
 

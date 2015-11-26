@@ -6,13 +6,13 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
 				@if(!auth()->guest())
-                    <div class="panel-heading"><b>Accès pour les visiteurs</b></div>
+                    <div class="panel-heading"><b>Visitors Access</b></div>
                     <div class="panel-body">
                         @if($key)
-                            <p>Voici le lien à partager avec vos visiteurs : <a href="{{URL::action("BacklogController@visitor", [$project_id,$key]) }}">Lien</a></p>
-                            <p>Vous pouvez interdire les visiteurs en cliquant ici (attention la clée actuelle ne sera plus valable) : <a href="{{ URL::action("VisitorController@forbid", [$project_id]) }}">Interdire les visiteurs</a></p>
+                            <p>Here is the link to share with your visitors : <a href="{{URL::action("BacklogController@visitor", [$project_id,$key]) }}">Visitor's Link</a></p>
+                            <p>You ca block visitors by clicking here (Becareful the key will no longer be working) : <a href="{{ URL::action("VisitorController@forbid", [$project_id]) }}">Block access to visitors</a></p>
                         @else
-                            <p>Vous n'avez pas autorisé les visiteurs. Pour les autoriser veuillez cliquer ici : <a href="{{ URL::action("VisitorController@allow", [$project_id]) }}">Autoriser les visiteurs</a></p>
+                            <p>You haven't authorized visitors. To authorize them, just click here : <a href="{{ URL::action("VisitorController@allow", [$project_id]) }}">Authorize visitors access</a></p>
                         @endif
                     </div>
                 </div>

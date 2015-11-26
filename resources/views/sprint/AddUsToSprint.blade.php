@@ -5,7 +5,6 @@
 
     	<h2> La liste des User Stories de Sprint {{ $i }} </h2>
 
-
 @if(count($userstories))
         <?php $first = true; ?>
         <?php $i=1; ?>
@@ -16,8 +15,8 @@
                     <TR>
                         <TH> N° </TH>
                         <TH> Description </TH>
-                        <TH> Priorité </TH>
-                        <TH> Difficulté </TH>
+                        <TH> Priority </TH>
+                        <TH> Difficulty </TH>
                         <th> Delete </th>
                     </TR>
                     <?php $first = false; ?>
@@ -39,14 +38,14 @@
 
 	</TABLE>
 
-<p> Selectionnez les User Stories que vous voulez ajouter au sprint </p>
+<p> Select userstories you want to add to the project </p>
 
 <TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
 		<TR>
 			<TH> N° </TH>
 			<TH> Description </TH>
-			<TH> Priorité </TH>
-			<TH> Difficulté </TH>
+            <TH> Priority </TH>
+            <TH> Difficulty </TH>
 			<th> Add</th>
 		</TR>
 		 <?php $i=1; ?>
@@ -67,7 +66,7 @@
 
 	</TABLE>
 @else
-<p> toutes les user stories sont attribuées </p>
+<p> All the userstories are assigned. </p>
 @endif
 <a href= {{ URL::action("SprintController@listSprint", [$idProject]) }} class= 'btn btn-info '> show Sprint List</a>
 </div>

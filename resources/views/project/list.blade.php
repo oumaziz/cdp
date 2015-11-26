@@ -49,7 +49,7 @@
 	</TABLE>
 	
 @else 
-<p> aucun projet est été crée </p>
+<p> You have no project yet. </p>
 @endif 
 </div>
 </div>

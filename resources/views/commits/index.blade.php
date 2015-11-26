@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h2> Liste des commits </h2>
+            <h2> Commits List </h2>
 
 
             @if(count($commits))
@@ -11,8 +11,8 @@
 
 
                     <TR>
-                        <TH> Message du commit </TH>
-                        <TH> Développeur </TH>
+                        <TH> Commit message </TH>
+                        <TH> Developer </TH>
                         <TH> Date </TH>
                     </TR>
 
@@ -27,7 +27,7 @@
 
                 </TABLE>
             @else
-                <p> Aucun commit n'a été fait sur le dépot pour cette tâche pour le moment.</p>
+                <p> There is no commits for this task in the repository for the moment.</p>
             @endif
         </div>
     </div>

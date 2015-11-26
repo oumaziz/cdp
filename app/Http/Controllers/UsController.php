@@ -11,9 +11,23 @@ use Redirect;
 use App\Tache;
 use Session;
 use DB;
+use App\Visitor;
 
 class UsController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $idProject = $request->route()->idProject;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
+
     public function create($idProject){
         return view("UsForm")->with('us',[])->with('idProject',$idProject);
     }

@@ -6,11 +6,11 @@ namespace App;
 
 class Pert
 {
-    private $etats;
-    private $arcFictifs;
-    private $arcReals;
-    private $etatInitial;
-    private $etatFinal;
+    public $etats;
+    public $arcFictifs;
+    public $arcReals;
+    public $etatInitial;
+    public $etatFinal;
 
     /**
      * Pert constructor.

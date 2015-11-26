@@ -31,13 +31,13 @@
             <tr>
                 <td>{{ $tache->description }} </td>
                 <td><a class="btn btn-primary" style="width:130px" href="{{ route('taketache.taches.edit',$tache->id) }}">Take</a></td>
-				@if($depend[$tache->id] != null)
-						@foreach($depend[$tache->id] as $d)
-							@if($d!=null)
-								<td>Remaining dependencies : {{$d}}</td> 
-							@endif
-						@endforeach
-				@endif
+				{{--@if($depend[$tache->id] != null)--}}
+						{{--@foreach($depend[$tache->id] as $d)--}}
+							{{--@if($d!=null)--}}
+								{{--<td>Remaining dependencies : {{$d}}</td> --}}
+							{{--@endif--}}
+						{{--@endforeach--}}
+				{{--@endif--}}
             </tr>
 			
 			

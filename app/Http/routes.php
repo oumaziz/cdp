@@ -13,6 +13,10 @@
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
+//Open resources for all !
+Route::resource('bdchart','BurnDownChart\BDCController');
+
+
 //Resources opened for all visitors
 Route::resource('pert/taches','Pert\PertController');
 

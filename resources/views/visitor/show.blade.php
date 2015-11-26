@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
+				@if(!auth()->guest())
                     <div class="panel-heading"><b>Accès pour les visiteurs</b></div>
                     <div class="panel-body">
                         @if($key)
@@ -15,6 +16,7 @@
                         @endif
                     </div>
                 </div>
+				@endif
             </div>
         </div>
     </div>

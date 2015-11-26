@@ -19,8 +19,16 @@ class TakeTacheController extends Controller
      * @return \Illuminate\Http\Response
      **/
 
-    public function __construct(){
-        $this->middleware('auth');
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $idProject = $request->route()->idProject;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
     }
 
     public function index()

@@ -12,15 +12,6 @@
 */
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
-use App\Tache;
-
-
-
-Route::get('/', function () {
-    return redirect()->action('Auth\AuthController@getRegister');
-});
-
-
 
 //Open resources for all !
 Route::resource('bdchart','BurnDownChart\BDCController');
@@ -131,3 +122,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 //Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+Route::get('/', function () {
+    return redirect()->action('Auth\AuthController@getLogin');
+});

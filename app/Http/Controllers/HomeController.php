@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use DB;
+use Illuminate\Support\Facades\Redirect;
+
 class HomeController extends Controller
 {
 	/**
@@ -19,10 +21,8 @@ class HomeController extends Controller
 	 * @return Response
 	 */
 	public function index()
-	{	 $project= DB::table('project')->get();
-         $developer= DB::table('Developer')->get();
-
-        return view("project.list")->with('project',$project)->with('developer',$developer);
+	{
+        return redirect()->action("ProjectController@projectList");
 		//return view('home');
 	}
 }

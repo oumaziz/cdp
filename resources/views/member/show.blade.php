@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Liste des membres</b></div>
+                    <div class="panel-heading"><b>Members list</b></div>
                     <div class="panel-body">
                         <?php $i = 1; ?>
                         @if(count($members))
@@ -36,23 +36,23 @@
                                 </tbody>
                             </table>
                         @else
-                            <p>Aucun membre n'a été ajouté.</p>
+                            <p>No member has been added.</p>
                         @endif
                     </div>
                 </div>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Ajouter un membre</b></div>
+                    <div class="panel-heading"><b>Add a member</b></div>
                     <div class="panel-body">
                         <div class="row">
                             <form action="{{  URL::action("MemberController@add", [$project_id]) }}" method="POST" class="form-horizontal">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="col-md-6">
-                                    <input type="email" name="email" class="form-control" placeholder="E-mail du nouveau membre" required/>
+                                    <input type="email" name="email" class="form-control" placeholder="New member's E-mail" required/>
                                 </div>
                                 <div class="col-md-1">
-                                    <button class="btn">Ajouter</button>
+                                    <button class="btn">Add</button>
                                 </div>
 
                             </form>

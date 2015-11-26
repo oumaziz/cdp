@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                         <div class="panel-body">
-                       <h2>Add User Story</h2>
+                       <h2>Add a User Story</h2>
 
                             @if($us)
                                 <form action="{{  URL::action("UsController@modifyConfirm", $us->project_id) }}" class="form-horizontal" method="POST">

@@ -70,7 +70,7 @@ Route::get('visitor/backlog/{id}/{key}','BacklogController@visitor');
 Route::get('backlog/userstory/remove/{id}','UsController@remove');
 
 // Page d'ajout d'un Sprint
-Route::get('sprint/list/{idProject}', 'SprintController@listSprint');
+Route::get('sprint/list/{idProject}/{key?}', 'SprintController@listSprint');
 
 Route::get('sprint/{project_id}/add/', 'SprintController@show');
 
@@ -80,13 +80,13 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
-Route::get('sprint/{idProject}/userstory/{idSprint}', 'SprintController@display');
+Route::get('sprint/{idProject}/userstory/{idSprint}/{key?}', 'SprintController@display');
 
 //us to sprint
 Route::get('AddUsToSprint/{idProject}','UsSprintController@show');
 Route::get('usSprint/add/{idProject}/{idUs}/{idSprint}','UsSprintController@add');
 
-Route::get('usSprint/{idSprint}','UsSprintController@showSprint');
+Route::get('usSprint/{idSprint}/{key?}','UsSprintController@showSprint');
 Route::get('usSprint/delete/{idProject}/{idSprint}/{idUs}','UsSprintController@delete');
 
 

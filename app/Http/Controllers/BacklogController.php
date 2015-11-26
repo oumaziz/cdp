@@ -2,16 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Visitor;
 use App\Tache;
 use App\Userstory;
+use Illuminate\Support\Facades\Input;
 
 class BacklogController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $idProject = $request->route()->idProject;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
 
     public function show($idProject, $key = null){	
     	if($key != null){

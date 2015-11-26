@@ -45,7 +45,7 @@
 								@endforeach
 							</TABLE>
 						@else
-						<p> Aucune user story ajoutée!! </p>
+						<p> No user story added. </p>
 						@endif
 
 						@if(!auth()->guest())

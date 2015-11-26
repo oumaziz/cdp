@@ -246,7 +246,11 @@ class PertController extends Controller
         $pert = new Pert($listEtat,null,$listArc,$etatInit,$etatFin);
         $pert->calculAuPlusTot();
         $pert->calculatePlusTard();
+<<<<<<< HEAD
 
+=======
+        //dd($pert);
+>>>>>>> 07eaaf69b06dfb90a5ce97a05d3a714050d92733
 
         for($i = 1 ; $i <= count($listEtat); $i++){
             file_put_contents(public_path('D3/app/pert.js'),"\t\t\t{ id: 'node".$i."', value: { label: '".$i." | ".$listEtat[$i]->getAuPlusTot()." | ".$listEtat[$i]->getAuPlusTard()."' } },\n", FILE_APPEND | LOCK_EX);

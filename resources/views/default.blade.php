@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 
-    <title>Your Environment GL</title>
+    <title>Project Management</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -67,13 +67,11 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url("home") }}">Your Environment GL</a>
+            <a class="navbar-brand" href="{{ url("home") }}">Project Management</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
-            @if(auth()->guest())  
-                <li class="active"><a href="{{ url('project/list') }}">Visiteur</a></li>
-            @else
+            @if(!auth()->guest())
                 <li><a href="{{ url('project/list') }}">Project List</a></li>
                 <li><a href="{{ url('project/new') }}">Create a Project</a></li>
                 

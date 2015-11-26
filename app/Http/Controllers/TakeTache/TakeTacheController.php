@@ -61,10 +61,14 @@ class TakeTacheController extends Controller
      */
     public function show($id)
     {
+<<<<<<< HEAD
         
 
 
    /*     $ntaches = Tache::all();
+=======
+        $ntaches = Tache::all();
+>>>>>>> 07eaaf69b06dfb90a5ce97a05d3a714050d92733
         $descriptions = Tache::lists('description','id');
         $user = Auth::user();
         $taches = array();
@@ -121,39 +125,7 @@ class TakeTacheController extends Controller
 
 
 
-        return view('taketache.index',compact('taches','descriptions','user','id','depend'));*/
-
-
-        $ntaches = Tache::all();
-        $descriptions = Tache::lists('description','id');
-        $user = Auth::user();
-        $taches = array();
-        $i = 0;
-        $cpt = 0;
-        foreach($ntaches as $tache){
-            if($tache->sprint_id == $id) {
-
-                if($tache->developer_id == Auth::id() && $tache->state == 1){
-                    Session::flash('fail',"You have already a task, please finish your task !");
-                    $taches= array();
-                    break;
-                }
-                else if($tache->state != 1){
-                    $taches[$i] = $tache ;
-                }
-
-
-            }
-
-            $i++;
-        }
-        //dd($whoDoWhat);
-        //dd($taches);
-        //   return view('kanban.index', ['taches' => $taches, 'results'=> $whoDoWhat, 'id'=> $id]);
-
-
-
-        return view('taketache.index',compact('taches','descriptions','user','id'));
+        return view('taketache.index',compact('taches','descriptions','user','id','depend'));
 
 
 

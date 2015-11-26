@@ -53,8 +53,9 @@
 
         </tbody>
     </table>
+	@if(!auth()->guest())
 <div class="center-block">
     <a class="btn btn-info center-block"  href="{{ route('taketache.taches.show',$id) }}">Take a Task</a> </br>
 </div>
-
+	@endif
 @stop

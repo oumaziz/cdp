@@ -1,13 +1,14 @@
 <?php namespace App\Http\Requests;
 /**
+ * Created by PhpStorm.
  * User: oumaziz
- * Date: 04/11/15
- * Time: 11:18
+ * Date: 26/11/15
+ * Time: 11:49
  */
 
 use App\Http\Requests\Request;
 
-class NewSprintRequest extends Request {
+class NewUsRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +26,11 @@ class NewSprintRequest extends Request {
      * @return array
      */
     public function rules()
-    {      
+    {
         return [
-            'StartDate' => 'required|date',
-            'EndDate' => 'required|date|after:StartDate'
+            "description" => 'required',
+            "priority" => 'required',
+            "difficulty" => 'required'
         ];
     }
 

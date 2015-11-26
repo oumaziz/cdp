@@ -61,6 +61,9 @@ class TakeTacheController extends Controller
      */
     public function show($id)
     {
+        
+
+
    /*     $ntaches = Tache::all();
         $descriptions = Tache::lists('description','id');
         $user = Auth::user();

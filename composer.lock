@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "223862fcac4d68302efb150bee04f15f",
-    "content-hash": "9e806fe558b8f3cfd32bec47ccc4ec6d",
+    "hash": "b5e0f5decb391561004f86d6916068cf",
+    "content-hash": "76be75415c1eee4b416754c9bb3c8cf3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -578,6 +578,46 @@
                 "tokenizer"
             ],
             "time": "2015-03-11 20:06:43"
+        },
+        {
+            "name": "jpgraph/jpgraph",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ztec/JpGraph.git",
+                "reference": "ad26df5941e847cf1255aecd2011ce16207304cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ztec/JpGraph/zipball/ad26df5941e847cf1255aecd2011ce16207304cf",
+                "reference": "ad26df5941e847cf1255aecd2011ce16207304cf",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JpGraph": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "QPL 1.0"
+            ],
+            "authors": [
+                {
+                    "name": "JpGraph team"
+                }
+            ],
+            "description": "jpGraph, library to make graphs and charts",
+            "homepage": "http://jpgraph.net/",
+            "keywords": [
+                "chart",
+                "data",
+                "graph",
+                "jpgraph",
+                "pie"
+            ],
+            "time": "2013-05-23 14:04:00"
         },
         {
             "name": "jyggen/curl",
@@ -3332,6 +3372,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "jpgraph/jpgraph": 20,
         "illuminate/html": 20
     },
     "prefer-stable": false,

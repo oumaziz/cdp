@@ -89,7 +89,7 @@ class BDCController extends Controller
         JpGraph::module('line');
 
 
-        
+
 
         $graph = new \Graph(800,300);
         $ydata = array(6, 3, 8, 5, 15, 16, 19);

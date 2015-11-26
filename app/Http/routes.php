@@ -17,7 +17,7 @@ use App\Tache;
 
 
 Route::get('/', function () {
-    return view('default');
+    return redirect()->action('Auth\AuthController@getRegister');
 });
 
 

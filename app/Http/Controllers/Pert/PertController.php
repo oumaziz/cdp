@@ -227,7 +227,7 @@ class PertController extends Controller
                     for ($i = 1; $i <= count($listEtat); $i++) {
                         if (array_key_exists($listArc[$i]->getTache()->code, $succ)) {
                             if (in_array($tache->code, $succ[$listArc[$i]->getTache()->code]) == true) {
-                                $etatI = new Etat($duree[$tache->code] + $duree[$listArc[$i]->getTache()->code], 0, $j);
+                                $etatI = new Etat($duree[$tache->code] + $duree[$listArc[$i]->getTache()->code],$duree[$tache->code] + $duree[$listArc[$i]->getTache()->code] , $j);
                                 array_push($listEtat, $etatI);
                                 array_push($listArc, new Arc($listArc[$i]->getDestination(), $etatI, $tache, true));
                                 $j++;
@@ -246,11 +246,11 @@ class PertController extends Controller
         $pert = new Pert($listEtat,null,$listArc,$etatInit,$etatFin);
         $pert->calculAuPlusTot();
         $pert->calculatePlusTard();
-<<<<<<< HEAD
 
-=======
-        //dd($pert);
->>>>>>> 07eaaf69b06dfb90a5ce97a05d3a714050d92733
+        $listEtat = $pert->etats;
+        $listArc  = $pert->arcReals;
+
+
 
         for($i = 1 ; $i <= count($listEtat); $i++){
             file_put_contents(public_path('D3/app/pert.js'),"\t\t\t{ id: 'node".$i."', value: { label: '".$i." | ".$listEtat[$i]->getAuPlusTot()." | ".$listEtat[$i]->getAuPlusTard()."' } },\n", FILE_APPEND | LOCK_EX);

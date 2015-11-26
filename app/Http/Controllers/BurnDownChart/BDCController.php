@@ -56,7 +56,7 @@ class BDCController extends Controller
 
         $userstories = Userstory::all();
         $selectedUserStories = array();
-        $i = 0 ;
+        $i = 0;
         foreach($userstories as $userstory){
             if($userstory->project_id == $id){
                 $selectedUserStories[$i] = $userstory;
@@ -68,40 +68,58 @@ class BDCController extends Controller
 
         $realisedUS = array();
         $cptt = 0;
+        $cpt  = count($selectedUserStories);
         foreach($sprints as $sprint){
-            $cpt  = count($selectedUserStories);
-            $realisedUS[$sprint->id] = $cpt - $cptt ;
             if($sprint->EndDate == date('Y-m-d')){
                 for($i= 0 ; $i < count($selectedUserStories);$i++){
-                    if($selectedUserStories[$i]->sprint_id == $sprint->id  && $selectedUserStories[$i]->status == 1){
-                        $realisedUS[$sprint->id]--;
+                    if($selectedUserStories[$i]->status == 1){
                         $cptt++;
                     }
                 }
+                $realisedUS[$sprint->id] = $cpt - $cptt;
             }
         }
+       // dd($realisedUS);
 
-        //dd($realisedUS);
+        $j= 1;
+        $userstori = array();
+        $time = array();
 
+        $userstori[0] = count($selectedUserStories);
 
+        foreach($realisedUS as $key => $value){
+            $userstori[$j] = $value;
+            $time[$j]  = $key
+            ;
+            $j++;
+        }
+        $time[0] = 0;
 
+        //dd($time);
+        //$userstori[0] = count($selectedUserStories);
         JpGraph::load();
         JpGraph::module('line');
 
 
+        //$time = array_keys($realisedUS);
+        //dd($realisedUS);
 
 
-        $graph = new \Graph(800,300);
-        $ydata = array(6, 3, 8, 5, 15, 16, 19);
-        $xdata = array(0, 1, 2, 3, 4, 5, 6);
+        //dd($time);
+        //dd($userstori);
+
+
+        $graph = new \Graph(900,300);
+        $ydata = $userstori;
+        $xdata = $time;
 
         $graph->SetScale('intint');
         $lineplot = new \LinePlot($ydata, $xdata);
         $lineplot->SetColor('forestgreen');
         $graph->Add($lineplot);
-        $graph->title->Set('Test, à remplacer');
-        $graph->xaxis->title->Set('testaxis');
-        $graph->yaxis->title->Set('testyaxis');
+        $graph->title->Set('BurnDownChart');
+        $graph->xaxis->title->Set('Sprint\'s Time');
+        $graph->yaxis->title->Set('UserStories');
         $lineplot->SetWeight(3);
 
         $gdImgHandler = $graph->Stroke(_IMG_HANDLER);

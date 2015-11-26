@@ -18,7 +18,7 @@ class Etat
     public function __construct($auPlusTot, $auPlusTard, $nom)
     {
         $this->auPlusTot = $auPlusTot;
-        $this->auPlusTard = -1;
+        $this->auPlusTard = $auPlusTard;
         $this->nom = $nom;
     }
 

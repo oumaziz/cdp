@@ -35,7 +35,8 @@
 										@endif
 										<td> 
 										@if($us->status == 1)
-											<a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok"></span></a>
+											<a href= {{ URL::action("UsController@finish", [$us->project_id, $us->id]) }} class="btn btn-success btn-circle disabled">
+												<span class="glyphicon glyphicon-ok"></span></a>
 										@endif
 										</td>
 										

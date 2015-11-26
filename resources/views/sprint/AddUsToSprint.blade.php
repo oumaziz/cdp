@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="container">
-    <br/>
-    <div class="row">
+
     	<h2> La liste des User Stories </h2>
     	
  
@@ -37,7 +36,6 @@
 
 	</TABLE>
 	
-
 <p> Selectionnez les User Stories que vous voulez ajouter au sprint </p>
 
 <TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
@@ -68,8 +66,7 @@
 @else 
 <p> toutes les user stories sont attribuées </p>
 @endif 
-	<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
-
+<a href= {{ URL::action("SprintController@listSprint", [$idProject]) }} class= 'btn btn-info '> show Sprint List</a>
 </div>
 </div>
 @stop

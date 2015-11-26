@@ -65,10 +65,9 @@ class UsController extends Controller
 
         $ntaches = Tache::where('us_story_id', '=', $idUs)->get();
         $nbrtaches = Tache::where('us_story_id', '=', $idUs)->count();
-       // $taches = array();
         $i = 0;
         foreach($ntaches as $tache){
-            if($tache->state == 2 ){  //$taches[$i] = $tache;
+            if($tache->state == 2 ){ 
                 $i=$i+1;
             }          
         }

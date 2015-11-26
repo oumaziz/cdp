@@ -28,7 +28,7 @@ class UsSprintController extends Controller
 
         $userstory = DB::table('userstory')->where('id', '=', $idUs)->update(["sprint_id" => $idSprint]); 
         $userstories= DB::table('userstory')->where('project_id','=', $idProject)->get();
-
+        Session::flash("success1", "Votre us a bien été ajoutée.");
         //return Redirect::action("SprintController@display")->with('idProject', $idProject)->with('idSprint', $idSprint);
         return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject', $idProject)->with('idSprint', $idSprint);
     }
@@ -37,7 +37,7 @@ class UsSprintController extends Controller
 
         $userstory = DB::table('userstory')->where('id', '=', $idUs)->update(["sprint_id" => 0]); 
         $userstories= DB::table('userstory')->where('project_id','=', $idProject)->get();
-        Session::flash("success", "Votre us a bien supprimée.");
+        Session::flash("success2", "Votre us a bien supprimée.");
         //return Redirect::action("UsSprintController@show")->with('idProject', $idProject);
         return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject', $idProject)->with('idSprint', $idSprint);
     }

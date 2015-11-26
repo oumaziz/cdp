@@ -25,10 +25,10 @@ class NewSprintRequest extends Request {
      * @return array
      */
     public function rules()
-    {
+    {      
         return [
-            "StartDate" => "required|date_format:Y-m-d",
-            "EndDate" => "required|date_format:Y-m-d"
+            'StartDate' => 'required|date',
+            'EndDate' => 'required|date|after:StartDate'
         ];
     }
 

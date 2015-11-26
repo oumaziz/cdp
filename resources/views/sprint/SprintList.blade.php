@@ -53,7 +53,7 @@
 								@endforeach
 							</TABLE>
 						@else
-						<p> Aucun sprint ajouté!! </p>
+						<p> No sprint added. </p>
 						@endif
 
 						@if(!auth()->guest())

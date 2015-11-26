@@ -18,7 +18,7 @@
             <div class="form-group form-group-label">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <label class="floating-label" for="StartDate">Date de début :</label>
+                        <label class="floating-label" for="StartDate">Start date :</label>
                         <input type="date" name="StartDate" class="form-control" value="{{ $StartDate }}"/>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
             <div class="form-group form-group-label">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <label class="floating-label" for="EndDate">Date de fin :</label>
+                        <label class="floating-label" for="EndDate">End date :</label>
                         <input type="date" name="EndDate" class="form-control" value="{{ $EndDate }}"/>
                     </div>
                 </div>
@@ -37,8 +37,8 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-10 col-md-push-1">
-                        <button class="btn btn-primary">Ajouter</button> 
-                        <a href="{{ URL::previous()}}" class="btn btn-default" >Annuler</a>
+                        <button class="btn btn-primary">Update</button>
+                        <a href="{{ URL::previous()}}" class="btn btn-default" >Dismiss</a>
                     </div>
                 </div>
             </div>

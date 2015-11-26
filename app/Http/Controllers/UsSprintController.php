@@ -16,7 +16,7 @@ class UsSprintController extends Controller
 {
    public function show($idProject){
         $userstories= DB::table('userstory')->Where('sprint_id','=', 0)->where('project_id', '=', $idProject)->get();
-        return view("sprint.AddUsToSprint")->with('userstories',$userstories);
+        return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with($idProject);
     }
 
     public function showSprint ($idSprint){
@@ -27,17 +27,19 @@ class UsSprintController extends Controller
 	public function add (Request $request, $idProject, $idUs, $idSprint){
 
         $userstory = DB::table('userstory')->where('id', '=', $idUs)->update(["sprint_id" => $idSprint]); 
-		//Session::flash("success", "Votre us a bien été ajoutée.");           
-        return Redirect::action("UsSprintController@showSprint")->with('idSprint', $idSprint);
+        $userstories= DB::table('userstory')->where('project_id','=', $idProject)->get();
+        Session::flash("success1", "Votre us a bien été ajoutée.");
+        //return Redirect::action("SprintController@display")->with('idProject', $idProject)->with('idSprint', $idSprint);
+        return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject', $idProject)->with('idSprint', $idSprint);
     }
 
-    public function delete (Request $request, $idProject, $idUs){
+    public function delete (Request $request, $idProject, $idSprint, $idUs){
 
-        $userstory = DB::table('userstory')->where('id', '=', $idUs)->update(["sprint_id" => 'NULL']); 
-
-        Session::flash("success", "Votre us a bien supprimée.");
-        
-        return Redirect::action("UsSprintController@show")->with('idProject', $idProject);
+        $userstory = DB::table('userstory')->where('id', '=', $idUs)->update(["sprint_id" => 0]); 
+        $userstories= DB::table('userstory')->where('project_id','=', $idProject)->get();
+        Session::flash("success2", "Votre us a bien supprimée.");
+        //return Redirect::action("UsSprintController@show")->with('idProject', $idProject);
+        return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject', $idProject)->with('idSprint', $idSprint);
     }
     
 }

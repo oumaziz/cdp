@@ -120,6 +120,10 @@ class TakeTacheController extends Controller
 
         return view('taketache.index',compact('taches','descriptions','user','id','depend'));
 
+
+
+
+
     }
 
     /**

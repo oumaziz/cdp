@@ -5,15 +5,15 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">			
 				<div class="panel-body">
-					<h2> List des user stories finis</h2>
+					<h2>Finished User Stories</h2>
 						@if(count($userstories))
 							<TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
 
 								<TR>
-									<TH> N° </TH>
-									<TH> Description </TH>
-									<TH> Priorité </TH>
-									<TH> Difficulté </TH>
+									<TH> Number</TH>
+									<TH> Description</TH>
+									<TH> Priority</TH>
+									<TH> Difficulty</TH>
 								</TR>
 								<?php $i=1; ?>
 								@foreach($userstories as $us)
@@ -27,7 +27,7 @@
 								@endforeach
 							</TABLE>
 						@else
-						<p> Aucune user story est terminée !! </p>
+						<p>There is no finished User Story</p>
 						@endif
 
 						@if(!auth()->guest())

@@ -62,12 +62,12 @@ class UsController extends Controller
     }
 
     public function finish ($idProject, $idUs) {
+
         $ntaches = Tache::where('us_story_id', '=', $idUs)->get();
         $nbrtaches = Tache::where('us_story_id', '=', $idUs)->count();
-       // $taches = array();
         $i = 0;
         foreach($ntaches as $tache){
-            if($tache->state == 2 ){  //$taches[$i] = $tache;
+            if($tache->state == 2 ){ 
                 $i=$i+1;
             }          
         }
@@ -75,7 +75,8 @@ class UsController extends Controller
           $userstories = Userstory::where('id', '=', $idUs)->update(["status"=> 1]);
             return Redirect::action("UsController@isFinish" , [$idProject]);
         }
-        else return  "not finish";
+
+        else return Redirect::action("BacklogController@show", [$idProject]);
     }
 
     public function isFinish ($idProject){

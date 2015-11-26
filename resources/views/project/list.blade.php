@@ -1,9 +1,10 @@
 
 @extends('default')
 @section('content')
+@if(!auth()->guest())
 <div class="row">
-			<div class="col-md-10 col-md-offset-1">
-<h2> La liste des Projets </h2>
+<div class="col-md-10 col-md-offset-1">
+<h2>List of projects</h2>
     	
  
 @if(count($project))
@@ -39,7 +40,7 @@
 					<a href= {{ URL::action("MemberController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Members </a>
                     <a href= {{ URL::action("VisitorController@show", [$proj->id]) }} class= 'btn btn-info btn-xs'> Visitor </a>
 				</td>
-		
+				
 
 			</TR>
 
@@ -52,4 +53,5 @@
 @endif 
 </div>
 </div>
+@endif
 @stop

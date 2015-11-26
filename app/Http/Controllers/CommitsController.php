@@ -40,7 +40,10 @@ class CommitsController extends Controller
                 else return Redirect()->action('Auth\AuthController@getLogin');
             }
 
-        }catch(\Exception $e){ dd($e); return "Une erreur s'est produite."; }
+        }catch(\Exception $e){
+            //dd($e);
+            return "Une erreur s'est produite.";
+        }
     }
 
     private function showCommits($task, $project_id){

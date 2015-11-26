@@ -98,7 +98,7 @@ class PertController extends Controller
 
 
         $pert = new Pert($listEtat,null,$listArc,$etatInit,$etatFin);
-        dd($pert);
+        //dd($pert);
 
         for($i = 1 ; $i <= count($listEtat); $i++){
             file_put_contents(public_path('D3/app/pert.js'),"\t\t\t{ id: 'node".$i."', value: { label: '".$i."' } },\n", FILE_APPEND | LOCK_EX);
@@ -113,7 +113,7 @@ class PertController extends Controller
 
 
 
-        dd(file_put_contents(public_path('D3/app/pert.js'), $file_end, FILE_APPEND | LOCK_EX));
+        //dd(file_put_contents(public_path('D3/app/pert.js'), $file_end, FILE_APPEND | LOCK_EX));
 
     }
 

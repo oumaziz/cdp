@@ -68,11 +68,11 @@ class FinishTaskController extends Controller
 
                     if($test == true){
                         $userstory->update(['status'=> 1]);
-                        dd($userstory);
+                        //dd($userstory);
                     }
                     else{
                         $userstory->update(['status'=> 0]);
-                        dd($userstory);
+                        //dd($userstory);
                     }
 
                 }

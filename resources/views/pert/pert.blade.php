@@ -48,12 +48,9 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    @if(auth()->guest())
-                        <li class="active"><a href="{{ url('project/list') }}">Visiteur</a></li>
-                    @else
+                    @if(!auth()->guest())
                         <li><a href="{{ url('project/list') }}">Project List</a></li>
                         <li><a href="{{ url('project/new') }}">Create a Project</a></li>
-
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

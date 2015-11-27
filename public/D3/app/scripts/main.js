@@ -23,7 +23,7 @@
             var h = main.get(0).getBoundingClientRect().height;
 	    var l = main.get(0).getBoundingClientRect().width;
             var newHeight = h + 40;
-	    var newWidth  = l + 200;
+	    var newWidth  = l + 500;
             newHeight = newHeight < 80 ? 80 : newHeight;
             svgParent.height(newHeight);
 	    svgParent.width(newWidth);	

@@ -5,8 +5,8 @@
 <div class="container">
     <br/>
     <div class="row">
-    	<h2> La liste des User Stories</h2>
-    	<p> Supprimerles User Stories que vous ne voulez  pas mettre dans le sprint  </p>
+    	<h2> User Stories list</h2>
+    	<p> Remove userstories that you don't want to add to the Sprint  </p>
   
 @if(count($userstories))
 
@@ -16,9 +16,9 @@
 		<TR>
 			<TH> N° </TH>
 			<TH> Description </TH>
-			<TH> Priorité </TH>
-			<TH> Difficulté </TH>
-			<th> Ajouter</th>
+			<TH> Priority </TH>
+			<TH> Difficulty </TH>
+			<th> Add</th>
 		</TR>
 
 		@foreach($userstories as $us)
@@ -29,7 +29,7 @@
 				<TD> {{$us->difficulty}} </TD>
 				<td>   		
 						
-					<a href= {{ URL::action("UsSprintController@delete", [$us->project_id, $us->id]) }} class= 'btn btn-danger btn-xs'>Supprimer</a>
+					<a href= {{ URL::action("UsSprintController@delete", [$us->project_id, $us->id]) }} class= 'btn btn-danger btn-xs'>Remove</a>
 
 				</td>
 
@@ -41,7 +41,7 @@
 	<a href="{{ URL::previous()}}" class="btn btn-default" >Back</a>
 
 @else 
-<p> le sprint est vide!!! </p>
+<p> This sprint is empty. </p>
 @endif 
 
 </div>

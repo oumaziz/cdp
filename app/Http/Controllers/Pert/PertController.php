@@ -6,6 +6,7 @@ use App\Arc;
 use App\Etat;
 use App\Pert;
 use App\Tache;
+use App\Visitor;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,11 +14,25 @@ use App\Http\Controllers\Controller;
 
 class PertController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $id = $request->route()->pid;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $id)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $handle = fopen(public_path('D3/app/pert.js'), "r+");
@@ -98,7 +113,7 @@ class PertController extends Controller
 
 
         $pert = new Pert($listEtat,null,$listArc,$etatInit,$etatFin);
-        dd($pert);
+        //dd($pert);
 
         for($i = 1 ; $i <= count($listEtat); $i++){
             file_put_contents(public_path('D3/app/pert.js'),"\t\t\t{ id: 'node".$i."', value: { label: '".$i."' } },\n", FILE_APPEND | LOCK_EX);
@@ -113,7 +128,7 @@ class PertController extends Controller
 
 
 
-        dd(file_put_contents(public_path('D3/app/pert.js'), $file_end, FILE_APPEND | LOCK_EX));
+        //dd(file_put_contents(public_path('D3/app/pert.js'), $file_end, FILE_APPEND | LOCK_EX));
 
     }
 
@@ -227,7 +242,7 @@ class PertController extends Controller
                     for ($i = 1; $i <= count($listEtat); $i++) {
                         if (array_key_exists($listArc[$i]->getTache()->code, $succ)) {
                             if (in_array($tache->code, $succ[$listArc[$i]->getTache()->code]) == true) {
-                                $etatI = new Etat($duree[$tache->code] + $duree[$listArc[$i]->getTache()->code], 0, $j);
+                                $etatI = new Etat($duree[$tache->code] + $duree[$listArc[$i]->getTache()->code],$duree[$tache->code] + $duree[$listArc[$i]->getTache()->code] , $j);
                                 array_push($listEtat, $etatI);
                                 array_push($listArc, new Arc($listArc[$i]->getDestination(), $etatI, $tache, true));
                                 $j++;
@@ -246,7 +261,11 @@ class PertController extends Controller
         $pert = new Pert($listEtat,null,$listArc,$etatInit,$etatFin);
         $pert->calculAuPlusTot();
         $pert->calculatePlusTard();
-        dd($pert);
+
+        $listEtat = $pert->etats;
+        $listArc  = $pert->arcReals;
+
+
 
         for($i = 1 ; $i <= count($listEtat); $i++){
             file_put_contents(public_path('D3/app/pert.js'),"\t\t\t{ id: 'node".$i."', value: { label: '".$i." | ".$listEtat[$i]->getAuPlusTot()." | ".$listEtat[$i]->getAuPlusTard()."' } },\n", FILE_APPEND | LOCK_EX);

@@ -13,18 +13,15 @@ use DB;
 class VisitorController extends Controller
 {
 
-    /**
-     * Messager pour NASSER :
-     * S'il te plait, vu que c'est toi qui crée la vue récupère
-     * la clé et mets la dans la methode SHOW (Vu que je n'ai pas de Model)
-     *
-     * Pour le moment, il n'y a pas de lien. Il faudra qu'on fasse une réunion
-     * pour ça.
-     * Merci
-     */
+    public function __construct(\Illuminate\Http\Request $request){
+        $this->middleware('auth');
+    }
 
     public function show($project_id){
-        $key = Visitor::where("project_id", $project_id)->get()->first();
+        $key = null;
+        $visitor = Visitor::where("project_id", $project_id)->get()->first();
+
+        if($visitor != null) $key = $visitor->Key;
         return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
     }
 
@@ -49,7 +46,7 @@ class VisitorController extends Controller
             ]);
         }
         }catch(\Illuminate\Database\QueryException $e){}
-        return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
+        return redirect()->action("VisitorController@show", [$project_id]);
     }
 
     public function forbid($project_id){
@@ -58,6 +55,6 @@ class VisitorController extends Controller
 			   DB::table('visitor')->where('project_id' , $project_id)->delete();
             }
 		$key = Visitor::where("project_id", $project_id)->get()->first();	
-        return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
+        return redirect()->action("VisitorController@show", [$project_id]);
     }
 }

@@ -20,6 +20,19 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 class CommitsController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $idProject = $request->route()->idProject;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
+
     private $commits = array();
     private $position = 0;
 
@@ -40,7 +53,10 @@ class CommitsController extends Controller
                 else return Redirect()->action('Auth\AuthController@getLogin');
             }
 
-        }catch(\Exception $e){ dd($e); return "Une erreur s'est produite."; }
+        }catch(\Exception $e){
+            //dd($e);
+            return "Une erreur s'est produite.";
+        }
     }
 
     private function showCommits($task, $project_id){

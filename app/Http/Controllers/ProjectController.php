@@ -2,22 +2,42 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\NewProjectRequest;
+use App\Member;
 use App\Project;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 use Session;
 use DB;
+use App\Visitor;
 
 class ProjectController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $idProject = $request->route()->idProject;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
 
     public function show(){
         return view("project.add");
     }
 
     public function projectList(){
-        $project= DB::table('project')->get();
-         $developer= DB::table('Developer')->get();
+
+        $projects_member_id = Member::where("Developer_id", auth()->User()->id)->get()->pluck("project_id");
+        $project_owner_id = Project::where("developer_id", auth()->User()->id)->get()->pluck("id");
+
+        $projects_id = array_merge($projects_member_id->toArray(), $project_owner_id->toArray());
+
+        $project = Project::whereIn("id", $projects_id)->get();
+        $developer= DB::table('Developer')->get();
 
         return view("project.list")->with('project',$project)->with('developer',$developer);
     }

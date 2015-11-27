@@ -11,9 +11,23 @@ use Redirect;
 use App\Tache;
 use Session;
 use DB;
+use App\Visitor;
 
 class UsController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $idProject = $request->route()->idProject;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
+
     public function create($idProject){
         return view("UsForm")->with('us',[])->with('idProject',$idProject);
     }
@@ -23,7 +37,7 @@ class UsController extends Controller
         return view("UsForm")->with('us',head($us));
     }
 
-    public function createConfirm(Request $r , $idProject){
+    public function createConfirm(Requests\NewUsRequest $r , $idProject){
 
        /* $developer_id = 1;
         $project_id = DB::table('project')->where('developer_id', $developer_id)->first()->id;*/
@@ -38,7 +52,7 @@ class UsController extends Controller
 
         return Redirect::action("BacklogController@show", [$idProject]);
     }
-    public function modifyConfirm(Request $r, $idProject){
+    public function modifyConfirm(Requests\NewUsRequest $r, $idProject){
 
         $us = Userstory::where('id', $r->input("us"))->first();
 
@@ -65,10 +79,9 @@ class UsController extends Controller
 
         $ntaches = Tache::where('us_story_id', '=', $idUs)->get();
         $nbrtaches = Tache::where('us_story_id', '=', $idUs)->count();
-       // $taches = array();
         $i = 0;
         foreach($ntaches as $tache){
-            if($tache->state == 2 ){  //$taches[$i] = $tache;
+            if($tache->state == 2 ){ 
                 $i=$i+1;
             }          
         }

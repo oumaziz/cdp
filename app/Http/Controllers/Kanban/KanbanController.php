@@ -9,9 +9,23 @@ use Illuminate\Database\Eloquent;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tache;
+use App\Visitor;
 
 class KanbanController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $id = $request->route()->pid;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $id)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
+
     /**
      * Display a listing of the resource.
      *

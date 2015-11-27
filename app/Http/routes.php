@@ -13,12 +13,25 @@
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
+//Open resources for all !
+Route::resource('bdchart','BurnDownChart\BDCController');
+
+// Special url for visitors
+Route::get('bdchart/{id}/{key}','BurnDownChart\BDCController@show');
+
+
 //Resources opened for all visitors
 Route::resource('pert/taches','Pert\PertController');
+
+// Special url for visitors
+Route::get('pert/taches/{id}/{pid}/{key}','Pert\PertController@show');
 
 
 //Resources opened also to Visitors
 Route::resource('kanban/taches','Kanban\KanbanController');
+
+// Special url for visitors
+Route::get('kanban/taches/{id}/{pid}/{key}','Kanban\KanbanController@show');
 
 //for connected developers to make task in done state
 Route::resource('finishtask/taches','FinishTask\FinishTaskController');
@@ -66,7 +79,7 @@ Route::get('visitor/backlog/{id}/{key}','BacklogController@visitor');
 Route::get('backlog/userstory/remove/{id}','UsController@remove');
 
 // Page d'ajout d'un Sprint
-Route::get('sprint/list/{idProject}', 'SprintController@listSprint');
+Route::get('sprint/list/{idProject}/{key?}', 'SprintController@listSprint');
 
 Route::get('sprint/{project_id}/add/', 'SprintController@show');
 
@@ -76,13 +89,17 @@ Route::get('sprint/{project_id}/edit/{sprint_id}', 'SprintController@edit');
 
 Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@editConfirm');
 
-Route::get('sprint/{idProject}/userstory/{idSprint}/{i}', 'SprintController@display');
+
+//Route::get('sprint/{idProject}/userstory/{idSprint}/{i}', 'SprintController@display');
+
+Route::get('sprint/{idProject}/userstory/{idSprint}/{key?}', 'SprintController@display');
+
 
 //us to sprint
 Route::get('AddUsToSprint/{idProject}','UsSprintController@show');
 Route::get('usSprint/add/{idProject}/{idUs}/{idSprint}','UsSprintController@add');
 
-Route::get('usSprint/{idSprint}','UsSprintController@showSprint');
+Route::get('usSprint/{idSprint}/{key?}','UsSprintController@showSprint');
 Route::get('usSprint/delete/{idProject}/{idSprint}/{idUs}','UsSprintController@delete');
 
 

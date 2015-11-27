@@ -8,9 +8,22 @@ use App\Http\Requests;
 use App\Sprint;
 use Redirect;
 use DB;
+use App\Visitor;
 
 class SprintController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $idProject = $request->route()->idProject;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
 
     public function show($project_id){
         return view("sprint.add", compact("project_id"));
@@ -22,10 +35,10 @@ class SprintController extends Controller
         return view("sprint.AddUsToSprint")->with('userstories',$userstories)->with('idProject',$idProject)->with('idSprint', $idSprint)->with('i', $i);
     }
 
-    public function listSprint($idProject){
+    public function listSprint($idProject, $key = null){
 
         $sprint = DB::table('sprint')->where('project_id', '=', $idProject)->get();
-        return view("sprint.SprintList")->with('sprint', $sprint)->with('idProject',$idProject) ;
+        return view("sprint.SprintList")->with('sprint', $sprint)->with('idProject',$idProject)->with('key',$key);
     }
 
     public function add(NewSprintRequest $r, $project_id){

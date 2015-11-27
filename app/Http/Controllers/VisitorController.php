@@ -18,7 +18,10 @@ class VisitorController extends Controller
     }
 
     public function show($project_id){
-        $key = Visitor::where("project_id", $project_id)->get()->first()->Key;
+        $key = null;
+        $visitor = Visitor::where("project_id", $project_id)->get()->first();
+
+        if($visitor != null) $key = $visitor->Key;
         return view("visitor.show")->with('project_id', $project_id)->with('key', $key);
     }
 

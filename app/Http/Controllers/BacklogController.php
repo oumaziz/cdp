@@ -30,7 +30,8 @@ class BacklogController extends Controller
     	if($key != null){
             if(Visitor::where("Key", $key)->where("project_id", $idProject)->get() != null){
                 $userstories= DB::table('userstory')->where('project_id', $idProject)->get();
-        		return view("Backlog")->with('userstories',$userstories)->with('idProject', $idProject);
+        		return view("Backlog")->with('userstories',$userstories)->with('idProject', $idProject)
+                    ->with('key', $key);
     		}
         } 
         else {
@@ -50,7 +51,8 @@ class BacklogController extends Controller
                 }
             }      
             $userstories = Userstory::where('project_id','=', $idProject)->get();
-            return view("Backlog")->with('userstories', $userstories)->with('idProject', $idProject);
+            return view("Backlog")->with('userstories', $userstories)->with('idProject', $idProject)
+                ->with('key', $key);
         }
     }
 

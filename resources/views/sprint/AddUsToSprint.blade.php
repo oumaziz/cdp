@@ -7,13 +7,12 @@
 
 @if(count($userstories))
         <?php $first = true; ?>
-        <?php $i=1; ?>
 		@foreach($userstories as $us)
 			@if($us->sprint_id == $idSprint)
                 @if($first)
                 <TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
                     <TR>
-                        <TH> N° </TH>
+                       
                         <TH> Description </TH>
                         <TH> Priority </TH>
                         <TH> Difficulty </TH>
@@ -22,12 +21,12 @@
                     <?php $first = false; ?>
                 @endif
 			<TR>
-				<TH> <?php echo $i++; ?> </TH>
+				
 				<TD> {{$us->description}} </TD>
 				<TD> {{$us->priority}} </TD>
 				<TD> {{$us->difficulty}} </TD>
 				<td>
-					<a href= {{ URL::action("UsSprintController@delete", [$us->project_id, $idSprint, $us->id]) }} class= 'btn btn-danger btn-circle'>
+					<a href= {{ URL::action("UsSprintController@delete", [$us->project_id, $idSprint, $us->id, $i]) }} class= 'btn btn-danger btn-circle'>
 						<span class="glyphicon glyphicon-remove"></span>
 					</a>
 				</td>
@@ -39,25 +38,25 @@
 	</TABLE>
 
 <p> Select userstories you want to add to the project </p>
-
+ <?php $first = true; ?>
+ @foreach($userstories as $us)
+	@if($us->sprint_id == 0)
+ 		@if($first)
 <TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
 		<TR>
-			<TH> N° </TH>
 			<TH> Description </TH>
             <TH> Priority </TH>
             <TH> Difficulty </TH>
 			<th> Add</th>
 		</TR>
-		 <?php $i=1; ?>
-		@foreach($userstories as $us)
-		  @if($us->sprint_id == 0)
+			<?php $first = false; ?>
+        @endif	
 			<TR>
-				<TH> <?php echo $i++; ?> </TH>
 				<TD> {{$us->description}} </TD>
 				<TD> {{$us->priority}} </TD>
 				<TD> {{$us->difficulty}} </TD>
 				<td>
-					<a href="{{ URL::action("UsSprintController@add", [$us->project_id, $us->id, $idSprint] ) }}" class="btn btn-primary btn-xs" > Add </a>
+					<a href="{{ URL::action("UsSprintController@add", [$us->project_id, $us->id, $idSprint, $i]) }}" class="btn btn-primary btn-xs" > Add </a>
 				</td>
 
 			</TR>

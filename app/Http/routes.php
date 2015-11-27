@@ -92,15 +92,15 @@ Route::post('sprint/{project_id}/edit/{sprint_id}/confirm', 'SprintController@ed
 
 //Route::get('sprint/{idProject}/userstory/{idSprint}/{i}', 'SprintController@display');
 
-Route::get('sprint/{idProject}/userstory/{idSprint}/{key?}', 'SprintController@display');
+Route::get('sprint/{idProject}/userstory/{idSprint}/{i}/{key?}', 'SprintController@display');
 
 
 //us to sprint
 Route::get('AddUsToSprint/{idProject}','UsSprintController@show');
-Route::get('usSprint/add/{idProject}/{idUs}/{idSprint}','UsSprintController@add');
+Route::get('usSprint/add/{idProject}/{idUs}/{idSprint}/{i}','UsSprintController@add');
 
 Route::get('usSprint/{idSprint}/{key?}','UsSprintController@showSprint');
-Route::get('usSprint/delete/{idProject}/{idSprint}/{idUs}','UsSprintController@delete');
+Route::get('usSprint/delete/{idProject}/{idSprint}/{idUs}/{i}','UsSprintController@delete');
 
 
 Route::get('project/{project_id}/kanban/{sprint_id}/{key?}', 'KanbanController@show');

@@ -16,30 +16,10 @@
                 @if(count($sprint))
                     <TABLE cellpadding="0" cellspacing="0" border="0" class="table table-striped table-condensed table-bordered" id="userstories">
 
-								<TR>
-									<TH> N° </TH>
-									<TH> Start Date  </TH>
-									<TH> End Date </TH>
-									
-									@if(!auth()->guest())
-									<th> Display</th>
-									<th> Update</th>
-									@endif
-									<th> Kanban </th>
-									<th> PERT </th>
-								</TR>
-								<?php $i=1; ?>
-								@foreach($sprint as $us)
-									<TR>
-										<TH> <?php echo "Sprint   "; echo $i++; ?> </TH>
-										<TD> {{$us->StartDate}} </TD>
-										<TD> {{$us->EndDate}} </TD>
-										
-										@if(!auth()->guest())
-										<td>
-										 <a href= {{ URL::action("SprintController@display", [$us->project_id, $us->id, $i-1]) }} class= 'btn btn-info btn-xs'> Us List </a>  
-										 <a href= {{ route('taches.taches.show',$us->id) }} class= 'btn btn-info btn-xs'> Task List</a> 
-										</td>
+                        <TR>
+                            <TH> N° </TH>
+                            <TH> Start Date  </TH>
+                            <TH> End Date </TH>
 
                             @if(!auth()->guest())
                                 <th> Display</th>
@@ -51,13 +31,13 @@
                         <?php $i=1; ?>
                         @foreach($sprint as $us)
                             <TR>
-                                <TH> <?php echo "Sprint   "; echo $i++; ?> </TH>
+                                <TH> <?php echo "Sprint   "; echo $i; ?> </TH>
                                 <TD> {{$us->StartDate}} </TD>
                                 <TD> {{$us->EndDate}} </TD>
 
                                 @if(!auth()->guest())
                                     <td>
-                                        <a href= {{ URL::action("SprintController@display", [$us->project_id, $us->id]) }} class= 'btn btn-info btn-xs'> Us List </a>
+                                        <a href= {{ URL::action("SprintController@display", [$us->project_id, $us->id, $i]) }} class= 'btn btn-info btn-xs'> Us List </a>
                                         <a href= {{ route('taches.taches.show',$us->id) }} class= 'btn btn-info btn-xs'> Task List</a>
                                     </td>
 
@@ -74,7 +54,7 @@
                                     </td>
 
                             </TR>
-
+                             <?php $i++; ?>
                         @endforeach
                     </TABLE>
                 @else
@@ -94,5 +74,3 @@
     </div>
     </div>
 @endsection
-
-

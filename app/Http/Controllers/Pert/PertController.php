@@ -6,6 +6,7 @@ use App\Arc;
 use App\Etat;
 use App\Pert;
 use App\Tache;
+use App\Visitor;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,10 +17,10 @@ class PertController extends Controller
 
     public function __construct(\Illuminate\Http\Request $request){
         $key = $request->route()->key;
-        $idProject = $request->route()->idProject;
+        $id = $request->route()->pid;
 
         if($key != null){
-            if(Visitor::where("Key", $key)->where("project_id", $idProject)->get()->first() == null){
+            if(Visitor::where("Key", $key)->where("project_id", $id)->get()->first() == null){
                 $this->middleware('auth');
             }
         }

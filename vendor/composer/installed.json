@@ -3492,7 +3492,7 @@
         },
         "time": "2013-05-23 14:04:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "JpGraph": "lib/"

@@ -10,10 +10,24 @@ use Illuminate\Http\Request;
 use JpGraph\JpGraph;
 
 use App\Http\Requests;
+use App\Visitor;
 use App\Http\Controllers\Controller;
 
 class BDCController extends Controller
 {
+
+    public function __construct(\Illuminate\Http\Request $request){
+        $key = $request->route()->key;
+        $id = $request->route()->id;
+
+        if($key != null){
+            if(Visitor::where("Key", $key)->where("project_id", $id)->get()->first() == null){
+                $this->middleware('auth');
+            }
+        }
+        else { $this->middleware('auth'); }
+    }
+
     /**
      * Display a listing of the resource.
      *

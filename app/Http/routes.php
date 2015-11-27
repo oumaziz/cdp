@@ -16,13 +16,22 @@ use Illuminate\Support\Facades\Route;
 //Open resources for all !
 Route::resource('bdchart','BurnDownChart\BDCController');
 
+// Special url for visitors
+Route::get('bdchart/{id}/{key}','BurnDownChart\BDCController@show');
+
 
 //Resources opened for all visitors
 Route::resource('pert/taches','Pert\PertController');
 
+// Special url for visitors
+Route::get('pert/taches/{id}/{pid}/{key}','Pert\PertController@show');
+
 
 //Resources opened also to Visitors
 Route::resource('kanban/taches','Kanban\KanbanController');
+
+// Special url for visitors
+Route::get('kanban/taches/{id}/{pid}/{key}','Kanban\KanbanController@show');
 
 //for connected developers to make task in done state
 Route::resource('finishtask/taches','FinishTask\FinishTaskController');

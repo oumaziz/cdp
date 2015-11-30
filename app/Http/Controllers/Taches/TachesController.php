@@ -66,10 +66,25 @@ class TachesController extends Controller
             $request['predecessors'] = $preds;
         }
 
-        $tache = Tache::create($request->all());
-        Session::flash('success1',"You Task was added with success !");
+        $taches = Tache::all('code')->toArray();
+        $ttaches = array();
+        $i= 0 ;
+        foreach($taches as $tachee){
+            $ttaches[$i] = $tachee['code'];
+            $i++;
+        }
 
-        return redirect(route('taches.taches.show',$tache->sprint_id));
+        if(in_array($request->get('code'), $ttaches)){
+            Session::flash('danger',"This code already exists  !");
+            return redirect(route('taches.taches.create'));
+        }
+        if(in_array($request->get('code'), $ttaches)== false){
+            $tache = Tache::create($request->all());
+            Session::flash('success1',"You Task was added with success !");
+
+            return redirect(route('taches.taches.show',$tache->sprint_id));
+        }
+
     }
 
     /**
@@ -151,6 +166,7 @@ class TachesController extends Controller
         $tache = Tache::findOrFail($id);
         $sprint_id = $tache->sprint_id ;
         DB::table('tache')->delete($id);
+        Session::flash('success2',"You Task was deleted with success !");
         return redirect(route('taches.taches.show',$sprint_id));
     }
 

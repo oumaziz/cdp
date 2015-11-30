@@ -81,13 +81,20 @@ class BDCController extends Controller
         $sprints = Sprint::all();
 
         $realisedUS = array();
+
+        $somme = 0;
+        for($i= 0 ; $i < count($selectedUserStories);$i++) {
+            $somme = $somme + $selectedUserStories[$i]->difficulty ;
+
+        }
+
         $cptt = 0;
-        $cpt  = count($selectedUserStories);
+        $cpt  = $somme;
         foreach($sprints as $sprint){
 
                 for($i= 0 ; $i < count($selectedUserStories);$i++){
                     if($selectedUserStories[$i]->sprint_id == $sprint->id && $selectedUserStories[$i]->status == 1){
-                        $cptt++;
+                        $cptt = $cptt + $selectedUserStories[$i]->difficulty;
                     }
                 }
                 $realisedUS[$sprint->id] = $cpt - $cptt;
@@ -99,14 +106,13 @@ class BDCController extends Controller
         $userstori = array();
         $time = array();
 
-        $userstori[0] = count($selectedUserStories);
+        $userstori[0] =  $somme;
         $time[0] = 0;
 
         //dd($realisedUS);
         foreach($realisedUS as $key => $value){
             $userstori[$j] = $value;
-            $time[$j]  = $key
-            ;
+            $time[$j]  = $key;
             $j++;
         }
 
@@ -138,7 +144,7 @@ class BDCController extends Controller
         $graph->Add($lineplot);
         $graph->title->Set('BurnDownChart');
         $graph->xaxis->title->Set('Sprint\'s Time');
-        $graph->yaxis->title->Set('UserStories');
+        $graph->yaxis->title->Set('Difficulties');
         $lineplot->SetWeight(3);
 
         $gdImgHandler = $graph->Stroke(_IMG_HANDLER);

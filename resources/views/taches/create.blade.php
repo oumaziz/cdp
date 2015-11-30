@@ -4,6 +4,14 @@
 
 @extends('default')
 @section('content')
+
+	@if(Session::has('danger'))
+		<div class="alert alert-danger">
+
+			{{ Session::get('danger') }}
+
+		</div>
+	@endif
 <div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">

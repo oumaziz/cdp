@@ -19,7 +19,7 @@
         
         @endif
         @if(empty($taches))
-            <h3>There is no task in your sprint {{$id}}  </h3>
+            <h3>There is no task in your sprint</h3>
         @endif
         @foreach($taches as $tache)
 

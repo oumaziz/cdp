@@ -32,7 +32,7 @@
 
     <div class="container">
         @if(!empty($taches))
-        <h2>List of tasks of sprint {{$id}}</h2>
+        <h2>List of tasks in your sprint</h2>
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -47,7 +47,7 @@
             <tbody>
             @endif
             @if(empty($taches))
-                <h2>There is no task in your sprint {{$id}}, please add one !</h2>
+                <h2>There is no task in your sprint, please add one !</h2>
             @endif
 
             @foreach($taches as $tache)

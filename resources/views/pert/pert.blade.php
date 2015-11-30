@@ -109,7 +109,7 @@
     <!-- Footer -->
     <div id="footer">
         <div class="container" >
-            <p >Université de Bordeaux 2015</p>
+            <p >University of Bordeaux 2015</p>
         </div>
     </div>
 

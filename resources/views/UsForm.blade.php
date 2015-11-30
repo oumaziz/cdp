@@ -55,14 +55,14 @@
                                         
                                             <div class="col-md-6 col-md-offset-4">
                                                
-                                                <label for="done">IsFinish
+                                                <label for="done">Finished
                                                  <input type ="checkbox" name="done" id="done" value="done" class="form-control" <?php if($us->status == 1) echo 'checked="checked"' ?> />
                                                  </label> 
                                             </div>
                                         </div>
                                     
                                     <button type="submit" class="btn  btn-warning"> Update</button>
-                                    <a href="{{ URL::previous()}}" class="btn btn-default" >Annuler </a>
+                                    <a href="{{ URL::previous()}}" class="btn btn-default" >Cancel </a>
                                 </form>
                             @else
 

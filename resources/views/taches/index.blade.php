@@ -14,6 +14,13 @@
 
     </div>
 @endif
+@if(Session::has('success2'))
+    <div class="alert alert-success">
+
+        {{ Session::get('success2') }}
+
+    </div>
+@endif
 @if(Session::has('update'))
     <div class="alert alert-success">
 

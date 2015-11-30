@@ -84,30 +84,32 @@ class BDCController extends Controller
         $cptt = 0;
         $cpt  = count($selectedUserStories);
         foreach($sprints as $sprint){
-            if($sprint->EndDate == date('Y-m-d')){
+
                 for($i= 0 ; $i < count($selectedUserStories);$i++){
-                    if($selectedUserStories[$i]->status == 1){
+                    if($selectedUserStories[$i]->sprint_id == $sprint->id && $selectedUserStories[$i]->status == 1){
                         $cptt++;
                     }
                 }
                 $realisedUS[$sprint->id] = $cpt - $cptt;
-            }
+
         }
-       // dd($realisedUS);
+        //dd($realisedUS);
 
         $j= 1;
         $userstori = array();
         $time = array();
 
         $userstori[0] = count($selectedUserStories);
+        $time[0] = 0;
 
+        //dd($realisedUS);
         foreach($realisedUS as $key => $value){
             $userstori[$j] = $value;
             $time[$j]  = $key
             ;
             $j++;
         }
-        $time[0] = 0;
+
 
         //dd($time);
         //$userstori[0] = count($selectedUserStories);
@@ -126,6 +128,9 @@ class BDCController extends Controller
         $graph = new \Graph(900,300);
         $ydata = $userstori;
         $xdata = $time;
+
+        //dd($time);
+        //dd($userstori);
 
         $graph->SetScale('intint');
         $lineplot = new \LinePlot($ydata, $xdata);

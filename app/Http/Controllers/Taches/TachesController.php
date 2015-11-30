@@ -151,6 +151,7 @@ class TachesController extends Controller
         $tache = Tache::findOrFail($id);
         $sprint_id = $tache->sprint_id ;
         DB::table('tache')->delete($id);
+        Session::flash('success2',"You Task was deleted with success !");
         return redirect(route('taches.taches.show',$sprint_id));
     }
 
